@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2a8b9943cf75d7b4ba8d5492f2ac7d74
+guid: 623e3a4cf61b7fd4a9c292ac14b5f596
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,442 +117,337 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: monster-idle 1_0
+      name: slime-player-attack 1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 60
-        width: 43
-        height: 30
+        x: 20
+        y: 48
+        width: 13
+        height: 9
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 2, y: 0, z: 8, w: 3}
+      border: {x: 1, y: 0, z: 1, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2358774465d7c9e4cabcb20b6f2449eb
-      internalID: -2040315018
+      spriteID: 30b19e6457c7a454ca8cb304567ad60e
+      internalID: 928349739
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monster-idle 1_1
+      name: slime-player-attack 1_1
       rect:
         serializedVersion: 2
-        x: 43
-        y: 60
-        width: 43
-        height: 30
+        x: 112
+        y: 48
+        width: 19
+        height: 11
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 7, w: 4}
+      border: {x: 1, y: 0, z: 1, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c5fe22cca5dccf44b7cf8d703e8aadd
-      internalID: -2976976
+      spriteID: fdb33f73b8f65f0429c1011cbc8052b9
+      internalID: 1950934313
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monster-idle 1_2
+      name: slime-player-attack 1_2
       rect:
         serializedVersion: 2
-        x: 86
-        y: 60
-        width: 43
-        height: 30
+        x: 207
+        y: 48
+        width: 20
+        height: 11
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 7, w: 4}
+      border: {x: 1, y: 0, z: 1, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27030e6d848387540b88975a88165253
-      internalID: -1014114390
+      spriteID: d701e4fe1a318294eb7df6db5541df0b
+      internalID: 1746091067
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monster-idle 1_3
+      name: slime-player-attack 1_3
       rect:
         serializedVersion: 2
-        x: 129
-        y: 60
-        width: 43
-        height: 30
+        x: 302
+        y: 48
+        width: 21
+        height: 11
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 1, y: 0, z: 1, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edb32cabed23d67458709ffc8ca32f2d
-      internalID: 548493137
+      spriteID: 3b32045cd584ac54cae65f8008d5d747
+      internalID: 983790998
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monster-idle 1_4
+      name: slime-player-attack 1_4
       rect:
         serializedVersion: 2
-        x: 172
-        y: 60
-        width: 43
-        height: 30
+        x: 15
+        y: 32
+        width: 19
+        height: 11
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 1, y: 0, z: 1, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c72d7543e7d2d945b7f860110909bd3
-      internalID: 762524807
+      spriteID: 7f1c1668beaf6a342915de2ec5ad7f2a
+      internalID: -815413994
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monster-idle 1_5
+      name: slime-player-attack 1_5
       rect:
         serializedVersion: 2
-        x: 215
-        y: 60
-        width: 43
-        height: 30
+        x: 109
+        y: 32
+        width: 21
+        height: 11
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 1, y: 0, z: 1, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 190f5ffa687f3d144bdf84f15d26de52
-      internalID: -1370793734
+      spriteID: 25785ac5c59a6f346a2041eb68fc5bb8
+      internalID: 1838875902
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monster-idle 1_6
+      name: slime-player-attack 1_6
       rect:
         serializedVersion: 2
-        x: 258
-        y: 60
-        width: 43
-        height: 30
+        x: 204
+        y: 32
+        width: 22
+        height: 11
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 1, y: 0, z: 1, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 979ad1af0512bfd4daa36dab2530c54f
-      internalID: 1686154238
+      spriteID: 72ea812623ed6ef40963e867f6029357
+      internalID: -603382130
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monster-idle 1_7
+      name: slime-player-attack 1_7
       rect:
         serializedVersion: 2
-        x: 301
-        y: 60
-        width: 43
-        height: 30
+        x: 302
+        y: 32
+        width: 23
+        height: 13
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 1, y: 0, z: 1, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 210f19bda329d044b89b88d60e8259b2
-      internalID: -1532909761
+      spriteID: 24684ff63b1a6c14dbed1411a91d7d14
+      internalID: 75590226
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monster-idle 1_8
+      name: slime-player-attack 1_8
       rect:
         serializedVersion: 2
-        x: 344
-        y: 60
-        width: 43
-        height: 30
+        x: 110
+        y: 16
+        width: 26
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 1, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8ddd513766bed444a5902bb2efec1c1
-      internalID: 17336478
+      spriteID: 897cad9ba76380c47bdd54acc15f807f
+      internalID: -1548549355
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monster-idle 1_9
+      name: slime-player-attack 1_9
       rect:
         serializedVersion: 2
-        x: 387
-        y: 60
-        width: 43
-        height: 30
+        x: 208
+        y: 16
+        width: 25
+        height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 1, y: 0, z: 1, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc6f55bc03c3ab84d986d2f97a70ed56
-      internalID: -1661709750
+      spriteID: 6e74d98fb4ef9d14da9cb21a70730750
+      internalID: 1457031451
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monster-idle 1_10
+      name: slime-player-attack 1_10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 30
-        width: 43
-        height: 30
+        x: 304
+        y: 16
+        width: 25
+        height: 13
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 1, y: 0, z: 1, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d0d6e487688ca44fb7b48c6f18905b4
-      internalID: 1930093144
+      spriteID: 2bdf2bd10b10fd441ab829a7128a8a46
+      internalID: 418011670
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monster-idle 1_11
+      name: slime-player-attack 1_11
       rect:
         serializedVersion: 2
-        x: 43
-        y: 30
-        width: 43
-        height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0ebd39e3cafa80b4ca13126956e2013a
-      internalID: 1054322261
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: monster-idle 1_12
-      rect:
-        serializedVersion: 2
-        x: 86
-        y: 30
-        width: 43
-        height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 385b18bef874727489a8c48b01038151
-      internalID: -822657600
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: monster-idle 1_13
-      rect:
-        serializedVersion: 2
-        x: 0
+        x: 117
         y: 0
-        width: 43
-        height: 30
+        width: 58
+        height: 13
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 14, y: 0, z: 1, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f116d48d189e45d49895e7a45de1e909
-      internalID: -101782062
+      spriteID: 596e3091c9ea3724284991feb01be2ac
+      internalID: 498244260
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monster-idle 1_14
+      name: slime-player-attack 1_12
       rect:
         serializedVersion: 2
-        x: 43
+        x: 213
         y: 0
-        width: 43
-        height: 30
+        width: 71
+        height: 9
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 29, y: 0, z: 1, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d942e7c0a9c3ce3428570bcbc4f55496
-      internalID: -7409907
+      spriteID: 7478d6fda031cd94faba573ce54842fd
+      internalID: 1007113748
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monster-idle 1_15
+      name: slime-player-attack 1_13
       rect:
         serializedVersion: 2
-        x: 86
+        x: 309
         y: 0
-        width: 43
-        height: 30
+        width: 13
+        height: 10
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 1, y: 0, z: 1, w: 1}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a267d81989fed034893b4703ab568ddc
-      internalID: 369521752
+      spriteID: cec69aeaf141ef342bdd57acb2388bc7
+      internalID: -1159352422
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monster-idle 1_16
+      name: slime-player-attack 1_14
       rect:
         serializedVersion: 2
-        x: 129
-        y: 0
-        width: 43
-        height: 30
+        x: 16
+        y: 16
+        width: 24
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 1, y: 0, z: 1, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11635a9276115ee459f854a42c6604e8
-      internalID: 1641597561
+      spriteID: 9f977b07df515bb41acfde7e71d6ab61
+      internalID: -1023397102
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: monster-idle 1_17
+      name: slime-player-attack 1_15
       rect:
         serializedVersion: 2
-        x: 172
+        x: 15
         y: 0
-        width: 43
-        height: 30
+        width: 27
+        height: 13
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 1, y: 0, z: 1, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e34354f3470f504ab213c92eee62b46
-      internalID: -771651657
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: monster-idle 1_18
-      rect:
-        serializedVersion: 2
-        x: 215
-        y: 0
-        width: 43
-        height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f5b509603c2c5444688a4ba13917d931
-      internalID: -142952627
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: monster-idle 1_19
-      rect:
-        serializedVersion: 2
-        x: 258
-        y: 0
-        width: 43
-        height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 562178482bba8c74797f5e7ff5ae58ae
-      internalID: 236016191
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: monster-idle 1_20
-      rect:
-        serializedVersion: 2
-        x: 301
-        y: 0
-        width: 43
-        height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 32e7b7a8eceb9dc4cb68bd55751382e2
-      internalID: 1257811682
+      spriteID: d71cb46a9dc4f70458bbadea125ef224
+      internalID: -1447928224
       vertices: []
       indices: 
       edges: []
@@ -568,27 +463,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      monster-idle 1_14: -7409907
-      monster-idle 1_0: -2040315018
-      monster-idle 1_1: -2976976
-      monster-idle 1_2: -1014114390
-      monster-idle 1_5: -1370793734
-      monster-idle 1_19: 236016191
-      monster-idle 1_6: 1686154238
-      monster-idle 1_3: 548493137
-      monster-idle 1_13: -101782062
-      monster-idle 1_18: -142952627
-      monster-idle 1_7: -1532909761
-      monster-idle 1_20: 1257811682
-      monster-idle 1_10: 1930093144
-      monster-idle 1_15: 369521752
-      monster-idle 1_11: 1054322261
-      monster-idle 1_4: 762524807
-      monster-idle 1_8: 17336478
-      monster-idle 1_12: -822657600
-      monster-idle 1_17: -771651657
-      monster-idle 1_9: -1661709750
-      monster-idle 1_16: 1641597561
+      slime-player-attack 1_9: 1838875902
+      slime-player-attack 1_6: 1746091067
+      slime-player-attack 1_5: 1950934313
+      slime-player-attack 1_11: 75590226
+      slime-player-attack 1_13: 1457031451
+      slime-player-attack 1_0: 928349739
+      slime-player-attack 1_4: -1327037048
+      slime-player-attack 1_2: 1608228139
+      slime-player-attack 1_15: -1447928224
+      slime-player-attack 1_14: -1023397102
+      slime-player-attack 1_1: 1805799019
+      slime-player-attack 1_10: -603382130
+      slime-player-attack 1_7: 983790998
+      slime-player-attack 1_8: -815413994
+      slime-player-attack 1_12: -1548549355
+      slime-player-attack 1_3: -1561728611
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
