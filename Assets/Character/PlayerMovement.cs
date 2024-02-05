@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject shotSpawn;
     [SerializeField] private Transform firingPoint;
     [SerializeField] private bool isFacingRight = true;
+    [SerializeField] private bool grounded = true;
 
     //[Range(0.1f,1f)];
     //[SerializeField] private float fireRate=0.5f;
@@ -27,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     private enum MovementState { idle, moving, jumping, falling, attack }
+    private MovementState state;
     //private float dirX=0f;
     private float dirX;
     //private Vector2 move;
@@ -35,10 +37,23 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        coll = GetComponent<BoxCollider2D>();
-        sprite = GetComponent<SpriteRenderer>();
-        anim = GetComponent<Animator>();
+        if (rb == null)
+        {
+            rb = GetComponent<Rigidbody2D>();
+        }
+        if (coll == null)
+        {
+            coll = GetComponent<BoxCollider2D>();
+        }
+        if (sprite == null)
+        {
+            sprite = GetComponent<SpriteRenderer>();
+        }
+        if (anim== null)
+        {
+            anim = GetComponent<Animator>();
+        }
+        
     }
 
     // Update is called once per frame
@@ -48,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Instantiate(shotSpawn, firingPoint.position, transform.rotation);
         }
+        AnimationUpdate();
     }
 
     void FixedUpdate()
@@ -55,42 +71,49 @@ public class PlayerMovement : MonoBehaviour
         //looking direction
         dirX = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonDown("Jump") && isGrounded())
+        if (Input.GetButtonDown("Jump") && isGrounded() && grounded)
         {
+            grounded = false;
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            //if (MovementStateState == )
         }
-        AnimationUpdate();
     }
 
     void AnimationUpdate()
     {
-
-        //bool isFacingRight=true;
-        MovementState state = MovementState.idle;
-
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
-        
+        //bool isFacingRight=true;
+
+        state = MovementState.idle;
 
         if (dirX > 0f && !isFacingRight)
         {//right 
+            grounded = true;
             Flip();
-            state = MovementState.moving;
         }
         else if (dirX < 0f && isFacingRight)
         {//left
+            grounded = true;
             Flip();
+        }
+        else if (dirX > 0f || dirX < 0f)
+        {
+            grounded = true;
             state = MovementState.moving;
         }
         if (rb.velocity.y > 0.1f)
         {
+            grounded = false;
             state = MovementState.jumping;
         }
         else if (rb.velocity.y < -.1f)
         {
             state = MovementState.falling;
         }
-
+        
         anim.SetInteger("States", (int)state);
+        anim.SetBool("isGrounded", grounded);
+        grounded = true;
     }
 
     bool isGrounded()
