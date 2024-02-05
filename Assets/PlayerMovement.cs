@@ -6,9 +6,12 @@ using UnityEngine.SocialPlatforms;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private BoxCollider2D coll;
     private SpriteRenderer sprite;
     private Animator anim;
-   
+   [SerializeField] private LayerMask jumpableGound;
+   [SerializeField] private float moveSpeed=2f;
+   [SerializeField] private float jumpForce=5f;
 
     private enum MovementState{ idle,moving,jumping,falling,attack}
     private float dirX=0f;
@@ -19,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb=GetComponent<Rigidbody2D>();
+        coll=GetComponent<BoxCollider2D>();
         sprite=GetComponent<SpriteRenderer>();
         anim=GetComponent<Animator>();
     }
@@ -26,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {   
+        
         FixedUpdate();
         AnimationUpdate();
     }
@@ -33,49 +38,45 @@ public class PlayerMovement : MonoBehaviour
      
  private void FixedUpdate()
     {
-        
-         dirX= Input.GetAxisRaw("right");
-        rb.velocity=new Vector2(dirX*10f,rb.velocity.y);
-        dirNX= Input.GetAxisRaw("left");
-        rb.velocity=new Vector2(dirNX*-10f,rb.velocity.y);
+         //looking direction
+          dirX= Input.GetAxisRaw("right");
+         //rb.velocity=new Vector2(dirX*10f,rb.velocity.y);
+         dirNX= Input.GetAxisRaw("left");
+         //rb.velocity=new Vector2(dirNX*-10f,rb.velocity.y);
       
-        if (Input.GetButtonDown("Jump")){
-            rb.velocity= new Vector2(rb.velocity.x,8f);
-            anim.SetBool("jumping",true);
+        if (Input.GetButtonDown("Jump")&& isGrounded()){
+            rb.velocity= new Vector2(rb.velocity.x,jumpForce);
+        
         }
-        else{
-            anim.SetBool("jumping",false);
-        }
-
-        AnimationUpdate();
     }
-
     private void AnimationUpdate(){
-        MovementState state;
-         if(dirX>0f ){//right
-            rb.velocity= new Vector2(8f,rb.velocity.y);
-       
+
+        MovementState state=MovementState.idle; //default
+         
+        if(dirX>0f){//right 
+            rb.velocity= new Vector2(moveSpeed,rb.velocity.y);
             state=MovementState.moving;
             sprite.flipX=false;
-          
         }
-        else if(dirNX<0f ){//left
-            rb.velocity= new Vector2(-8f,rb.velocity.y);
-     
+        else if(dirNX<0f){//left
+            rb.velocity= new Vector2(-moveSpeed,rb.velocity.y);
             state=MovementState.moving;
             sprite.flipX=true;
         }
-        if(rb.velocity.y> 0.1f){
+        if(rb.velocity.y>0.1f){
             state=MovementState.jumping;
         }
-        else if(rb.velocity.y<0f){
+        else if(rb.velocity.y<-.1f){
             state=MovementState.falling;
         }
-        else{
-            state=MovementState.idle;
-        }
+       
         anim.SetInteger("state",(int)state);
     }
+    private bool isGrounded(){//checks if the player touches the ground
+        return Physics2D.BoxCast(coll.bounds.center,coll.bounds.size,0f,Vector2.down,0.1f,jumpableGound);
+    }
+
+
 }
 
  
