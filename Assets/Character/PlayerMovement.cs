@@ -13,11 +13,12 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator anim;
 
-    [SerializeField] private LayerMask jumpableGound;
+    [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float jumpForce = 5f;
-    [SerializeField] private GameObject shotSpawn;
-    [SerializeField] private Transform firingPoint;
+    //[SerializeField] private GameObject shotSpawn;
+    //[SerializeField] private Transform firingPoint;
+    [SerializeField] private Transform groundCheck;
     [SerializeField] private bool isFacingRight = true;
     [SerializeField] private bool grounded = true;
 
@@ -59,11 +60,16 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    Instantiate(shotSpawn, firingPoint.position, transform.rotation);
+        //}
+
+        if (Input.GetButtonDown("Jump") && isGrounded())
         {
-            Instantiate(shotSpawn, firingPoint.position, transform.rotation);
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
         }
-        AnimationUpdate();
     }
 
     void FixedUpdate()
@@ -71,12 +77,8 @@ public class PlayerMovement : MonoBehaviour
         //looking direction
         dirX = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonDown("Jump") && isGrounded() && grounded)
-        {
-            grounded = false;
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            //if (MovementStateState == )
-        }
+        
+        AnimationUpdate();
     }
 
     void AnimationUpdate()
@@ -88,37 +90,43 @@ public class PlayerMovement : MonoBehaviour
 
         if (dirX > 0f && !isFacingRight)
         {//right 
-            grounded = true;
             Flip();
         }
         else if (dirX < 0f && isFacingRight)
         {//left
-            grounded = true;
             Flip();
         }
-        else if (dirX > 0f || dirX < 0f)
+        else if ((dirX > 0f || dirX < 0f) && isGrounded())
         {
-            grounded = true;
             state = MovementState.moving;
+            anim.SetInteger("States", (int)state);
         }
+
         if (rb.velocity.y > 0.1f)
         {
-            grounded = false;
+            grounded = isGrounded();
             state = MovementState.jumping;
+            anim.SetInteger("States", (int)state);
         }
-        else if (rb.velocity.y < -.1f)
+        else if (rb.velocity.y < -0.1f)
         {
             state = MovementState.falling;
         }
-        
+
         anim.SetInteger("States", (int)state);
-        anim.SetBool("isGrounded", grounded);
-        grounded = true;
+
+        //anim.SetBool("isGrounded", isGrounded());
+
+
+        //if (!grounded && state != MovementState.jumping)
+        //{
+        //    grounded = true;
+        //}
     }
 
     bool isGrounded()
     {
-        return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, 0.1f, jumpableGound);
+        return Physics2D.OverlapCircle(groundCheck.position, 0.05f, jumpableGround);
     }
 
     void Flip()
