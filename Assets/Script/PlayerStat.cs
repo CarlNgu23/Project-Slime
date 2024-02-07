@@ -18,7 +18,7 @@ public class PlayerStat : MonoBehaviour
     //player final  attribute
     private int hp = 100;
     private int AttackDmg = 10;
-    private int Defense = 5
+    private int Defense = 5;
 
     // Start is called before the first frame update
     void Start()
