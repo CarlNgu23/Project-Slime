@@ -1,29 +1,34 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Dynamic;
-using UnityEditor.Tilemaps;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
     private BoxCollider2D coll;
-    private SpriteRenderer sprite;
     private Animator anim;
 
-    [SerializeField] private LayerMask jumpableGround;
-    [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private float jumpForce = 5f;
-    //[SerializeField] private GameObject shotSpawn;
-    //[SerializeField] private Transform firingPoint;
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private bool isFacingRight = true;
-    [SerializeField] private bool grounded = true;
+    [SerializeField] private float groundCheckRadius = 1f;
+    [SerializeField] private float slopeCheckDistance;
+    [SerializeField] private float slopeCheckXOffset = 0f;
+    [SerializeField] private float slopeCheckYOffset = 0f;
 
-    //[Range(0.1f,1f)];
-    //[SerializeField] private float fireRate=0.5f;
+
+    [SerializeField] private bool isFacingRight = true;
+    [SerializeField] private bool grounded = true;      //Debug Purposes
+    [SerializeField] private bool onSlope = false;
+
+    //[SerializeField] private Vector3 boundsCenter;      //Debug Purposes
+    //[SerializeField] private Vector3 boundsSize;       //Debug Purposes
+
+    [SerializeField] private LayerMask groundMask;
+    [SerializeField] private LayerMask slopeMask;
+
+    [SerializeField] private Transform groundCheck;
+
+    [SerializeField] private Vector2 playerGroundPos;
 
 
 
@@ -31,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     private enum MovementState { idle, moving, jumping, falling, attack }
     private MovementState state;
     //private float dirX=0f;
-    private float dirX;
+    private float inputX;
     //private Vector2 move;
 
 
@@ -45,10 +50,6 @@ public class PlayerMovement : MonoBehaviour
         if (coll == null)
         {
             coll = GetComponent<BoxCollider2D>();
-        }
-        if (sprite == null)
-        {
-            sprite = GetComponent<SpriteRenderer>();
         }
         if (anim== null)
         {
@@ -64,78 +65,98 @@ public class PlayerMovement : MonoBehaviour
         //{
         //    Instantiate(shotSpawn, firingPoint.position, transform.rotation);
         //}
+        inputX = Input.GetAxisRaw("Horizontal"); //looking direction
 
         if (Input.GetButtonDown("Jump") && isGrounded())
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            Jump();
 
         }
     }
 
     void FixedUpdate()
     {
-        //looking direction
-        dirX = Input.GetAxisRaw("Horizontal");
-
-        
-        AnimationUpdate();
-    }
-
-    void AnimationUpdate()
-    {
-        rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
-        //bool isFacingRight=true;
+        grounded = isGrounded();    // Debugging Purposes
 
         state = MovementState.idle;
 
-        if (dirX > 0f && !isFacingRight)
-        {//right 
+        Movement();
+
+        slopeCheck();
+
+        anim.SetInteger("States", (int)state);
+    }
+
+    void Jump()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+    }
+
+    void Movement()
+    {
+        rb.velocity = new Vector2(inputX * moveSpeed, rb.velocity.y);
+
+        if (inputX > 0.0f && !isFacingRight)      //Checks for contradictions in player's right direction
+        {
             Flip();
         }
-        else if (dirX < 0f && isFacingRight)
-        {//left
+        else if (inputX < 0.0f && isFacingRight)  //Checks for contradictions in player's left direction
+        {
             Flip();
         }
-        else if ((dirX > 0f || dirX < 0f) && isGrounded())
+        else if ((inputX > 0.0f || inputX < 0.0f) && isGrounded())
         {
             state = MovementState.moving;
             anim.SetInteger("States", (int)state);
         }
-
-        if (rb.velocity.y > 0.1f)
+        else if ((inputX > 0.0f || inputX < 0.0f) && isGrounded())
         {
-            grounded = isGrounded();
+            state = MovementState.moving;
+            anim.SetInteger("States", (int)state);
+        }
+        else if (!isGrounded() && !onSlope)
+        {
             state = MovementState.jumping;
             anim.SetInteger("States", (int)state);
         }
-        else if (rb.velocity.y < -0.1f)
-        {
-            state = MovementState.falling;
-        }
-
-        anim.SetInteger("States", (int)state);
-
-        //anim.SetBool("isGrounded", isGrounded());
-
-
-        //if (!grounded && state != MovementState.jumping)
+        //else if (rb.velocity.y < -0.1f)
         //{
-        //    grounded = true;
+        //    state = MovementState.falling;
         //}
     }
 
     bool isGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.05f, jumpableGround);
+        //boundsCenter = coll.bounds.center;
+        //boundsSize = coll.bounds.size;
+        //return Physics2D.BoxCast(boundsCenter, boundsSize, 0f, Vector2.down, 0.1f, groundMask);
+
+        return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundMask);
+    }
+
+    void slopeCheck()
+    {
+        playerGroundPos = coll.bounds.center + new Vector3(slopeCheckXOffset, slopeCheckYOffset, 0);
+
+        RaycastHit2D rayHit = Physics2D.Raycast(playerGroundPos, Vector2.down, slopeCheckDistance, slopeMask);
+
+        Debug.DrawRay(rayHit.point, rayHit.normal, Color.red);
+
+        if (rayHit)
+        {
+            onSlope = true;
+        }
+        else
+        {
+            onSlope = false;
+        }
     }
 
     void Flip()
     {
         isFacingRight = !isFacingRight;
-        transform.Rotate(0f, 180f, 0f);
+        transform.Rotate(0.0f, 180.0f, 0.0f);
     }
-
-
 }
 
 
