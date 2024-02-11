@@ -1,11 +1,15 @@
 # Project Slime
 
-Project Slime is a 2D, pixel art, action, fighter and platformer game made with Unity.
+Project Slime is a 2D, pixel art, action, fighter, and platformer game made with Unity.
 
-##Visuals
+## Visuals
 
-Will add some screenshots/gif at a later date.
+Will add some screenshots/GIFs at a later date.
 
 ## Installation
 
-Not ready, yet. But when it is, you can download here and run the game.
+Not ready, yet. But when it is, you can download it here and run the game.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
