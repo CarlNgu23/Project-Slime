@@ -7,6 +7,7 @@ public abstract  class Monster : MonoBehaviour
     [SerializeField] public int health;
     [SerializeField] public int damage;
     [SerializeField] public float flashtime;
+    
 
     //flash when by hit
     private SpriteRenderer sr;
