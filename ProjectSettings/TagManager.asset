@@ -4,10 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Item
-  - Ground
   - NPC
-  - Enemy
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -15,10 +13,10 @@ TagManager:
   - Player
   - Water
   - UI
-  - NPC
+  - Ground
+  - Slope
+  - Npc
   - TriggerBox
-  - 
-  - 
   - 
   - 
   - 
@@ -45,15 +43,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: item
-    uniqueID: 1647492715
+  - name: Item
+    uniqueID: 1149992115
     locked: 0
   - name: Player
-    uniqueID: 2190880009
+    uniqueID: 2209012261
     locked: 0
   - name: NPC
-    uniqueID: 1227925261
+    uniqueID: 2142412519
     locked: 0
   - name: TriggerBox
-    uniqueID: 258703065
+    uniqueID: 3420683563
     locked: 0

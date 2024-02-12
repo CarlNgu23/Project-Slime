@@ -23,7 +23,7 @@ public class SignTrigger : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.X) && isPlayerInSign) {
             dialogBox.SetActive(true);
-            dialogBoxText.text = signText;
+           // dialogBoxText.text = signText;
         }
     }
 
