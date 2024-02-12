@@ -17,8 +17,14 @@ public class OneEyeDog : MonoBehaviour
 
     [SerializeField] private float attackCooldown;
     [SerializeField] private float range;
-    [SerializeField] private float colliderDistance;
     [SerializeField] private int damage;
+
+    //[SerializeField]private Transform dashPointA;
+    //[SerializeField]private Transform dashPointB;
+
+
+    [SerializeField] private float colliderDistance;
+    
     [SerializeField] private BoxCollider2D boxColl;
     [SerializeField] private LayerMask playerLayer;
 
@@ -59,7 +65,8 @@ public class OneEyeDog : MonoBehaviour
             if(cooldownTimer>= attackCooldown)
             {
                 cooldownTimer=0;
-                anim.SetTrigger("dashAttack");
+                anim.SetBool("isWalking",false);
+                RangedDashAttack();
             }
         }
 
@@ -67,23 +74,41 @@ public class OneEyeDog : MonoBehaviour
         {
             mon.enabled=!PlayerInSight();
         }
-}
+    }
 
-private bool PlayerInSight()
-{
-    RaycastHit2D hit= Physics2D.BoxCast(boxColl.bounds.center+transform.right* range*transform.localScale.x* colliderDistance,
-new Vector3(boxColl.bounds.size.x *range,boxColl.bounds.size.y,boxColl.bounds.size.z),0,Vector2.left,0,playerLayer );
+    private bool PlayerInSight()
+    {
+        RaycastHit2D hit= Physics2D.BoxCast(boxColl.bounds.center+transform.right* range*transform.localScale.x* colliderDistance,
+        new Vector3(boxColl.bounds.size.x *range,boxColl.bounds.size.y,boxColl.bounds.size.z),0,Vector2.left,0,playerLayer );
 
-    return hit.collider != null;
-}
+        return hit.collider != null;
+    }
 
-private void OnDrawGizmos()
-{
-    Gizmos.color=Color.red;
-    Gizmos.DrawWireCube(boxColl.bounds.center+transform.right *range*transform.localScale.x *colliderDistance,new Vector3(boxColl.bounds.size.x *range,boxColl.bounds.size.y,boxColl.bounds.size.z));
+    private void OnDrawGizmos()
+    {
+        Gizmos.color=Color.red;
+        Gizmos.DrawWireCube(boxColl.bounds.center+transform.right *range*transform.localScale.x *colliderDistance,new Vector3(boxColl.bounds.size.x *range,boxColl.bounds.size.y,boxColl.bounds.size.z));
 
-}
-   
+    }
+
+    private void RangedDashAttack()
+    {
+        cooldownTimer=2;
+        //anim.SetTrigger("dashAttack");
+
+    }
+
+
+// private int FindDash()
+// {
+//     for(int i=0; i<dash.length; i++)
+//     {
+//         if(dash[i].activeInHierarchy)
+//         {
+//             return i;
+//         }
+//     }
+// }
 
 //    private void DamagePlayer()
 //    {
