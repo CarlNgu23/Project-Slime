@@ -12,8 +12,7 @@ public class InitButton : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-       
+    {   
         lastSelect = EventSystem.current.currentSelectedGameObject;
     }
 
@@ -24,10 +23,9 @@ public class InitButton : MonoBehaviour
         {
             EventSystem.current.SetSelectedGameObject(lastSelect);
         }
-        else {
+        else 
+        {
             lastSelect = EventSystem.current.currentSelectedGameObject;
-
-
         }
     }
 }

@@ -21,7 +21,8 @@ public class SignTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X) && isPlayerInSign) {
+        if (Input.GetKeyDown(KeyCode.X) && isPlayerInSign)
+        {
             dialogBox.SetActive(true);
            // dialogBoxText.text = signText;
         }

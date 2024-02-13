@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void playGame() {
+    public void playGame() 
+    {
         SceneManager.LoadScene(1);
     }
 
-    public void QuitGame() { 
+    public void QuitGame() 
+    { 
         Application.Quit();
     }
 }

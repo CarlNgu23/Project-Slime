@@ -15,12 +15,10 @@ public class BaseAttack : MonoBehaviour
 
 
     void Start()
-    {
-        
+    {     
         anim = player.GetComponent<Animator>();
         GetComponent<Animator>();
         baseAttack2d = GetComponent<PolygonCollider2D>();
-
     }
 
     // Update is called once per frame
@@ -55,7 +53,6 @@ public class BaseAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         baseAttack2d.enabled = false;
-
     }
 
 
@@ -65,7 +62,6 @@ public class BaseAttack : MonoBehaviour
         { 
         other.GetComponent<Monster>().TakeDamage(damage);
         }
-
     }
 
 }
