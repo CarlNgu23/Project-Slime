@@ -7,18 +7,16 @@ public class Bat : Monster
 
 
     // Start is called before the first frame update
-   public void Start()
+   public new void Start()
     {
         base.Start();
+        health = 5;
+        expReward = 1000;
     }
 
     // Update is called once per frame
-    public void Update()
+    public new void Update()
     {
         base.Update();
     }
-
-
- 
-
 }

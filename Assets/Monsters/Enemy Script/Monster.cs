@@ -5,49 +5,51 @@ using UnityEngine;
 public abstract  class Monster : MonoBehaviour
 {
     [SerializeField] public int health;
-    [SerializeField] public int damage;
+    [SerializeField] public int ReceivedDamage;
     [SerializeField] public float flashtime;
+    [SerializeField] public int expReward;
     
-
-    //flash when by hit
-    private SpriteRenderer sr;
-    private Color originlColor;
+    private SpriteRenderer monsterSprite;
+    private Color originalColor;
 
 
     // Start is called before the first frame update
     public void Start()
     {
-        sr = GetComponent<SpriteRenderer>();
-        originlColor = sr.color;
+        monsterSprite = GetComponent<SpriteRenderer>();
+        originalColor = monsterSprite.color;
     }
 
     // Update is called once per frame
    public void Update()
     {
         if (health <= 0)
-        { 
-        Destroy(gameObject);
+        {
+            Die();
         }
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(int ReceivedDamage)
     { 
         
-        health -= damage;
+        health -= ReceivedDamage;
         FlashColor(flashtime);
     }
 
 
     void FlashColor(float time)
     {
-        sr.color = Color.red;
+        monsterSprite.color = Color.red;
         Invoke("ResetColor", time);
     }
 
-    private void ResetColor()
+    void ResetColor()
     {
-        sr.color = originlColor;
-
+        monsterSprite.color = originalColor;
     }
 
-
+    void Die()
+    {
+        ExpManager.Instance.GiveExp(expReward);
+        Destroy(gameObject);
+    }
 }

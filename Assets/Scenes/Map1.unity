@@ -792,9 +792,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95394ac62d097f046b1b9af51b8fe794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  damage: 3
+  health: 5
+  ReceivedDamage: 0
   flashtime: 0.2
+  expReward: 1000
 --- !u!61 &358490437
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -964,6 +965,50 @@ Transform:
   - {fileID: 1640058134}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &417114104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 417114106}
+  - component: {fileID: 417114105}
+  m_Layer: 0
+  m_Name: ExpManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &417114105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417114104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ed6a783717f7549a5007a05cff837a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &417114106
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417114104}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.31892085, y: -0.08901798, z: 0.034193344}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,6 +1161,7 @@ GameObject:
   - component: {fileID: 618832042}
   - component: {fileID: 618832043}
   - component: {fileID: 618832044}
+  - component: {fileID: 618832045}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -1329,6 +1375,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d47f30da5bb9a54eaddfc84c83ef8b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &618832045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618832037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f6a525f4f6b1e4d82605e562a50c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  attack: 1
+  defence: 0
+  strength: 1
+  dexterity: 1
+  currentLevel: 1
+  currentExp: 0
+  requiredExp: 100
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -5017,3 +5083,4 @@ SceneRoots:
   - {fileID: 134642708}
   - {fileID: 685441119}
   - {fileID: 237810198}
+  - {fileID: 417114106}
