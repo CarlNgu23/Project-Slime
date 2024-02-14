@@ -32,12 +32,8 @@ public class BaseAttack : MonoBehaviour
     {
         if (Input.GetButtonDown("Attack"))
         {
-            
-     
             anim.SetTrigger("Attack");
             StartCoroutine(StartAttack());
-
-        
         }
     }
 
@@ -60,7 +56,7 @@ public class BaseAttack : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         { 
-        other.GetComponent<Monster>().TakeDamage(damage);
+            other.GetComponent<Monster>().TakeDamage(damage);
         }
     }
 
