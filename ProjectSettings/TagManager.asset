@@ -4,18 +4,20 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - enemy
+  - NPC
+  - Item
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Slope
+  - Npc
+  - TriggerBox
   - 
   - 
   - 
@@ -41,4 +43,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Item
+    uniqueID: 1149992115
+    locked: 0
+  - name: Player
+    uniqueID: 2209012261
+    locked: 0
+  - name: NPC
+    uniqueID: 2142412519
+    locked: 0
+  - name: TriggerBox
+    uniqueID: 3420683563
     locked: 0
