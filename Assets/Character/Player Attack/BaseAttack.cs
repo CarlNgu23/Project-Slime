@@ -15,9 +15,16 @@ public class BaseAttack : MonoBehaviour
 
 
     void Start()
-    {     
-        anim = player.GetComponent<Animator>();
-        GetComponent<Animator>();
+    {    
+        if(anim!=null)
+        {
+            anim = player.GetComponent<Animator>();
+        }
+        if(baseAttack2d!=null)
+        {
+            baseAttack2d = GetComponent<PolygonCollider2D>();
+        }
+        //GetComponent<Animator>();
         baseAttack2d = GetComponent<PolygonCollider2D>();
     }
 
@@ -32,12 +39,8 @@ public class BaseAttack : MonoBehaviour
     {
         if (Input.GetButtonDown("Attack"))
         {
-            
-     
             anim.SetTrigger("Attack");
             StartCoroutine(StartAttack());
-
-        
         }
     }
 
@@ -60,7 +63,7 @@ public class BaseAttack : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         { 
-        other.GetComponent<Monster>().TakeDamage(damage);
+            other.GetComponent<Monster>().TakeDamage(damage);
         }
     }
 

@@ -10,7 +10,7 @@ public class PatrolMonsters : MonoBehaviour
     [SerializeField] private Transform enemy;
     [SerializeField] private float speed;
     
-    private  Vector3 initScale;
+    private  Vector2 initScale;
     private bool movingLeft;
     
     [SerializeField] private float idleDur;
@@ -74,9 +74,9 @@ public class PatrolMonsters : MonoBehaviour
         Enemy_anim.SetBool("isWalking",true);
         
     //facing that dir
-        enemy.localScale=new Vector3(Mathf.Abs(initScale.x)* dir,initScale.y,initScale.z);
+        enemy.localScale=new Vector2(Mathf.Abs(initScale.x)* dir,initScale.y);
 
     //moving to that dir
-        enemy.position= new Vector3(enemy.position.x+Time.deltaTime*dir*speed, enemy.position.y,enemy.position.z);
+        enemy.position= new Vector2(enemy.position.x+Time.deltaTime*dir*speed, enemy.position.y);
     }
 }

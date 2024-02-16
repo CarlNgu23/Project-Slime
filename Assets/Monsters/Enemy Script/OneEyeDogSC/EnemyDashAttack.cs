@@ -49,13 +49,13 @@ public class EnemyDashAttack : MonoBehaviour
     bool IsPlayerInRange()
     {   
         
-        return Vector3.Distance(transform.position, player.position) < dashDistance;
+        return Vector2.Distance(transform.position, player.position) < dashDistance;
     }
 
     void DashTowardsPlayer()//direction
     {
-        Vector3 direction = (player.position - transform.position).normalized;
-        Vector3 dashTarget = transform.position + direction * dashDistance;
+        Vector2 direction = (player.position - transform.position).normalized;
+        Vector2 dashTarget = (Vector2)transform.position + direction * dashDistance;
   
         StartCoroutine(DoDash(dashTarget));
     
@@ -72,12 +72,12 @@ public class EnemyDashAttack : MonoBehaviour
         
         while (transform.position != target)
         {   
-            bool grounded = isGrounded();
-            anim.SetBool("isGrounded", grounded);
-            if(grounded)
-            {
+            // bool grounded = isGrounded();
+            // anim.SetBool("isGrounded", grounded);
+            // if(grounded)
+            // {
                 transform.position = Vector3.MoveTowards(transform.position, target, dashSpeed * Time.deltaTime);
-           }
+            //}
             
             
              yield return null;// pauses the execution. Then continue to executing other code for one frame, then next frame it will resume 
@@ -103,3 +103,4 @@ public class EnemyDashAttack : MonoBehaviour
     }
 
 }
+//follow(using raycast),dash, grounded
