@@ -1050,7 +1050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e6a5fea36371e44bbfa4d3e55a59566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 288
+  health: 1
   ReceivedDamage: 0
   flashtime: 0.2
   expReward: 6000
@@ -1187,7 +1187,7 @@ Transform:
   m_GameObject: {fileID: 394842200}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.8744662, y: -2.313, z: 0}
+  m_LocalPosition: {x: 3.005, y: -2.313, z: 0}
   m_LocalScale: {x: 0.55806, y: 0.55806, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1621,7 +1621,7 @@ MonoBehaviour:
   currentExp: 0
   requiredExp: 100
   health: 100
-  attack: 1
+  attack: 5
   defense: 0
   strength: 1
   dexterity: 1
@@ -2174,8 +2174,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashDistance: 2.43
   damage: 10
-  waitTime: 1
-  startTime: 1
+  waitTime: 0.2
+  startTime: 0.2
   enemy: {fileID: 394842200}
   player: {fileID: 618832041}
 --- !u!60 &785575487
@@ -2185,7 +2185,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 785575484}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:

@@ -18,7 +18,7 @@ public abstract  class Monster : MonoBehaviour
     {
         monsterSprite = GetComponent<SpriteRenderer>();
         originalColor = monsterSprite.color;
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -51,7 +51,7 @@ public abstract  class Monster : MonoBehaviour
     void Die()
     {
         ExpManager.Instance.GiveExp(expReward);
-        anim.SetTrigger("isDead");
+        //anim.SetTrigger("isDead");
         Destroy(gameObject);
     }
 }

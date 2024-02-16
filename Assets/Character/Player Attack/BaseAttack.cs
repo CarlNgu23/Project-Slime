@@ -16,16 +16,11 @@ public class BaseAttack : MonoBehaviour
 
     void Start()
     {    
-        if(anim!=null)
-        {
-            anim = player.GetComponent<Animator>();
-        }
-        if(baseAttack2d!=null)
-        {
-            baseAttack2d = GetComponent<PolygonCollider2D>();
-        }
-        //GetComponent<Animator>();
+         anim = player.GetComponent<Animator>();
+        GetComponent<Animator>();
         baseAttack2d = GetComponent<PolygonCollider2D>();
+        //GetComponent<Animator>();
+       // baseAttack2d = GetComponent<PolygonCollider2D>();
     }
 
     // Update is called once per frame
