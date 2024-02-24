@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour
+public class BaseAttackAnimation : MonoBehaviour
 {
 
     private Rigidbody2D rb;

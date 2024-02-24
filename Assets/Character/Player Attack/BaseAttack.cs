@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class BaseAttack : MonoBehaviour
 {
-
-    [SerializeField] private int damage;    //player damage
+    [SerializeField] public int damage;    //player damage
     [SerializeField] public float waitTime; //waitTime hitbox disappear time
     [SerializeField] public float startTime; //startTime hit box appear time
     private Animator anim;
@@ -24,6 +23,7 @@ public class BaseAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        damage = Stats_Level.attack;    //References the attack stats for base damage.
         Attack();
     }
 
