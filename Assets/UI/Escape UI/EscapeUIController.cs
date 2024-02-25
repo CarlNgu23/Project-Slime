@@ -5,32 +5,25 @@ using UnityEngine.UIElements;
 
 public class EscapeUIController : MonoBehaviour
 {
-    private VisualElement escape_UI_Menu;
-    private UIDocument escapeUI_Menu;
+    [SerializeField] private GameObject escape_UI;
+    [SerializeField] private GameObject save_UI;
+    [SerializeField] private GameObject load_UI;
+    //private Button resumeButton;
+    //private Button saveButton;
+    //private Button loadButton;
 
-    private Button resumeButton;
-    private Button saveButton;
-    private Button loadButton;
-    private Button quitButton;
-    // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
-        var root = GetComponent<UIDocument>().rootVisualElement;
-
-        escapeUI_Menu = GetComponent<UIDocument>();
-
-        escape_UI_Menu = root.Q<VisualElement>("Escape_UI_Menu");
-
-        resumeButton = root.Q<Button>("Resume");
-        saveButton = root.Q<Button>("Save");
-        loadButton = root.Q<Button>("Load");
-        quitButton = root.Q<Button>("Quit");
+        escape_UI.SetActive(false);
+        save_UI.SetActive(false);
+        load_UI.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !save_UI.activeSelf && !load_UI.activeSelf)
         {
             if (Time.timeScale != 0)
             {
@@ -40,19 +33,18 @@ public class EscapeUIController : MonoBehaviour
             {
                 Resume();
             }
-            
         }
     }
 
     public void Pause()
     {
         Time.timeScale = 0f;
-        escapeUI_Menu.enabled = true;
+        escape_UI.SetActive(true);
     }
 
     public void Resume()
     {
         Time.timeScale = 1f;
-        escapeUI_Menu.enabled = false;
+        escape_UI.SetActive(false);
     }
 }

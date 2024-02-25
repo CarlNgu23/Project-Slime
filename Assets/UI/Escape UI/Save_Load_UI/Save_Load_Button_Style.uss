@@ -1,0 +1,18 @@
+.Save_Load_Button {
+    flex-grow: 1;
+    position: absolute;
+    width: 800px;
+    height: 100px;
+    top: 227px;
+    left: 77px;
+}
+
+.Save_Load_Button:hover {
+    flex-grow: 1;
+    position: absolute;
+    width: 800px;
+    height: 100px;
+    top: 227px;
+    left: 77px;
+    scale: 1.02 1.02;
+}
