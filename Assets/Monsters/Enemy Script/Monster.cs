@@ -8,6 +8,7 @@ public abstract  class Monster : MonoBehaviour
     [SerializeField] public int ReceivedDamage;
     [SerializeField] public float flashtime;
     [SerializeField] public int expReward;
+    [SerializeField] public int collisionDamage;
     
     private SpriteRenderer monsterSprite;
     private Color originalColor;
@@ -35,6 +36,10 @@ public abstract  class Monster : MonoBehaviour
         FlashColor(flashtime);
     }
 
+    public void DealDamage(int collisionDamage)
+    {
+
+    }
 
     void FlashColor(float time)
     {
@@ -49,7 +54,7 @@ public abstract  class Monster : MonoBehaviour
 
     void Die()
     {
-        ExpManager.Instance.GiveExp(expReward);
+        ExpManager.Instance.GiveExp(expReward); //Upon dying, instantiate ExpManager and reward exp to player
         Destroy(gameObject);
     }
 }

@@ -9,15 +9,17 @@ public class Stats_Level : MonoBehaviour
     [SerializeField] public int currentExp = 0;
     [SerializeField] public int requiredExp = 100;
     [SerializeField] public int health = 100;
-    [SerializeField] public int attack = 1;
+    [SerializeField] public static int attack = 1;
     [SerializeField] public int defense = 0;
     [SerializeField] public int strength = 1;
     [SerializeField] public int dexterity = 1;
 
+    //When a monster die, the ExpManager will become enabled and references ExpCheck.
     private void OnEnable()
     {
         ExpManager.Instance.OnReward += ExpCheck;
     }
+    //The ExpManager will become disabled when nothing happens.
     private void OnDisable()
     {
         ExpManager.Instance.OnReward -= ExpCheck;
