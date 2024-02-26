@@ -6,32 +6,31 @@ using UnityEngine.SceneManagement;
 
 public class Main_Menu_Controller : MonoBehaviour
 {
-    //[SerializeField] private GameObject main_menu_UI;
     [SerializeField] private GameObject load_UI;
 
     private Button new_game_button;
     private Button load_Button;
     private Button quit_Button;
 
-
     private void Awake()
     {
-        //main_menu_UI.SetActive(false);
         load_UI.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
         var main_menu_root = GetComponent<UIDocument>().rootVisualElement;
         new_game_button = main_menu_root.Q<Button>("New_Game");
         load_Button = main_menu_root.Q<Button>("Load");
         quit_Button = main_menu_root.Q<Button>("Quit");
-
         new_game_button.clicked += New_Game;
         load_Button.clicked += Load;
         quit_Button.clicked += Quit;
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
         if (Input.GetKeyDown(KeyCode.Escape) && load_UI.activeSelf)
         {
             load_UI.SetActive(false);
