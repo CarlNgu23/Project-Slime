@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 65380267}
   - component: {fileID: 65380268}
+  - component: {fileID: 65380269}
   m_Layer: 0
   m_Name: Save_UI
   m_TagString: Untagged
@@ -171,6 +172,19 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 17c0e084610bf014db2fdb196120efcc, type: 3}
   m_SortingOrder: 0
+--- !u!114 &65380269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65380266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3ae3355520352e4b95704175caf0de8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  c_Scene: 0
 --- !u!1 &180817494
 GameObject:
   m_ObjectHideFlags: 0
@@ -1432,13 +1446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7f6a525f4f6b1e4d82605e562a50c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
-  currentExp: 0
-  requiredExp: 100
-  health: 100
-  defense: 0
-  strength: 1
-  dexterity: 1
+  Instance: {fileID: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1871,6 +1879,59 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &886110030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 886110032}
+  - component: {fileID: 886110031}
+  m_Layer: 0
+  m_Name: Stats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &886110031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886110030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b25983d24d7a90948a9de49b35bf64df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 0
+  currentExp: 0
+  requiredExp: 0
+  health: 0
+  attack: 0
+  defense: 0
+  strength: 0
+  dexterity: 0
+  isLoaded: 0
+--- !u!4 &886110032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886110030}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5743898, y: -0.25109375, z: -9.969291}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &949451923
 GameObject:
   m_ObjectHideFlags: 0
@@ -4256,6 +4317,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1526810839}
   - component: {fileID: 1526810840}
+  - component: {fileID: 1526810841}
   m_Layer: 0
   m_Name: Load_UI
   m_TagString: Untagged
@@ -4294,6 +4356,19 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 17bdf8c075dfa154191616f7faf80ca0, type: 3}
   m_SortingOrder: 0
+--- !u!114 &1526810841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526810838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a367df586b44a0b47ae7103db7f4dfed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  c_Scene: 0
 --- !u!1 &1640058133
 GameObject:
   m_ObjectHideFlags: 0
@@ -5139,3 +5214,4 @@ SceneRoots:
   - {fileID: 417114106}
   - {fileID: 1504299954}
   - {fileID: 577671630}
+  - {fileID: 886110032}

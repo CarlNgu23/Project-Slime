@@ -23,7 +23,7 @@ public class BaseAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        damage = Stats_Level.attack;    //References the attack stats for base damage.
+        damage = Stats.Instance.attack;    //References the attack stats for base damage.
         Attack();
     }
 

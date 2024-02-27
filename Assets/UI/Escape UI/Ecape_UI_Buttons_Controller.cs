@@ -12,6 +12,11 @@ public class Ecape_UI_Buttons_Controller : MonoBehaviour
     [SerializeField] private GameObject load_UI;
     // Start is called before the first frame update
 
+    private void Start()
+    {
+        
+    }
+
     private void Update()
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
@@ -37,13 +42,13 @@ public class Ecape_UI_Buttons_Controller : MonoBehaviour
 
     private void Save()
     {
-        Debug.Log("Save");
+        //Debug.Log("Save");
         save_UI.SetActive(true);
     }
 
     private void Load()
     {
-        Debug.Log("Load");
+        //Debug.Log("Load");
         load_UI.SetActive(true);
     }
 
