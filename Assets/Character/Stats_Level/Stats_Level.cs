@@ -18,7 +18,7 @@ public class Stats_Level : MonoBehaviour
     [SerializeField] public int ReceivedDamage;
     public Animator anim;
     public bool isDead;
-    
+
     void Start()
    {
     anim=GetComponent<Animator>();
@@ -28,7 +28,7 @@ public class Stats_Level : MonoBehaviour
 
    void FixedUpdate()
    {
-       if (health < 0)
+        if (health < 0)
         {
             health=0;
             isDead=true;
@@ -39,6 +39,7 @@ public class Stats_Level : MonoBehaviour
             
             Die();
         }
+        
    }
     private void OnEnable()
     {
@@ -76,7 +77,7 @@ public class Stats_Level : MonoBehaviour
 public void TakeDamage(int ReceivedDamage)
     { 
         health -= ReceivedDamage;
-        if (health < 0)
+         if (health < 0)
         {   
             health=0;
             isDead=true;
@@ -90,8 +91,10 @@ public void TakeDamage(int ReceivedDamage)
 
 void Die()
     {
+
     
-    Destroy(gameObject,0.5f);// Destroy(Item_to_destroy,time_length)
+    Destroy(gameObject,0.9f); // Destroy(Item_to_destroy,time_length)
+    
     }
 }
     

@@ -1,0 +1,42 @@
+.Escape_Menu_Buttons {
+    position: absolute;
+    top: 42px;
+    left: 100px;
+    width: 100px;
+    height: 35px;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+    transition-property: all;
+    transition-duration: 0s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: 20px;
+}
+
+.Escape_Menu_Buttons:hover {
+    scale: 1.2 1.2;
+}
+
+.Escape_Menu_Buttons:active {
+    scale: 1 1;
+}
+
+.Escape_UI_Menu {
+    background-image: url('project://database/Assets/UI/Escape_UI_Menu_Background.aseprite?fileID=7784478070708548834&guid=218d0bd24dbcfbc47a72bb0782cc6ac4&type=3#Escape_UI_Menu_Background');
+    -unity-background-scale-mode: stretch-to-fill;
+    right: 42.1875%;
+    bottom: 36.1111%;
+    display: flex;
+    position: absolute;
+    left: 42.1875%;
+    top: 36.1111%;
+    width: 300px;
+    height: 300px;
+    max-width: 600px;
+    max-height: 600px;
+}

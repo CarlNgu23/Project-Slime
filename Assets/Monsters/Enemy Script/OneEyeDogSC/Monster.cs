@@ -11,21 +11,33 @@ public abstract  class Monster : MonoBehaviour
     private Animator anim;
     private SpriteRenderer monsterSprite;
     private Color originalColor;
-
+    public bool isDead;
 
     // Start is called before the first frame update
     public void Start()
     {
         monsterSprite = GetComponent<SpriteRenderer>();
         originalColor = monsterSprite.color;
+        anim=GetComponent<Animator>();
         //anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
    public void Update()
     {
+        
+    }
+
+    void FixedUpdate()
+    {
         if (health <= 0)
         {
+            health=0;
+            isDead=true;
+        }
+        if(isDead)
+        {
+            anim.Play("isDead");
             Die();
         }
     }
@@ -34,6 +46,18 @@ public abstract  class Monster : MonoBehaviour
         
         health -= ReceivedDamage;
         FlashColor(flashtime);
+
+        if (health <= 0)
+        {
+            health=0;
+            isDead=true;
+        }
+        if(isDead)
+        {
+            anim.SetTrigger("isDead");
+            
+        }
+    
     }
 
 
@@ -48,10 +72,12 @@ public abstract  class Monster : MonoBehaviour
         monsterSprite.color = originalColor;
     }
 
-    void Die()
+    public void Die()
     {
         ExpManager.Instance.GiveExp(expReward);
         //anim.SetTrigger("isDead");
-        Destroy(gameObject);
+        Destroy(gameObject, 0.9f);
     }
+
+    
 }
