@@ -28,7 +28,7 @@ public class Stats_Level : MonoBehaviour
 
    void FixedUpdate()
    {
-        if (health < 0)
+        if (health <= 0)
         {
             health=0;
             isDead=true;
