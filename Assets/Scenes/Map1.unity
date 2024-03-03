@@ -790,7 +790,7 @@ Transform:
   m_GameObject: {fileID: 324759827}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.41, y: -3.48, z: 0.04625212}
+  m_LocalPosition: {x: 4.41, y: -2.98, z: 0.04625212}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -890,7 +890,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 356035000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -1733,6 +1733,9 @@ MonoBehaviour:
   speed: 2
   idleDur: 1
   Enemy_anim: {fileID: 394842201}
+  player: {fileID: 618832041}
+  isChasing: 0
+  chaseDis: 3
 --- !u!1 &618832037
 GameObject:
   m_ObjectHideFlags: 0
@@ -2512,7 +2515,7 @@ Transform:
   m_GameObject: {fileID: 785575484}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 0.53, z: 0}
+  m_LocalPosition: {x: 0.1, y: 0.61, z: 0}
   m_LocalScale: {x: -1.0303552, y: 1.7919221, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2580,12 +2583,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -2.4611983, y: 0.21622661}
-      - {x: -2.4797916, y: -0.7573534}
+    - - {x: -1.7844877, y: 0.21622661}
+      - {x: -1.9569988, y: -0.29712704}
+      - {x: -1.8842859, y: -0.7573534}
       - {x: -0.5877852, y: -0.80901706}
-      - {x: 2.4751751, y: -0.72711134}
-      - {x: 3.0044732, y: -0.326057}
-      - {x: 2.0906122, y: 0.18615884}
+      - {x: 1.6089857, y: -0.74267626}
+      - {x: 2.2736254, y: -0.326057}
+      - {x: 1.7116543, y: 0.13946599}
   m_UseDelaunayMesh: 0
 --- !u!1 &829296712
 GameObject:
@@ -2723,7 +2727,7 @@ Transform:
   m_GameObject: {fileID: 879154583}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.28, y: -3.5, z: 0.04625212}
+  m_LocalPosition: {x: -0.28, y: -3.08, z: 0.04625212}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2766,7 +2770,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -14, y: -422}
+  m_AnchoredPosition: {x: -14, y: -14}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &934873172

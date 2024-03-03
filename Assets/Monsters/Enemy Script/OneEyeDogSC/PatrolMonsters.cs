@@ -17,6 +17,11 @@ public class PatrolMonsters : MonoBehaviour
     private float idleTimer;
     [SerializeField]private Animator Enemy_anim;
     
+/*Chasing*/
+    public Transform player; //keeps track of the player
+    public bool isChasing;
+    public float chaseDis; //how close for the monster to start chasing
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,29 +32,83 @@ public class PatrolMonsters : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if(movingLeft)
-        {
-            if(enemy.position.x>=leftEdge.position.x)
-            {
-                Monster_movement(-1);
+
+        if(isChasing)
+        {   
+            if(enemy.position.x > player.position.x)//if player on the left
+            {  
+           
+               if((enemy.position.x>=leftEdge.position.x ))
+                {   
+                    Enemy_anim.SetBool("isWalking",true);
+                    Monster_movement(-1);
+                    enemy.position += Vector3.left * speed *Time.deltaTime;
+                }
+                else
+                {   
+                    Enemy_anim.SetBool("isWalking",true);
+                    DirectionChange();
+                    enemy.position += Vector3.right * speed *Time.deltaTime;
+                   
+                }
+                
             }
-            else
-            {
-                DirectionChange();
+            else if(enemy.position.x < player.position.x)//if player on the right
+            {   
+
+                if(enemy.position.x<=leftEdge.position.x)
+                {   
+                    Enemy_anim.SetBool("isWalking",true); 
+                    enemy.position += Vector3.left * speed *Time.deltaTime;
+                    Monster_movement(-1);
+                   
+                    
+                }
+                else
+                {   
+                    Enemy_anim.SetBool("isWalking",true);
+                    enemy.position += Vector3.right* speed *Time.deltaTime;
+                    DirectionChange();
+                    
+                    
+                }
             }
         }
-        else{
-            if(enemy.position.x<=rightEdge.position.x)
-            {
-                Monster_movement(1);
+        else
+        {   
+            if(Vector2.Distance(transform.position,player.position)< chaseDis) //if player is close to the monster
+            {   
+                isChasing=true;
+                
             }
-            else
+/*Og patrol*/
+            if(movingLeft && !isChasing)
             {
-                DirectionChange();
+                if(enemy.position.x>=leftEdge.position.x)
+                {
+                    Monster_movement(-1);
+                }
+                else
+                {
+                    DirectionChange();
+                }
+            }
+            else{
+                if(enemy.position.x<=rightEdge.position.x)
+                {
+                    Monster_movement(1);
+                }
+                else
+                {
+                    DirectionChange();
+                }
             }
         }
-        
+
     }
+        
+        
+   
 
     private void DirectionChange()
     {   
