@@ -27,7 +27,6 @@ public class BaseAttack : MonoBehaviour
         Attack();
     }
 
-
     void Attack()
     {
         if (Input.GetButtonDown("Attack"))
@@ -44,13 +43,11 @@ public class BaseAttack : MonoBehaviour
         StartCoroutine(disableHitBox());
     }
 
-
     IEnumerator disableHitBox()
     {
         yield return new WaitForSeconds(waitTime);
         baseAttack2d.enabled = false;
     }
-
 
     private void OnTriggerEnter2D(Collider2D other)
     {
