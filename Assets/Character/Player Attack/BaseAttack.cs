@@ -8,8 +8,10 @@ public class BaseAttack : MonoBehaviour
     [SerializeField] public float waitTime; //waitTime hitbox disappear time
     [SerializeField] public float startTime; //startTime hit box appear time
     private Animator anim;
-    private PolygonCollider2D baseAttack2d;
+    private BoxCollider2D baseAttack2d;
     [SerializeField]private GameObject player;
+    //[SerializeField] private GameObject enemy;
+    [SerializeField] private LayerMask enemy_Layer;
     // Start is called before the first frame update
 
 
@@ -17,23 +19,24 @@ public class BaseAttack : MonoBehaviour
     {     
         anim = player.GetComponent<Animator>();
         GetComponent<Animator>();
-        baseAttack2d = GetComponent<PolygonCollider2D>();
+        baseAttack2d = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
         damage = Stats.Instance.attack;    //References the attack stats for base damage.
-        Attack();
+        if (Input.GetButtonDown("Attack"))
+        {
+            Attack();
+        }
+        
     }
 
     void Attack()
     {
-        if (Input.GetButtonDown("Attack"))
-        {
-            anim.SetTrigger("Attack");
-            StartCoroutine(StartAttack());
-        }
+        anim.SetTrigger("Attack");
+        StartCoroutine(StartAttack());
     }
 
     IEnumerator StartAttack()
@@ -49,12 +52,13 @@ public class BaseAttack : MonoBehaviour
         baseAttack2d.enabled = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Enemy"))
-        { 
-            other.GetComponent<Monster>().TakeDamage(damage);
-        }
-    }
+    //private void OnTriggerEnter2D()
+    //{
+    //    if (baseAttack2d.IsTouchingLayers(enemy_Layer))
+    //    {
+    //        Debug.Log("Collided");
+    //        Monster_Stats.health -= (Stats.Instance.attack - Monster_Stats.defense);
+    //    }
+    //}
 
 }

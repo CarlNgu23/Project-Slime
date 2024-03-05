@@ -12,6 +12,13 @@ public class Portal : MonoBehaviour
         portalCollider = GetComponent<Collider2D>();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.W)) 
+        {
+            portalCollider.enabled = true;
+        }
+    }
     private void OnTriggerEnter2D()
     {
         SceneManager.LoadScene(2);
