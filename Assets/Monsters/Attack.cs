@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class Attack : MonoBehaviour
@@ -7,19 +8,25 @@ public class Attack : MonoBehaviour
     [SerializeField] private float attack_Range;
     [SerializeField] LayerMask playerMask;
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject monster;
     [SerializeField] private BoxCollider2D attack;
     [SerializeField] private float wait_Time;       //Cooldown time.
     [SerializeField] private float start_Time;      //Time for animation to be at the "hit" frame.
-    [SerializeField] private float end_Time;        //Time for animation to complete + 0.1 second.
+    [SerializeField] private float end_Time;        //Time for animation to complete + 0.2 second.
     [SerializeField] private float cooldown_Time;
     [SerializeField] public static bool isAttacking_Ref = false;       //Used as reference in Detection script to detect with attack is complete and in cooldown.
     [SerializeField] private bool isAttacking = false;                 //Used to prevent StartCoroutine from stacking.
     [SerializeField] private Animator animations;
 
+    private Rigidbody2D monster_rb2d;
+    
+    
+
     // Start is called before the first frame update
     void Start()
     {
         attack = GetComponent<BoxCollider2D>();
+        monster_rb2d = monster.GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
@@ -29,10 +36,11 @@ public class Attack : MonoBehaviour
 
     private void Check_Distance()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) <= attack_Range && !isAttacking)
+        //Debug.Log(Detection.isCPUMove);
+        if (!Detection.isCPUMove && Vector2.Distance(transform.position, player.transform.position) <= attack_Range && !isAttacking)
         {
-
             isAttacking = isAttacking_Ref = true;
+            monster_rb2d.velocity = new Vector2(0f, 0f);    //Stop movement when player is within attack range.
             StartCoroutine(WaitBeforeAttack());
         }
     }
@@ -42,7 +50,7 @@ public class Attack : MonoBehaviour
         yield return new WaitForSeconds(wait_Time);
         StartCoroutine(AttackAnimation());
     }
-    //To synchronize animation with Collider physics. It's important to know the time when the animation is at the "hit" frame.
+    //To synchronize animation with Collider2D physics. It's important to know the time when the animation is at the "hit" frame.
     IEnumerator AttackAnimation()
     {
         animations.SetTrigger("Attack");
@@ -55,8 +63,8 @@ public class Attack : MonoBehaviour
     {
         //Debug.Log("Attack Enabled.");
         attack.enabled = true;
-        yield return new WaitForSeconds(end_Time);           //Wait set amount of time for attack animation to complete. Add 0.1 second more to the remaining time for the animation to complete.
-        //Debug.Log("Attack disabled.");                     //Total animation time - start_Time = end_Time + 0.1 
+        yield return new WaitForSeconds(end_Time);           //Wait set amount of time for attack animation to complete. Add 0.2 second more to the remaining time for the animation to complete.
+        //Debug.Log("Attack disabled.");                     //Total animation time - start_Time = end_Time + 0.2
         animations.SetBool("isAttacking", false);
         isAttacking_Ref = false;
         StartCoroutine(CoolDown());

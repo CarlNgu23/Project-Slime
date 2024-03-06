@@ -10,16 +10,23 @@ public class Detection : MonoBehaviour
     [SerializeField] LayerMask playerMask;
     [SerializeField] private GameObject player;
     [SerializeField] public float moveSpeed;
-    [SerializeField] public static float moveSpeed_Ref;
-    [SerializeField] private bool isFacingRight;
-
+    
+    public static float moveSpeed_Ref;
+    public bool isFacingRight;
     private Rigidbody2D oneEyeDog_RB;
+    private CPU_Movement cpu_Movement;
+    public static bool isCPUMove;
+    public static bool isDetected;
+    public bool isWaiting;
 
     // Start is called before the first frame update
     void Start()
     {
         oneEyeDog_RB = GetComponent<Rigidbody2D>();
-        moveSpeed_Ref= moveSpeed;
+        moveSpeed_Ref = moveSpeed;
+        cpu_Movement = GetComponent<CPU_Movement>();
+        isCPUMove = true;
+        isDetected = false;
     }
 
     // Update is called once per frame
@@ -37,17 +44,33 @@ public class Detection : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Detect();
+        RaycastHit2D right_hit = Physics2D.Raycast(transform.position, Vector2.right, rayDistance, playerMask);
+        Debug.DrawRay(right_hit.point, right_hit.normal, Color.red);
+        RaycastHit2D left_hit = Physics2D.Raycast(transform.position, -Vector2.right, rayDistance, playerMask);
+        Debug.DrawRay(left_hit.point, left_hit.normal, Color.red);
+        if (right_hit || left_hit)
+        {
+            isCPUMove = false;
+            isDetected = true;
+            Detect(right_hit, left_hit);
+        }
+        if (!Attack.isAttacking_Ref && !One_Eye_Dog.isDying_Ref && !isCPUMove && !isWaiting)
+        {
+            isWaiting = true;
+            StartCoroutine(Deactivate());
+        }
     }
 
-    private void Detect()
+    IEnumerator Deactivate()
     {
-        RaycastHit2D right_hit = Physics2D.Raycast(transform.position, Vector2.right * rayDistance, rayDistance, playerMask);
-        Debug.DrawRay(right_hit.point, right_hit.normal, Color.red);
-        RaycastHit2D left_hit = Physics2D.Raycast(transform.position, -Vector2.right * rayDistance, rayDistance, playerMask);
-        Debug.DrawRay(left_hit.point, left_hit.normal, Color.red);
+        yield return new WaitForSeconds(2);
+        isDetected = false;
+        isWaiting = false;
+    }
 
-        if (right_hit && !Attack.isAttacking_Ref && !One_Eye_Dog.isDying_Ref)   //Change One_Eye_Dog to any monster scripts.
+    public void Detect(RaycastHit2D right, RaycastHit2D left)
+    {
+        if (right && !Attack.isAttacking_Ref && !One_Eye_Dog.isDying_Ref)   //Change One_Eye_Dog to any monster scripts.
         {
             oneEyeDog_RB.velocity = new Vector2(moveSpeed, 0f);
             Check_Distance();
@@ -56,7 +79,7 @@ public class Detection : MonoBehaviour
                 Flip();
             }
         }
-        else if (left_hit && !Attack.isAttacking_Ref && !One_Eye_Dog.isDying_Ref)   //Change One_Eye_Dog to any monster scripts.
+        else if (left && !Attack.isAttacking_Ref && !One_Eye_Dog.isDying_Ref)   //Change One_Eye_Dog to any monster scripts.
         {
             oneEyeDog_RB.velocity = new Vector2(-moveSpeed, 0f);
             Check_Distance();
@@ -64,10 +87,6 @@ public class Detection : MonoBehaviour
             {
                 Flip();
             }
-        }
-        else
-        {
-            oneEyeDog_RB.velocity = new Vector2(0f, 0f);
         }
     }
 
