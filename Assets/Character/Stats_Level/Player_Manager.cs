@@ -7,6 +7,8 @@ public class Player_Manager : MonoBehaviour
 {
     public Player_Manager Instance;
 
+    public LayerMask player_Mask;
+
     private void Awake()
     {
         if (Instance == null)

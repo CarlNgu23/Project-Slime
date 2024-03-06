@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 20af35d9f5ccb9240b6dc424575be905
+guid: 2bb0a97b2b592744da999aee3e9d31df
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,337 +110,253 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Slime_Attack_0
+      name: One_Eye_Dog_Moving_0
       rect:
         serializedVersion: 2
-        x: 21
-        y: 48
-        width: 11
-        height: 16
+        x: 32
+        y: 132
+        width: 33
+        height: 28
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e0653061cb199a428555a4579a3aa4f
-      internalID: -1525082387
+      spriteID: e348de278af007e4198eb3b314e0fb68
+      internalID: -1938311238
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime_Attack_1
+      name: One_Eye_Dog_Moving_1
       rect:
         serializedVersion: 2
-        x: 113
-        y: 48
-        width: 17
-        height: 16
+        x: 146
+        y: 132
+        width: 33
+        height: 28
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9f9eae9208800743954db7107ddfd6e
-      internalID: 1782799750
+      spriteID: f908f350bb64c6544b7d1496cfeb7330
+      internalID: -1503234448
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime_Attack_2
+      name: One_Eye_Dog_Moving_2
       rect:
         serializedVersion: 2
-        x: 208
-        y: 48
-        width: 18
-        height: 16
+        x: 260
+        y: 132
+        width: 33
+        height: 29
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b2f06bd6505943147b9de109ff8371d7
-      internalID: -1764037010
+      spriteID: ad2899933fd8faa488261f26aee2c4b2
+      internalID: 1809573195
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime_Attack_3
+      name: One_Eye_Dog_Moving_3
       rect:
         serializedVersion: 2
-        x: 303
-        y: 48
-        width: 19
-        height: 16
+        x: 377
+        y: 132
+        width: 33
+        height: 28
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05429481f6f354e46b5b32088e61e698
-      internalID: -2033941527
+      spriteID: 3424b0c732ad17a44af0c73eb30f9435
+      internalID: 855701803
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime_Attack_4
+      name: One_Eye_Dog_Moving_4
       rect:
         serializedVersion: 2
-        x: 16
+        x: 36
+        y: 82
+        width: 33
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88e471a6d4be83248b4613ecf23245a4
+      internalID: -1244960982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: One_Eye_Dog_Moving_5
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 82
+        width: 33
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e31f277006a900c4fa7db5476c490d68
+      internalID: 1963694059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: One_Eye_Dog_Moving_6
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 82
+        width: 33
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45d054b9f3fae794db55b7466800fd34
+      internalID: 652738204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: One_Eye_Dog_Moving_7
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 82
+        width: 33
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e841363f00aaf74fb8931551f22de6b
+      internalID: -1377899218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: One_Eye_Dog_Moving_8
+      rect:
+        serializedVersion: 2
+        x: 39
         y: 32
-        width: 17
-        height: 16
+        width: 33
+        height: 28
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0eed1c204f4414418eae0f6fabe0262
-      internalID: 1366532417
+      spriteID: ff2c10d45f7882e4d9d1e2d145cc5fa4
+      internalID: -1821439773
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime_Attack_5
+      name: One_Eye_Dog_Moving_9
       rect:
         serializedVersion: 2
-        x: 110
+        x: 154
         y: 32
-        width: 19
-        height: 16
+        width: 33
+        height: 29
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 215e1febf48f17743baa9fbdf37bb9bc
-      internalID: -340446443
+      spriteID: d81dddfcf7a5ac24c800cc1ec17ccb5b
+      internalID: -1126775754
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime_Attack_6
+      name: One_Eye_Dog_Moving_10
       rect:
         serializedVersion: 2
-        x: 205
+        x: 269
         y: 32
-        width: 20
-        height: 16
+        width: 33
+        height: 28
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7ead0148ea34f547bf71d2e2663a700
-      internalID: 1344471427
+      spriteID: 1ccc33ace57baa2469b04faf1789ab31
+      internalID: -2088783204
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Slime_Attack_7
+      name: One_Eye_Dog_Moving_11
       rect:
         serializedVersion: 2
-        x: 303
+        x: 382
         y: 32
-        width: 21
-        height: 16
+        width: 33
+        height: 28
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85e0b75705085af4b8305a44a13a80c9
-      internalID: 1773577533
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slime_Attack_8
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 16
-        width: 22
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8114068cea10fee4d843ac087f54feb2
-      internalID: 775874944
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slime_Attack_9
-      rect:
-        serializedVersion: 2
-        x: 111
-        y: 16
-        width: 25
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f3f561c3da0f4ba4aa555d295ebe0d41
-      internalID: -702372647
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slime_Attack_11
-      rect:
-        serializedVersion: 2
-        x: 209
-        y: 16
-        width: 23
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d09224d0fa59a2243b4968c0bbe56db7
-      internalID: -2137843102
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slime_Attack_13
-      rect:
-        serializedVersion: 2
-        x: 305
-        y: 16
-        width: 23
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7c98c631673bd7c47b9e3d74f008464f
-      internalID: 1377364009
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slime_Attack_15
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 24
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a2ec353fc54d7834b9b2c1a6647c2e91
-      internalID: -695979489
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slime_Attack_17
-      rect:
-        serializedVersion: 2
-        x: 118
-        y: 0
-        width: 56
-        height: 16
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 721612d943a994d4297c9e777138eda0
-      internalID: 1258552138
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slime_Attack_19
-      rect:
-        serializedVersion: 2
-        x: 214
-        y: 0
-        width: 69
-        height: 16
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e104bedea2e4c0d459cfe79a3b135b43
-      internalID: -93934554
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Slime_Attack_21
-      rect:
-        serializedVersion: 2
-        x: 310
-        y: 0
-        width: 11
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 93667f491fb0be247913daff8d25c6c1
-      internalID: -1483996497
+      spriteID: 2ab3f4ab4484d6b46953797f67202720
+      internalID: -607351226
       vertices: []
       indices: 
       edges: []
@@ -456,28 +372,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Slime_Attack_0: -1525082387
-      Slime_Attack_1: 1782799750
-      Slime_Attack_10: -1736850307
-      Slime_Attack_11: -2137843102
-      Slime_Attack_12: -2003236409
-      Slime_Attack_13: 1377364009
-      Slime_Attack_14: -1580541815
-      Slime_Attack_15: -695979489
-      Slime_Attack_16: -1384251976
-      Slime_Attack_17: 1258552138
-      Slime_Attack_18: 336010759
-      Slime_Attack_19: -93934554
-      Slime_Attack_2: -1764037010
-      Slime_Attack_20: 706096044
-      Slime_Attack_21: -1483996497
-      Slime_Attack_3: -2033941527
-      Slime_Attack_4: 1366532417
-      Slime_Attack_5: -340446443
-      Slime_Attack_6: 1344471427
-      Slime_Attack_7: 1773577533
-      Slime_Attack_8: 775874944
-      Slime_Attack_9: -702372647
+      One_Eye_Dog_Moving_0: -1938311238
+      One_Eye_Dog_Moving_1: -1503234448
+      One_Eye_Dog_Moving_10: -2088783204
+      One_Eye_Dog_Moving_11: -607351226
+      One_Eye_Dog_Moving_2: 1809573195
+      One_Eye_Dog_Moving_3: 855701803
+      One_Eye_Dog_Moving_4: -1244960982
+      One_Eye_Dog_Moving_5: 1963694059
+      One_Eye_Dog_Moving_6: 652738204
+      One_Eye_Dog_Moving_7: -1377899218
+      One_Eye_Dog_Moving_8: -1821439773
+      One_Eye_Dog_Moving_9: -1126775754
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

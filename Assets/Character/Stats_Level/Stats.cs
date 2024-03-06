@@ -26,7 +26,7 @@ public class Stats : MonoBehaviour
             currentExp = 0;
             requiredExp = 100;
             health = 100;
-            attack = 1;
+            attack = 5;
             defense = 0;
             strength = 1;
             dexterity = 1;

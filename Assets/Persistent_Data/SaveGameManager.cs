@@ -10,6 +10,8 @@ public class SaveGameManager : MonoBehaviour, ISave
     public static SaveGameManager Instance;
 
     private Button saveSlotButton_1;
+    private Button saveSlotButton_2;
+    private Button saveSlotButton_3;
 
     // Start is called before the first frame update
     void Awake()
@@ -24,7 +26,11 @@ public class SaveGameManager : MonoBehaviour, ISave
         var root = GetComponent<UIDocument>().rootVisualElement;
 
         saveSlotButton_1 = root.Q<Button>("Save_Slot_1");
-        saveSlotButton_1.clicked += Save;
+        saveSlotButton_2 = root.Q<Button>("Save_Slot_2");
+        saveSlotButton_3 = root.Q<Button>("Save_Slot_3");
+        saveSlotButton_1.clicked += () => SaveDataToJson(Instance, "SaveData1.dat");
+        saveSlotButton_2.clicked += () => SaveDataToJson(Instance, "SaveData2.dat");
+        saveSlotButton_3.clicked += () => SaveDataToJson(Instance, "SaveData3.dat");
     }
 
     // Update is called once per frame
@@ -33,17 +39,12 @@ public class SaveGameManager : MonoBehaviour, ISave
         c_Scene = SceneManager.GetActiveScene().buildIndex;
     }
 
-    public void Save()
-    {
-        SaveDataToJson(Instance);
-    }
-
-    private static void SaveDataToJson(SaveGameManager i_SaveGameManager)
+    private static void SaveDataToJson(SaveGameManager i_SaveGameManager, string filename)
     {
         SaveData data = new SaveData();
         i_SaveGameManager.Save_Data(data);
-        FileManager.WriteToFile("SaveData.dat", data.ToJSON());
-        //Debug.Log("Save Successfully");
+        FileManager.WriteToFile(filename, data.ToJSON());
+        Debug.Log(filename + " Save Successfully");
     }
 
     public void Save_Data(SaveData saveData)
