@@ -10,21 +10,21 @@ public class Detection : MonoBehaviour
     [SerializeField] LayerMask playerMask;
     [SerializeField] private GameObject player;
     [SerializeField] public float moveSpeed;
-    
-    public static float moveSpeed_Ref;
+    public Attack attack;
     public bool isFacingRight;
     private Rigidbody2D oneEyeDog_RB;
-    private CPU_Movement cpu_Movement;
-    public static bool isCPUMove;
-    public static bool isDetected;
+    public bool isCPUMove;
+    public bool isDetected;
     public bool isWaiting;
+    public One_Eye_Dog One_Eye_Dog;
 
     // Start is called before the first frame update
     void Start()
     {
         oneEyeDog_RB = GetComponent<Rigidbody2D>();
-        moveSpeed_Ref = moveSpeed;
-        cpu_Movement = GetComponent<CPU_Movement>();
+        attack = GetComponentInChildren<Attack>();
+        One_Eye_Dog = GetComponent<One_Eye_Dog>();
+        player = GameObject.FindWithTag("Player");
         isCPUMove = true;
         isDetected = false;
     }
@@ -54,7 +54,7 @@ public class Detection : MonoBehaviour
             isDetected = true;
             Detect(right_hit, left_hit);
         }
-        if (!Attack.isAttacking_Ref && !One_Eye_Dog.isDying_Ref && !isCPUMove && !isWaiting)
+        if (!attack.isAttacking_Ref && !One_Eye_Dog.isDying_Ref && !isCPUMove && !isWaiting)
         {
             isWaiting = true;
             StartCoroutine(Deactivate());
@@ -70,20 +70,21 @@ public class Detection : MonoBehaviour
 
     public void Detect(RaycastHit2D right, RaycastHit2D left)
     {
-        if (right && !Attack.isAttacking_Ref && !One_Eye_Dog.isDying_Ref)   //Change One_Eye_Dog to any monster scripts.
+        Debug.Log(left && !attack.isAttacking_Ref && !One_Eye_Dog.isDying_Ref);
+        if (right && !attack.isAttacking_Ref && !One_Eye_Dog.isDying_Ref)   //Change One_Eye_Dog to any monster scripts.
         {
             oneEyeDog_RB.velocity = new Vector2(moveSpeed, 0f);
             Check_Distance();
-            if (!isFacingRight && !Attack.isAttacking_Ref)    //Checks for contradictions in monster's right direction when player is up-close.
+            if (!isFacingRight && !attack.isAttacking_Ref)    //Checks for contradictions in monster's right direction when player is up-close.
             {
                 Flip();
             }
         }
-        else if (left && !Attack.isAttacking_Ref && !One_Eye_Dog.isDying_Ref)   //Change One_Eye_Dog to any monster scripts.
+        else if (left && !attack.isAttacking_Ref && !One_Eye_Dog.isDying_Ref)   //Change One_Eye_Dog to any monster scripts.
         {
             oneEyeDog_RB.velocity = new Vector2(-moveSpeed, 0f);
             Check_Distance();
-            if (isFacingRight && !Attack.isAttacking_Ref)    //Checks for contradictions in monster's left direction when player is up-close.
+            if (isFacingRight && !attack.isAttacking_Ref)    //Checks for contradictions in monster's left direction when player is up-close.
             {
                 Flip();
             }

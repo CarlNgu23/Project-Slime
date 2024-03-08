@@ -8,25 +8,26 @@ public class Attack : MonoBehaviour
     [SerializeField] private float attack_Range;
     [SerializeField] LayerMask playerMask;
     [SerializeField] private GameObject player;
-    [SerializeField] private GameObject monster;
     [SerializeField] private BoxCollider2D attack;
-    [SerializeField] private float wait_Time;       //Cooldown time.
+    [SerializeField] private float wait_Time;       //The delay to give player enough time to react.
     [SerializeField] private float start_Time;      //Time for animation to be at the "hit" frame.
     [SerializeField] private float end_Time;        //Time for animation to complete + 0.2 second.
-    [SerializeField] private float cooldown_Time;
-    [SerializeField] public static bool isAttacking_Ref = false;       //Used as reference in Detection script to detect with attack is complete and in cooldown.
+    [SerializeField] private float cooldown_Time;   //Cooldown time.
+    [SerializeField] public bool isAttacking_Ref = false;       //Used as reference in Detection script to detect with attack is complete and in cooldown.
     [SerializeField] private bool isAttacking = false;                 //Used to prevent StartCoroutine from stacking.
     [SerializeField] private Animator animations;
-
+    public Detection detection;
     private Rigidbody2D monster_rb2d;
-    
-    
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         attack = GetComponent<BoxCollider2D>();
-        monster_rb2d = monster.GetComponent<Rigidbody2D>();
+        monster_rb2d = GetComponentInParent<Rigidbody2D>();
+        player = GameObject.Find("Player");
+        detection = GetComponentInParent<Detection>();
     }
 
     private void FixedUpdate()
@@ -37,7 +38,7 @@ public class Attack : MonoBehaviour
     private void Check_Distance()
     {
         //Debug.Log(Detection.isCPUMove);
-        if (!Detection.isCPUMove && Vector2.Distance(transform.position, player.transform.position) <= attack_Range && !isAttacking)
+        if (!detection.isCPUMove && Vector2.Distance(transform.position, player.transform.position) <= attack_Range && !isAttacking)
         {
             isAttacking = isAttacking_Ref = true;
             monster_rb2d.velocity = new Vector2(0f, 0f);    //Stop movement when player is within attack range.
