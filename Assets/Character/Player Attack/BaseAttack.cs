@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BaseAttack : MonoBehaviour
 {
-    [SerializeField] public int damage;    //player damage
+
+    [SerializeField] private int damage;    //player damage
     [SerializeField] public float waitTime; //waitTime hitbox disappear time
     [SerializeField] public float startTime; //startTime hit box appear time
     private Animator anim;
@@ -14,16 +15,17 @@ public class BaseAttack : MonoBehaviour
 
 
     void Start()
-    {     
-        anim = player.GetComponent<Animator>();
+    {    
+         anim = player.GetComponent<Animator>();
         GetComponent<Animator>();
         baseAttack2d = GetComponent<PolygonCollider2D>();
+        //GetComponent<Animator>();
+       // baseAttack2d = GetComponent<PolygonCollider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        damage = Stats_Level.attack;    //References the attack stats for base damage.
         Attack();
     }
 

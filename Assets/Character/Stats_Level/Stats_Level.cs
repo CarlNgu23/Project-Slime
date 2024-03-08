@@ -9,17 +9,42 @@ public class Stats_Level : MonoBehaviour
     [SerializeField] public int currentExp = 0;
     [SerializeField] public int requiredExp = 100;
     [SerializeField] public int health = 100;
-    [SerializeField] public static int attack = 1;
+    [SerializeField] public int attack = 1;
     [SerializeField] public int defense = 0;
     [SerializeField] public int strength = 1;
     [SerializeField] public int dexterity = 1;
+    
+    //
+    [SerializeField] public int ReceivedDamage;
+    public Animator anim;
+    public bool isDead;
 
-    //When a monster die, the ExpManager will become enabled and references ExpCheck.
+    void Start()
+   {
+    anim=GetComponent<Animator>();
+    
+    
+   }
+
+   void FixedUpdate()
+   {
+        if (health <= 0)
+        {
+            health=0;
+            isDead=true;
+        }
+        if(isDead)
+        {
+            anim.Play("isDead");
+            
+            Die();
+        }
+        
+   }
     private void OnEnable()
     {
         ExpManager.Instance.OnReward += ExpCheck;
     }
-    //The ExpManager will become disabled when nothing happens.
     private void OnDisable()
     {
         ExpManager.Instance.OnReward -= ExpCheck;
@@ -46,4 +71,33 @@ public class Stats_Level : MonoBehaviour
         currentExp -= requiredExp;
         requiredExp += requiredExp + ((int)Math.Pow(level, 4)/4);
     }
+
+
+//
+public void TakeDamage(int ReceivedDamage)
+    { 
+        health -= ReceivedDamage;
+         if (health < 0)
+        {   
+            health=0;
+            isDead=true;
+        }
+        if(isDead)
+        {
+            anim.SetTrigger("isDead");
+        }
+    }
+
+
+void Die()
+    {
+
+    
+    Destroy(gameObject,0.9f); // Destroy(Item_to_destroy,time_length)
+    
+    }
 }
+    
+   
+   
+
