@@ -201,3 +201,6 @@ Temp/FSTimeGet-a160f0bf078abce4d91dd5f5b2000ae9
 Temp/FSTimeGet-c8d3a19fe5f47014285e09863794e30b
 Temp/UnityLockfile
 Temp/workerlic
+Library/PackageCache/com.unity.burst@1.8.12/.Runtime/libburst-llvm-10.dylib
+Library/PackageCache/com.unity.burst@1.8.12/.Runtime/libburst-llvm-16.dylib
+Library/PackageCache/com.unity.burst@1.8.12/.Runtime/libburst-llvm-16.so
