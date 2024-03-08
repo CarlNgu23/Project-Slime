@@ -7,7 +7,6 @@ TagManager:
   - NPC
   - Item
   - Enemy
-  - Player Basic Attack
   layers:
   - Default
   - TransparentFX
@@ -18,10 +17,10 @@ TagManager:
   - Ground
   - Slope
   - Npc
-  - Player Basic Attack
-  - Enemy
-  - Monster Right
-  - Monster Left
+  - TriggerBox
+  - 
+  - 
+  - 
   - 
   - 
   - 
