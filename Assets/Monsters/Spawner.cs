@@ -3,9 +3,10 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     // The GameObject to instantiate.
-    public GameObject entityToSpawn;
-    public GameObject leftBoundarySpawn;
-    public GameObject rightBoundarySpawn;
+    public Transform platforms;
+    public GameObject monsterToSpawn;
+    public GameObject monsterLeftBoundarySpawn;
+    public GameObject monsterRightBoundarySpawn;
 
     public GameObject currentEntity;
     public GameObject currentLeftBoundary;
@@ -25,36 +26,36 @@ public class Spawner : MonoBehaviour
 
     void SpawnEntities()
     {
-        int currentMonsterSpawnPointIndex = 0;
-        int currentLeftBoundarySpawnPointIndex = 0;
-        int currentRightBoundarySpawnPointIndex = 0;
+        int currentIndex = 0;
 
         for (int i = 0; i < spawnManager.numberOfPrefabsToCreate; i++)
         {
-            currentLeftBoundary = Instantiate(leftBoundarySpawn, spawnManager.leftBoundary_SpawnPoints[currentLeftBoundarySpawnPointIndex], Quaternion.identity);
+            //Find the platform for the monster to spawn on.
+            Transform currentPlatform = platforms.GetChild(currentIndex);
+
+            //Creates an instance of left boundary.
+            currentLeftBoundary = Instantiate(monsterLeftBoundarySpawn, spawnManager.leftBoundary_SpawnPoints[currentIndex], Quaternion.identity, currentPlatform);
             currentLeftBoundary.name = spawnManager.leftBoundary + instanceNumber;
             currentLeftBoundary.SetActive(true);
-            //currentEntity.Find(spawnManager.leftBoundary + instanceNumber);
-
-            currentRightBoundary = Instantiate(rightBoundarySpawn, spawnManager.rightBoundary_SpawnPoints[currentRightBoundarySpawnPointIndex], Quaternion.identity);
+            
+            //Creates an instance of right boundary.
+            currentRightBoundary = Instantiate(monsterRightBoundarySpawn, spawnManager.rightBoundary_SpawnPoints[currentIndex], Quaternion.identity, currentPlatform);
             currentRightBoundary.name = spawnManager.rightBoundary + instanceNumber;
             currentRightBoundary.SetActive(true);
 
-            // Creates an instance of the prefab at the current spawn point.
-            currentEntity = Instantiate(entityToSpawn, spawnManager.monster_SpawnPoints[currentMonsterSpawnPointIndex], Quaternion.identity);
+            // Creates an instance of the monster.
+            currentEntity = Instantiate(monsterToSpawn, spawnManager.monster_SpawnPoints[currentIndex], Quaternion.identity, currentPlatform);
 
             // Sets the name of the instantiated entity to be the string defined in the ScriptableObject and then appends it with a unique number. 
             currentEntity.name = spawnManager.prefabName + instanceNumber;
             CPU_Movement cpu_movement = currentEntity.GetComponent<CPU_Movement>();
-            cpu_movement.leftLimitGameObject = currentLeftBoundary;
-            cpu_movement.rightLimitGameObject = currentRightBoundary;
-            cpu_movement.xAxisControlForLimitObjects = spawnManager.maxXAxis;
-            cpu_movement.yAxisControlForLimitObjects = spawnManager.leftBoundary_SpawnPoints[currentLeftBoundarySpawnPointIndex].y;
+            cpu_movement.leftMonsterBoundaryGameObject = currentLeftBoundary;
+            cpu_movement.rightMonsterBoundaryGameObject = currentRightBoundary;
+            cpu_movement.xAxisControlForBoundaryObjects = spawnManager.maxXAxis;
+            cpu_movement.yAxisControlForBoundaryObjects = spawnManager.leftBoundary_SpawnPoints[currentIndex].y;
 
             // Moves to the next spawn point index. If it goes out of range, it wraps back to the start.
-            currentMonsterSpawnPointIndex = (currentMonsterSpawnPointIndex + 1) % spawnManager.monster_SpawnPoints.Length;
-            currentLeftBoundarySpawnPointIndex = (currentLeftBoundarySpawnPointIndex + 1) % spawnManager.leftBoundary_SpawnPoints.Length;
-            currentRightBoundarySpawnPointIndex = (currentRightBoundarySpawnPointIndex + 1) % spawnManager.rightBoundary_SpawnPoints.Length;
+            currentIndex = (currentIndex + 1) % spawnManager.monster_SpawnPoints.Length;
 
             instanceNumber++;
         }

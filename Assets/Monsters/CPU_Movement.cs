@@ -1,45 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEditor;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
 public class CPU_Movement : MonoBehaviour
 {
-    public GameObject rightLimitGameObject;
-    public GameObject leftLimitGameObject;
-    public Rigidbody2D rigidBody2D;
-    public LayerMask rightMask;
-    public LayerMask leftMask;
+    public GameObject leftMonsterBoundaryGameObject;
+    public GameObject rightMonsterBoundaryGameObject;
+    public MonsterManager monster;
+    public Rigidbody2D monster_RB2D;
     public Attack attack;
     public Detection detection;
-    public One_Eye_Dog One_Eye_Dog;
     public Spawner spawner;
     public bool toTheRight;
     public bool toTheLeft;
     public bool isWaiting;
     public bool isIdling;
-    public float rightRayLength;
-    public float leftRayLength;
-    public float RestartTime;
-    public float idleTimeMin;
-    public float idleTimeMax;
-    public float distanceBetweenLimit;
+    public float RestartTime;                          //The wait time for CPU movements to restart.
+    public float idleTimeMin;                          //The minimum idle time after the monster completed it's movement.
+    public float idleTimeMax;                          //The maximum idle time after the monster completed it's movement.
+    public float distanceBetweenBoundary;              //The distance between the monster and the boundary.
     public float newRightLimitPositionX;
     public float newLeftLimitPositionX;
-    public float xAxisControlForLimitObjects;
-    public float yAxisControlForLimitObjects;
+    public float xAxisControlForBoundaryObjects;       //The maximum and Minimum X value that the right or left boundary can be moved.
+    public float yAxisControlForBoundaryObjects;       //The maximum and Minimum Y value that the right or left boundary can be moved.
 
     // Start is called before the first frame update
     void Start()
     {
-        spawner = GameObject.Find("SpawnManager").GetComponent<Spawner>();
-        rigidBody2D = GetComponent<Rigidbody2D>();
-        rightLimitGameObject.SetActive(true);
-        leftLimitGameObject.SetActive(false);
-        attack = GetComponentInChildren<Attack>();
         detection = gameObject.GetComponent<Detection>();
-        One_Eye_Dog = gameObject.GetComponent<One_Eye_Dog>();
+        spawner = GameObject.Find("SpawnManager").GetComponent<Spawner>();
+        monster = detection.monster;
+        monster_RB2D = detection.monster_RB;
+        attack = GetComponentInChildren<Attack>();
+        rightMonsterBoundaryGameObject.SetActive(true);
+        leftMonsterBoundaryGameObject.SetActive(false);
         toTheRight = true;
         toTheLeft = false;
         isWaiting = false;
@@ -50,7 +47,7 @@ public class CPU_Movement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Debug.Log(detection.isCPUMove);
+        yAxisControlForBoundaryObjects = monster_RB2D.transform.position.y;
         if (detection.isCPUMove)
         {
             Detect();
@@ -75,17 +72,17 @@ public class CPU_Movement : MonoBehaviour
 
     public void Detect()
     {
-        if (toTheRight && !attack.isAttacking_Ref && !One_Eye_Dog.isDying_Ref && !detection.isDetected && !isIdling)
+        if (toTheRight && !attack.isAttacking_Ref && !monster.isDying_Ref && !detection.isDetected && !isIdling)
         {
-            leftLimitGameObject.SetActive(false);
-            rigidBody2D.velocity = new Vector2(detection.moveSpeed, 0f);
+            leftMonsterBoundaryGameObject.SetActive(false);
+            monster_RB2D.velocity = new Vector2(detection.moveSpeed, 0f);
             Check_Right_Distance();
 
         }
-        if (toTheLeft && !attack.isAttacking_Ref && !One_Eye_Dog.isDying_Ref && !detection.isDetected && !isIdling)
+        if (toTheLeft && !attack.isAttacking_Ref && !monster.isDying_Ref && !detection.isDetected && !isIdling)
         {
-            rightLimitGameObject.SetActive(false);
-            rigidBody2D.velocity = new Vector2(-detection.moveSpeed, 0f);
+            rightMonsterBoundaryGameObject.SetActive(false);
+            monster_RB2D.velocity = new Vector2(-detection.moveSpeed, 0f);
             Check_Left_Distance();
         }
     }
@@ -94,11 +91,11 @@ public class CPU_Movement : MonoBehaviour
     private void Check_Right_Distance()
     {
 
-        if (Vector2.Distance(transform.position, rightLimitGameObject.transform.position) <= distanceBetweenLimit && !isIdling)
+        if ((Vector2.Distance(transform.position, rightMonsterBoundaryGameObject.transform.position) <= distanceBetweenBoundary && !isIdling) || (transform.position.x > rightMonsterBoundaryGameObject.transform.position.x && !isIdling))
         {
             isIdling = true;
-            rigidBody2D.velocity = new Vector2(0f, 0f);
-            rightLimitGameObject.SetActive(false);
+            monster_RB2D.velocity = new Vector2(0f, 0f);
+            rightMonsterBoundaryGameObject.SetActive(false);
             StartCoroutine(RightWait());
         }
     }
@@ -107,7 +104,7 @@ public class CPU_Movement : MonoBehaviour
     {
         yield return new WaitForSeconds(Random.Range(idleTimeMin, idleTimeMax));
         MoveLeftLimitObject();
-        leftLimitGameObject.SetActive(true);
+        leftMonsterBoundaryGameObject.SetActive(true);
         isIdling = false;
         toTheRight = false;
         toTheLeft = true;
@@ -115,18 +112,18 @@ public class CPU_Movement : MonoBehaviour
 
     private void MoveRightLimitObject()
     {
-        newRightLimitPositionX = Random.Range(transform.position.x, xAxisControlForLimitObjects);
-        rightLimitGameObject.transform.position = new Vector2(newRightLimitPositionX, yAxisControlForLimitObjects);
+        newRightLimitPositionX = Random.Range(transform.position.x, xAxisControlForBoundaryObjects);
+        rightMonsterBoundaryGameObject.transform.position = new Vector2(newRightLimitPositionX, yAxisControlForBoundaryObjects);
 
     }
 
     private void Check_Left_Distance()
     {
-        if (Vector2.Distance(transform.position, leftLimitGameObject.transform.position) <= distanceBetweenLimit && !isIdling)
+        if ((Vector2.Distance(transform.position, leftMonsterBoundaryGameObject.transform.position) <= distanceBetweenBoundary && !isIdling) || (transform.position.x < leftMonsterBoundaryGameObject.transform.position.x && !isIdling))
         {
             isIdling = true;
-            rigidBody2D.velocity = new Vector2(0f, 0f);
-            leftLimitGameObject.SetActive(false);
+            monster_RB2D.velocity = new Vector2(0f, 0f);
+            leftMonsterBoundaryGameObject.SetActive(false);
             StartCoroutine(LeftWait());
         }
     }
@@ -135,16 +132,16 @@ public class CPU_Movement : MonoBehaviour
     {
         yield return new WaitForSeconds(Random.Range(idleTimeMin, idleTimeMax));
         MoveRightLimitObject();
-        rightLimitGameObject.SetActive(true);
+        rightMonsterBoundaryGameObject.SetActive(true);
         isIdling = false;
         toTheLeft = false;
-        toTheRight = false;
+        toTheRight = true;
     }
 
 
     private void MoveLeftLimitObject()
     {
-        newLeftLimitPositionX = Random.Range(transform.position.x, -xAxisControlForLimitObjects);
-        leftLimitGameObject.transform.position = new Vector2(newLeftLimitPositionX, yAxisControlForLimitObjects);
+        newLeftLimitPositionX = Random.Range(transform.position.x, -xAxisControlForBoundaryObjects);
+        leftMonsterBoundaryGameObject.transform.position = new Vector2(newLeftLimitPositionX, yAxisControlForBoundaryObjects);
     }
 }

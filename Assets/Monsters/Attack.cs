@@ -5,29 +5,30 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    [SerializeField] private float attack_Range;
-    [SerializeField] LayerMask playerMask;
-    [SerializeField] private GameObject player;
-    [SerializeField] private BoxCollider2D attack;
-    [SerializeField] private float wait_Time;       //The delay to give player enough time to react.
-    [SerializeField] private float start_Time;      //Time for animation to be at the "hit" frame.
-    [SerializeField] private float end_Time;        //Time for animation to complete + 0.2 second.
-    [SerializeField] private float cooldown_Time;   //Cooldown time.
-    [SerializeField] public bool isAttacking_Ref = false;       //Used as reference in Detection script to detect with attack is complete and in cooldown.
-    [SerializeField] private bool isAttacking = false;                 //Used to prevent StartCoroutine from stacking.
-    [SerializeField] private Animator animations;
+    public float attack_Range;
+    public float wait_Time;       //The delay to give player enough time to react.
+    public float start_Time;      //Time for animation to be at the "hit" frame.
+    public float end_Time;        //Time for animation to complete + 0.2 second.
+    public float cooldown_Time;   //Cooldown time.
+    public bool isAttacking_Ref = false;       //Used as reference in Detection script to detect with attack is complete and in cooldown.
+    public bool isAttacking = false;                 //Used to prevent StartCoroutine from stacking.
     public Detection detection;
-    private Rigidbody2D monster_rb2d;
+    public LayerMask playerMask;
+    public GameObject player;
+    public Rigidbody2D monster_rb2d;
+    private Animator animations;
+    private BoxCollider2D attack;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        detection = gameObject.GetComponentInParent<Detection>();
         attack = GetComponent<BoxCollider2D>();
-        monster_rb2d = GetComponentInParent<Rigidbody2D>();
-        player = GameObject.Find("Player");
-        detection = GetComponentInParent<Detection>();
+        monster_rb2d = detection.monster_RB;
+        player = detection.player;
+        animations = GetComponentInParent<Animator>();
     }
 
     private void FixedUpdate()

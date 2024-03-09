@@ -2,34 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class One_Eye_Dog : MonoBehaviour
+public class MonsterManager : MonoBehaviour
 {
-    [SerializeField] public int hp = 10;
-    [SerializeField] public int atk = 5;
-    [SerializeField] public int defense = 1;
-    [SerializeField] public int exp = 100;
-    [SerializeField] private LayerMask player_BasicAttack_Mask;
+    public int hp = 10;
+    public int atk = 5;
+    public int defense = 1;
+    public int exp = 100;
+    public LayerMask player_BasicAttack_Mask;
     public Detection detection;
-    private Animator animations;
+    public Animator animations;
     private Rigidbody2D rgbd2D;
     private BoxCollider2D hitBox;
     public bool isDying_Ref = false;
-    private ExpManager expManager;
-
-    //public void OnEnable()
-    //{
-    //    expManager.OnReward += ExpCheck;
-    //}
-    ////The ExpManager will become disabled when nothing happens.
-    //public void OnDisable()
-    //{
-    //    expManager.OnReward -= ExpCheck;
-    //}
-
-    void ExpCheck(int exp)
-    {
-
-    }
+    public ExpManager expManager;
 
     private void Awake()
     {
@@ -52,13 +37,14 @@ public class One_Eye_Dog : MonoBehaviour
 
     private void AnimationTransition()
     {
-        if (rgbd2D.velocity.x == 0f)
-        {
-            animations.SetBool("isIdle", true);
-        }
-        if (rgbd2D.velocity.x == detection.moveSpeed || rgbd2D.velocity.x == -detection.moveSpeed)
+        Debug.Log(rgbd2D.velocity.x);
+        if (rgbd2D.velocity.x > 0.1f || rgbd2D.velocity.x < -0.1f)
         {
             animations.SetBool("isIdle", false);
+        } 
+        else
+        {
+            animations.SetBool("isIdle", true);
         }
     }
 

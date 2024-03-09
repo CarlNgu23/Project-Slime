@@ -8,6 +8,10 @@ TagManager:
   - Item
   - Enemy
   - Player Basic Attack
+  - Left Monster Boundary
+  - Right Monster Boundary
+  - Left Platform Boundary
+  - Right Platform Boundary
   layers:
   - Default
   - TransparentFX
@@ -22,8 +26,8 @@ TagManager:
   - Enemy
   - Monster Right
   - Monster Left
-  - 
-  - 
+  - Left Platform Boundary
+  - Right Platform Boundary
   - 
   - 
   - 
