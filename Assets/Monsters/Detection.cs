@@ -5,26 +5,31 @@ using UnityEngine.Windows;
 
 public class Detection : MonoBehaviour
 {
-    [SerializeField] private float rayDistance;     //Detection Range
-    [SerializeField] private float distance_limit;  //Distance between player and monster. Need to match this to the attack object's range.
-    [SerializeField] LayerMask playerMask;
-    [SerializeField] private GameObject player;
-    [SerializeField] public float moveSpeed;
-    
-    public static float moveSpeed_Ref;
+    //public GameObject assignedPlatform;
+    //public GameObject leftPlatformBoundary;
+    //public GameObject rightPlatformBoundary;
+    public float rayDistance;     //Detection Range
+    public float distance_limit;  //Distance between player and monster. Need to match this to the attack object's range.
+    public LayerMask playerMask;
+    public GameObject player;
+    public float moveSpeed;
+    public Attack attack;
     public bool isFacingRight;
-    private Rigidbody2D oneEyeDog_RB;
-    private CPU_Movement cpu_Movement;
-    public static bool isCPUMove;
-    public static bool isDetected;
+    public Rigidbody2D monster_RB;
+    public bool isCPUMove;
+    public bool isDetected;
     public bool isWaiting;
+    public MonsterManager monster;
 
     // Start is called before the first frame update
     void Start()
     {
-        oneEyeDog_RB = GetComponent<Rigidbody2D>();
-        moveSpeed_Ref = moveSpeed;
-        cpu_Movement = GetComponent<CPU_Movement>();
+        //leftPlatformBoundary = assignedPlatform.transform.GetChild(0).gameObject;
+        //rightPlatformBoundary = assignedPlatform.transform.GetChild(1).gameObject;
+        monster_RB = GetComponent<Rigidbody2D>();
+        attack = GetComponentInChildren<Attack>();
+        monster = GetComponent<MonsterManager>();
+        player = GameObject.FindWithTag("Player");
         isCPUMove = true;
         isDetected = false;
     }
@@ -32,18 +37,39 @@ public class Detection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (oneEyeDog_RB.velocity.x == moveSpeed && !isFacingRight)      //Checks for contradictions in monster's right direction
+        //if (!isDetected && !attack.isAttacking_Ref && !monster.isDying_Ref && !isCPUMove)// && !isWaiting)
+        //{
+        //    //isWaiting = true;
+        //    monster_RB.velocity = new Vector2(0f, 0f);
+        //    isDetected = false;
+        //    //isWaiting = false;
+        //    //StartCoroutine(Deactivate());
+        //}
+        if (monster_RB.velocity.x > 0.1f && !isFacingRight)      //Checks for contradictions in monster's right direction
         {
             Flip();
         }
-        else if (oneEyeDog_RB.velocity.x == -moveSpeed && isFacingRight)  //Checks for contradictions in monster's left direction
+        else if (monster_RB.velocity.x < -0.1f && isFacingRight)  //Checks for contradictions in monster's left direction
         {
             Flip();
+        }
+        if (isDetected && Vector2.Distance(transform.position, player.transform.position) > rayDistance)
+        {
+            monster_RB.velocity = new Vector2(0f, 0f);
+            isDetected = false;
         }
     }
 
+    //IEnumerator Deactivate()
+    //{
+    //    yield return new WaitForSeconds(2);
+    //    isDetected = false;
+    //    isWaiting = false;
+    //}
+
     private void FixedUpdate()
     {
+
         RaycastHit2D right_hit = Physics2D.Raycast(transform.position, Vector2.right, rayDistance, playerMask);
         Debug.DrawRay(right_hit.point, right_hit.normal, Color.red);
         RaycastHit2D left_hit = Physics2D.Raycast(transform.position, -Vector2.right, rayDistance, playerMask);
@@ -54,36 +80,24 @@ public class Detection : MonoBehaviour
             isDetected = true;
             Detect(right_hit, left_hit);
         }
-        if (!Attack.isAttacking_Ref && !One_Eye_Dog.isDying_Ref && !isCPUMove && !isWaiting)
-        {
-            isWaiting = true;
-            StartCoroutine(Deactivate());
-        }
-    }
-
-    IEnumerator Deactivate()
-    {
-        yield return new WaitForSeconds(2);
-        isDetected = false;
-        isWaiting = false;
     }
 
     public void Detect(RaycastHit2D right, RaycastHit2D left)
     {
-        if (right && !Attack.isAttacking_Ref && !One_Eye_Dog.isDying_Ref)   //Change One_Eye_Dog to any monster scripts.
+        if (right && !attack.isAttacking_Ref && !monster.isDying_Ref)   //Can change One_Eye_Dog to any monster scripts.
         {
-            oneEyeDog_RB.velocity = new Vector2(moveSpeed, 0f);
+            monster_RB.velocity = new Vector2(moveSpeed, 0f);
             Check_Distance();
-            if (!isFacingRight && !Attack.isAttacking_Ref)    //Checks for contradictions in monster's right direction when player is up-close.
+            if (!isFacingRight && !attack.isAttacking_Ref)    //Checks for contradictions in monster's right direction when player is up-close.
             {
                 Flip();
             }
         }
-        else if (left && !Attack.isAttacking_Ref && !One_Eye_Dog.isDying_Ref)   //Change One_Eye_Dog to any monster scripts.
+        else if (left && !attack.isAttacking_Ref && !monster.isDying_Ref)   //Change One_Eye_Dog to any monster scripts.
         {
-            oneEyeDog_RB.velocity = new Vector2(-moveSpeed, 0f);
+            monster_RB.velocity = new Vector2(-moveSpeed, 0f);
             Check_Distance();
-            if (isFacingRight && !Attack.isAttacking_Ref)    //Checks for contradictions in monster's left direction when player is up-close.
+            if (isFacingRight && !attack.isAttacking_Ref)    //Checks for contradictions in monster's left direction when player is up-close.
             {
                 Flip();
             }
@@ -94,7 +108,7 @@ public class Detection : MonoBehaviour
     {
         if (Vector2.Distance(transform.position, player.transform.position) < distance_limit)
         {
-            oneEyeDog_RB.velocity = new Vector2(0f, 0f);
+            monster_RB.velocity = new Vector2(0f, 0f);
         }
     }
 

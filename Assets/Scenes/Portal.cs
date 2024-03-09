@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
-    public Collider2D portalCollider;
+    public BoxCollider2D portalCollider;
+    public BoxCollider2D playerCollider;
 
     private void Awake()
     {
-        portalCollider = GetComponent<Collider2D>();
+        portalCollider = GetComponent<BoxCollider2D>();
+        playerCollider = GameObject.Find("Player").GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -21,6 +23,9 @@ public class Portal : MonoBehaviour
     }
     private void OnTriggerEnter2D()
     {
-        SceneManager.LoadScene(2);
+        if (playerCollider.IsTouching(portalCollider))
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 }
