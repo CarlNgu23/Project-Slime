@@ -15,14 +15,11 @@ MonoBehaviour:
   prefabName: One_Eye_Dog
   leftBoundary: LeftBoundary
   rightBoundary: RightBoundary
-  maxXAxis: 10
-  numberOfPrefabsToCreate: 2
+  maxXAxis: 1.4
+  numberOfPrefabsToCreate: 1
   monster_SpawnPoints:
-  - {x: 0, y: 3.4, z: 0}
-  - {x: -7, y: -3.2, z: 0}
+  - {x: 0, y: -4.278, z: 0}
   leftBoundary_SpawnPoints:
-  - {x: -10, y: 3.4, z: 0}
-  - {x: -10, y: -3.2, z: 0}
+  - {x: -1.4, y: -4.278, z: 0}
   rightBoundary_SpawnPoints:
-  - {x: 10, y: 3.4, z: 0}
-  - {x: 10, y: -3.2, z: 0}
+  - {x: 10, y: -4.278, z: 0}

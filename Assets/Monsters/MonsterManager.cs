@@ -37,7 +37,6 @@ public class MonsterManager : MonoBehaviour
 
     private void AnimationTransition()
     {
-        Debug.Log(rgbd2D.velocity.x);
         if (rgbd2D.velocity.x > 0.1f || rgbd2D.velocity.x < -0.1f)
         {
             animations.SetBool("isIdle", false);

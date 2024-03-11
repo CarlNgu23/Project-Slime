@@ -1,199 +1,146 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    private BoxCollider2D coll;
-    private Animator anim;
-    private Animation animState;
+    //Components
+    private Rigidbody2D rb2D;
+    private Animator animator;
+    //Physical Input
+    public InputActionReference moveAction;     //Player's Move inputs.
+    public InputActionReference jumpAction;     //Player's Jump input.
+    public InputActionReference attackAction;   //Player's attack input.
+    public Vector2 inputValue;      //Value of the Player's Move inputs.
+    //Physics
+    public float moveSpeed;
+    public float jumpForce;
+    public float groundRayCheckDistance;    //The distance for Raycast to detect ground.
+    public LayerMask groundMask;
+    //Animation
+    public float attackTime;    //Time for attack animation to complete.
+    public float landingTime;   //Time for landing animation to complete.
+    private int currentState;
+    public float waitTime;     //New game time for animation to complete a loop.
+    public bool isAttacking;
+    public bool isLanded;
+    public bool isGrounded;
+    public bool isFacingRight;
+    //Animator states hashing.
+    private int idle = Animator.StringToHash("Idle");
+    private int move = Animator.StringToHash("Move");
+    private int jump = Animator.StringToHash("Jump");
+    private int fall = Animator.StringToHash("Fall");
+    private int land = Animator.StringToHash("Land");
+    private int attack = Animator.StringToHash("Attack");
 
-    private float inputX;
-    
-    [SerializeField] private float moveSpeed = 3f;
-    [SerializeField] private float jumpForce = 5f;
-    [SerializeField] private float groundCheckRadius = 0.2f;
-    [SerializeField] private float slopeCheckDistance = 1f;
-    [SerializeField] private float slopeCheckXOffset = 0f;
-    [SerializeField] private float slopeCheckYOffset = 0f;
+    private void OnEnable()
+    {   //Jump and Attack inputs are single press occurrance, so they require event handling.
+        jumpAction.action.performed += Jump;    //When Jump input is pressed, do Jump()
+        attackAction.action.performed += Attack;    //When attack input is pressed, do Attack()
+    }
 
-    private bool inputJump;
-    [SerializeField] private bool isFacingRight = true;
-    [SerializeField] private bool grounded = true;      //Debug Purposes
-    [SerializeField] private bool onSlope = false;
-    [SerializeField] private bool isJumping = false;
-    [SerializeField] private bool isFalling = false;
+    private void OnDisable()
+    {   //Disable upon no action.
+        jumpAction.action.performed -= Jump;
+        attackAction.action.performed -= Attack;
+    }
 
-    //[SerializeField] private Vector3 boundsCenter;      //Debug Purposes
-    //[SerializeField] private Vector3 boundsSize;       //Debug Purposes
-
-    [SerializeField] private LayerMask groundMask;
-    [SerializeField] private LayerMask slopeMask;
-
-    [SerializeField] private Transform groundCheck;
-
-    [SerializeField] private Vector2 playerGroundPos;
-
-    [SerializeField] private PhysicsMaterial2D sharedMaterial;
-
-
-
-    private enum MovementState { idle, moving, jumping, falling, landed }
-    private MovementState state;
-    
-    //private Vector2 move;
-
-
-    // Start is called before the first frame update
-    private void Start()
+    private void Jump(InputAction.CallbackContext context)
     {
-        if (rb == null)
-        {
-            rb = GetComponent<Rigidbody2D>();
-        }
-        if (coll == null)
-        {
-            coll = GetComponent<BoxCollider2D>();
-        }
-        if (anim == null)
-        {
-            anim = GetComponent<Animator>();
-        }
-        //if (animState == null)
-        //{
-        //    animState == GetComponent<Animation>();
-        //}
-        
+        if (isGrounded)
+            rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
+    }
+
+    public void Attack(InputAction.CallbackContext context)
+    {
+        isAttacking = true;
+    }
+
+    /// <summary>
+    /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// //// Awake, Update //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// </summary>
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        rb2D = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    Instantiate(shotSpawn, firingPoint.position, transform.rotation);
-        //}
-        inputX = Input.GetAxisRaw("Horizontal"); //looking direction
-
-        if (Input.GetButtonDown("Jump") && isGrounded() && state != MovementState.landed)
-        {
-            rb.sharedMaterial = null;
-            Jump();
-        }
-
-
-    }
-
     void FixedUpdate()
     {
-        //grounded = isGrounded();    // Debugging Purposes
-        Movement();
-        slopeCheck();
+        inputValue = moveAction.action.ReadValue<Vector2>();//Detect player's input. Values are between -1 and 1 being left and right respectively. 0 is no input.
+        GroundCheck();
+        CheckMove();
+        CheckDirection();
+        var updateState = UpdateState();
+        isAttacking = false;
+        isLanded = false;
+        if (updateState == currentState)
+            return;
+        animator.CrossFade(updateState, 0, 0);
+        currentState = updateState;
+    }
+    /// <summary>
+    /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// </summary>
+
+    public void CheckMove()
+    {
+        if (inputValue.x == 1 || inputValue.x == -1)        //Moves the Slime based on inputValue.
+            rb2D.velocity = new Vector2(inputValue.x * moveSpeed, rb2D.velocity.y);
+        else if (inputValue.x == 0 && isGrounded)
+            rb2D.velocity = new Vector2(0.0f, rb2D.velocity.y);
     }
 
-    void Jump()
+    private int UpdateState()
     {
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        isJumping = true;
+        //Time.time is current game time. Game time is the time that has past since the game started.
+        int KeepState(int state, float animationDuration)
+        {
+            waitTime = Time.time + animationDuration;
+            return state;
+        }
+        if (Time.time < waitTime)//Checks for if waitTime is required. If it's required, waitTime is greater than current game time.
+            return currentState;
+        if (isAttacking)//Attacking
+            return KeepState(attack, attackTime);
+        if (currentState == fall && isGrounded)//Landing
+            return KeepState(land, landingTime);
+        if (rb2D.velocity.normalized.y > 0.01f)//Jumping
+            return jump;
+        if (rb2D.velocity.normalized.y < -0.01f)//Falling
+            return fall;
+        if (isGrounded && inputValue.x == 1 || inputValue.x == -1)//Moving
+            return move;
+        return idle;    //Idle
     }
 
-    void Movement()
+    public bool GroundCheck()
     {
-        rb.velocity = new Vector2(inputX * moveSpeed, rb.velocity.y);
-
-        if (inputX > 0.0f && !isFacingRight)      //Checks for contradictions in player's right direction
-        {
-            Flip();
-        }
-        else if (inputX < 0.0f && isFacingRight)  //Checks for contradictions in player's left direction
-        {
-            Flip();
-        }
-
-        if (!isGrounded() && rb.velocity.y > 0.0f)
-        {
-            isFalling = false;
-            state = MovementState.jumping;
-            anim.SetInteger("States", (int)state);
-            anim.SetBool("isGrounded", isGrounded());
-            anim.SetBool("isJumping", isJumping);
-            anim.SetBool("isFalling", isFalling);
-        }
-        else if (!isGrounded() && !onSlope && rb.velocity.y < 0.0f)
-        {
-            rb.sharedMaterial = null;
-            isFalling = true;
-            isJumping = false;
-            state = MovementState.falling;
-            anim.SetInteger("States", (int)state);
-            anim.SetBool("isGrounded", grounded);
-            anim.SetBool("isJumping", isJumping);
-            anim.SetBool("isFalling", isFalling);
-        }
-        else if (isGrounded() && isFalling)
-        {
-            rb.sharedMaterial = null;
-            isFalling = false;
-            state = MovementState.landed;
-            anim.SetInteger("States", (int)state);
-            anim.SetBool("isGrounded", grounded);
-            anim.SetBool("isJumping", isJumping);
-            anim.SetBool("isFalling", isFalling);
-        }
-        else if ((inputX > 0.0f || inputX < 0.0f) && isGrounded())
-        {
-            rb.sharedMaterial = null;
-            state = MovementState.moving;
-            anim.SetInteger("States", (int)state);
-            anim.SetBool("isGrounded", grounded);
-        }
-        else if (inputX == 0 && isGrounded())
-        {
-            //rb.velocity = Vector2.zero;
-            rb.sharedMaterial = sharedMaterial;     //Reference the material under script for PlayerMovement in the Player's inspector window.
-            state = MovementState.idle;
-            anim.SetInteger("States", (int)state);
-            anim.SetBool("isGrounded", grounded);
-        }
-    }
-
-    bool isGrounded()
-    {
-        //boundsCenter = coll.bounds.center;
-        //boundsSize = coll.bounds.size;
-        //return Physics2D.BoxCast(boundsCenter, boundsSize, 0f, Vector2.down, 0.1f, groundMask);
-        
-
-        return grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundMask);
-    }
-
-    void slopeCheck()
-    {
-        playerGroundPos = coll.bounds.center + new Vector3(slopeCheckXOffset, slopeCheckYOffset, 0);
-
-        RaycastHit2D rayHit = Physics2D.Raycast(playerGroundPos, Vector2.down, slopeCheckDistance, slopeMask);
-
-        Debug.DrawRay(rayHit.point, rayHit.normal, Color.red);
-
-        if (rayHit)
-        {
-            onSlope = true;
-        }
+        RaycastHit2D groundHit = Physics2D.Raycast(transform.position, Vector2.down, groundRayCheckDistance, groundMask);
+        if (groundHit)
+            return isGrounded = true;
         else
-        {
-            onSlope = false;
-        }
+            return isGrounded = false;
+    }
+
+    public void CheckDirection()
+    {
+        if (inputValue.x == 1f && !isFacingRight)
+            Flip();
+        else if (inputValue.x == -1f && isFacingRight)
+            Flip();
     }
 
     void Flip()
     {
         isFacingRight = !isFacingRight;
-        transform.Rotate(0.0f, 180.0f, 0.0f);
+        rb2D.transform.Rotate(0f, 180f, 0f);
     }
-
 }
-
-

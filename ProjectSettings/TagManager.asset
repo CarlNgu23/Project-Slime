@@ -12,6 +12,8 @@ TagManager:
   - Right Monster Boundary
   - Left Platform Boundary
   - Right Platform Boundary
+  - Wall
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -28,7 +30,7 @@ TagManager:
   - Monster Left
   - Left Platform Boundary
   - Right Platform Boundary
-  - 
+  - Wall
   - 
   - 
   - 
