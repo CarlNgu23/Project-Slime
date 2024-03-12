@@ -120,11 +120,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 495c1becafe10d9479b2c47432681154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitBox: {fileID: 7587594224135445, guid: 1812032e1980f6e46bb8899432df3830, type: 3}
+  HiddenhitBox: {fileID: 7587594224135445, guid: 1812032e1980f6e46bb8899432df3830, type: 3}
   time: 0.3
   dmg: 0
   anim: {fileID: 3298376153439334547}
-  PlayerHitBox: {fileID: 0}
+  hitbox: {fileID: 8669186305092198129}
   hitBoxCDTime: 1.5
 --- !u!61 &8669186305092198129
 BoxCollider2D:

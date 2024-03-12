@@ -6,12 +6,12 @@ using static UnityEngine.Rendering.DebugUI;
 public class HideSpike : MonoBehaviour
 {
 
-    [SerializeField] public GameObject hitBox;
+    [SerializeField] public GameObject HiddenhitBox;
     [SerializeField] public float time;
     [SerializeField] public int dmg;
     [SerializeField] public Animator anim;
 
-    [SerializeField] private PolygonCollider2D PlayerHitBox;
+    [SerializeField] public BoxCollider2D hitbox;
     [SerializeField] public float hitBoxCDTime;
 
 
@@ -28,12 +28,12 @@ public class HideSpike : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && collision.GetType().ToString() == "UnityEngine.PolygonCollider2D")
+        if (collision.CompareTag("Player"))
         {
             Debug.Log("HIDESPIKE");
             Stats.Instance.health -= dmg;
             StartCoroutine(SpikeAttack());
-           // PlayerHitBox.enabled = false;
+       
             StartCoroutine(ShowHitBox());
         }
     }
@@ -41,12 +41,12 @@ public class HideSpike : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         anim.SetTrigger("Attack");
-        Instantiate(hitBox, transform.position, Quaternion.identity);
+        Instantiate(HiddenhitBox, transform.position, Quaternion.identity);
     }
     IEnumerator ShowHitBox()
     {
         yield return new WaitForSeconds(hitBoxCDTime);
-        PlayerHitBox.enabled = true;
+        hitbox.enabled = true;
 
     }
 

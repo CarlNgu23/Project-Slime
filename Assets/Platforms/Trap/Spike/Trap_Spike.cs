@@ -5,7 +5,7 @@ using UnityEngine;
 public class Trap : MonoBehaviour
 {
     [SerializeField] public int dmg;
-    [SerializeField] private PolygonCollider2D hitbox;
+    [SerializeField] private BoxCollider2D hitbox;
     [SerializeField] public float hitBoxCDTime;
 
 

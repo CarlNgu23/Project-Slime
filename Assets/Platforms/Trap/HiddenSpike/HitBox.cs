@@ -22,7 +22,7 @@ public class HitBox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && collision.GetType().ToString() == "UnityEngine.PolygonCollider2D")
+        if (collision.CompareTag("Player"))
         {
             Debug.Log("HITBOX");
             Stats.Instance.health -= dmg;
