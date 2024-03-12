@@ -289,11 +289,12 @@ MonoBehaviour:
   isIdling: 0
   RestartTime: 3
   idleTimeMin: 1
-  idleTimeMax: 5
+  idleTimeMax: 2
   distanceBetweenBoundary: 1
   newRightLimitPositionX: 0
   newLeftLimitPositionX: 0
-  xAxisControlForBoundaryObjects: 10
+  min_X_AxisControlForBoundaryObjects: 0
+  max_X_AxisControlForBoundaryObjects: 0
   yAxisControlForBoundaryObjects: 0
 --- !u!50 &6425132028350918410
 Rigidbody2D:
