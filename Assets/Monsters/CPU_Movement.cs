@@ -55,7 +55,6 @@ public class CPU_Movement : MonoBehaviour
         {
             if (!isWaiting)
             {
-                Debug.Log("isWAITGING");
                 isWaiting = true;
                 StartCoroutine(Restart());
             }
