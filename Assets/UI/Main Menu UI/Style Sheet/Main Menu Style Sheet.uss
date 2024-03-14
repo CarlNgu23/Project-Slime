@@ -1,0 +1,57 @@
+.Main_Menu_Buttons {
+    position: absolute;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    top: 500px;
+    left: 842px;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    width: 232px;
+    height: 30px;
+    background-color: rgba(188, 188, 188, 0);
+    -unity-font-definition: url('project://database/Assets/UI/Main%20Menu%20UI/dogica%20SDF.asset?fileID=11400000&guid=de49bf152bcdb704ba35158511e66d81&type=2#dogica SDF');
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    -unity-text-align: middle-center;
+    text-overflow: clip;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    transition-timing-function: ease-out-elastic;
+    transition-duration: 0.5s;
+    scale: 1 1;
+}
+
+.Main_Menu_Buttons:hover {
+    position: absolute;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    top: 500px;
+    left: 842px;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    width: 236px;
+    height: 59px;
+    background-color: rgba(188, 188, 188, 0);
+    -unity-font-definition: url('project://database/Assets/UI/Main%20Menu%20UI/dogica%20SDF.asset?fileID=11400000&guid=de49bf152bcdb704ba35158511e66d81&type=2#dogica SDF');
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    -unity-text-align: middle-center;
+    text-overflow: clip;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    transition-timing-function: ease-out-elastic;
+    scale: 1.05 1.05;
+    transition-duration: 0.5s;
+}

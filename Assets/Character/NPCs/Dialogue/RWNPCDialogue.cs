@@ -27,26 +27,41 @@ public class RWNPCDialogue : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E) && playerIsClose)       // when player is in range and press 'E'
+    {   if(Input.GetKeyDown(KeyCode.Q) && playerIsClose)
         {
-            if (!dialoguePanel.activeInHierarchy)               
-            {
+            if (dialoguePanel.activeInHierarchy)               
+            {  
+                RemoveText();       
+            }
+        }
+        
+       
+        else if (Input.GetKeyDown(KeyCode.E) && playerIsClose)       // when player is in range and press 'E'
+        {   
+            
+
+             if (!dialoguePanel.activeInHierarchy)               
+            {   
+                
                 dialoguePanel.SetActive(true);                  //set dialoguePanel to true 
+
                 StartCoroutine(Typing());                       //begins typing the text
+                
+                               
             }
-            else if (dialogueText.text == dialogue[index])
-            {
+           
+            if (dialogueText.text == dialogue[index])    
+            {   
+               
                 NextLine();
+
             }
-            // else if(dialogueText.text == dialogue[index -1])
-            // {
-            //     RemoveText();
-            //     endButton.SetActive(true);
-            // }
+           
+
+    
 
         }
-
+        
 
         if(dialogueText.text == dialogue[index])                // when it reaches to the end of the sentence
         {
@@ -63,32 +78,38 @@ public class RWNPCDialogue : MonoBehaviour
     }
 
     IEnumerator Typing()
-    {
-        foreach(char letter in dialogue[index].ToCharArray())
-        {
+    {  
+        
+        foreach(char letter in dialogue[index].ToCharArray() )
+        {   
+            
+
             dialogueText.text += letter;
             yield return new WaitForSeconds(wordSpeed);
+            
+                
+           
         }
     }
+        
+        
+    
 
     public void NextLine()
     {
-        
-        if (index < dialogue.Length - 1)
+       
+        if (index < dialogue.Length-1 )
         {
             index++;
             dialogueText.text = "";
             StartCoroutine(Typing());
             contButton.SetActive(false);
             
-          
         }
        
         else
         {
-            
             RemoveText();
-
         }
     }
 
