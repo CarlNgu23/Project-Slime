@@ -39,4 +39,5 @@ public class Stats : MonoBehaviour
         }
         DontDestroyOnLoad(Instance);
     }
+
 }
