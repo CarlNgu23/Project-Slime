@@ -1,3 +1,4 @@
+//Developed by Carl Ngu, Jady Yip
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,9 +27,6 @@ public class PlayerMovement_old : MonoBehaviour
     [SerializeField] private bool onSlope = false;
     [SerializeField] private bool isJumping = false;
     [SerializeField] private bool isFalling = false;
-
-    //[SerializeField] private Vector3 boundsCenter;      //Debug Purposes
-    //[SerializeField] private Vector3 boundsSize;       //Debug Purposes
 
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private LayerMask slopeMask;

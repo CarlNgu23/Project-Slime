@@ -44,7 +44,7 @@ public class CPU_Movement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         yAxisControlForBoundaryObjects = monster_RB2D.transform.position.y;
         if (detection.isCPUMove)
