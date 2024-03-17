@@ -1,0 +1,21 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Escape%20UI/Save_Load_UI/Save_Load_Button_Style.uss?fileID=7433441132597879392&amp;guid=9492b294568249e47b9c717fd3a35e45&amp;type=3#Save_Load_Button_Style" />
+    <ui:VisualElement name="Save_UI" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/UI/Escape%20UI/Escape_UI_Menu_Background.aseprite?fileID=7784478070708548834&amp;guid=218d0bd24dbcfbc47a72bb0782cc6ac4&amp;type=3#Escape_UI_Menu_Background&apos;); position: absolute; width: 960px; height: 540px; top: 25%; left: 25%; right: 25%; bottom: 25%;">
+        <ui:Label tabindex="-1" text="Save" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Save_Label" style="position: relative; top: 30px; left: 435px; color: rgb(255, 255, 255); -unity-font-style: bold; font-size: 40px; width: 100px; -unity-text-align: upper-center; transform-origin: center;" />
+        <ui:VisualElement name="Save_1" class="Save_Load_Button" style="top: 105px; left: 77px;">
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" style="position: absolute; top: 0; left: 0; width: 800px; height: 100px;">
+                <ui:Label tabindex="-1" text="Save_1_Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Save_1_Label" style="color: rgb(255, 255, 255); font-size: 20px; width: 100px; position: absolute; top: 30px; left: 350px; height: auto;" />
+            </ui:Button>
+        </ui:VisualElement>
+        <ui:VisualElement name="Save_2" class="Save_Load_Button">
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button" style="position: absolute; width: 800px; height: 100px;">
+                <ui:Label tabindex="-1" text="Save_2_Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Save_2_Label" style="font-size: 20px; color: rgb(255, 255, 255); width: 100px; position: absolute; top: 30px; left: 350px;" />
+            </ui:Button>
+        </ui:VisualElement>
+        <ui:VisualElement name="Save_3" class="Save_Load_Button" style="flex-grow: 1; position: absolute; width: 800px; height: 100px; top: 350px; left: 77px;">
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button" style="position: absolute; width: 800px; height: 100px;">
+                <ui:Label tabindex="-1" text="Save_3_Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Save_3_Label" style="font-size: 20px; color: rgb(255, 255, 255); position: absolute; left: 350px; top: 30px; width: 100px;" />
+            </ui:Button>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

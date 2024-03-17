@@ -4,39 +4,39 @@ using UnityEngine;
 
 public class BaseAttack : MonoBehaviour
 {
-    [SerializeField] public int damage;    //player damage
+
+    [SerializeField] private int damage;    //player damage
     [SerializeField] public float waitTime; //waitTime hitbox disappear time
     [SerializeField] public float startTime; //startTime hit box appear time
     private Animator anim;
-    private BoxCollider2D baseAttack2d;
+    private PolygonCollider2D baseAttack2d;
     [SerializeField]private GameObject player;
-    //[SerializeField] private GameObject enemy;
-    [SerializeField] private LayerMask enemy_Layer;
     // Start is called before the first frame update
 
 
     void Start()
-    {     
-        anim = player.GetComponent<Animator>();
+    {    
+         anim = player.GetComponent<Animator>();
         GetComponent<Animator>();
-        baseAttack2d = GetComponent<BoxCollider2D>();
+        baseAttack2d = GetComponent<PolygonCollider2D>();
+        //GetComponent<Animator>();
+       // baseAttack2d = GetComponent<PolygonCollider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        damage = Stats.Instance.attack;    //References the attack stats for base damage.
-        if (Input.GetButtonDown("Attack"))
-        {
-            Attack();
-        }
-        
+        Attack();
     }
+
 
     void Attack()
     {
-        anim.SetTrigger("Attack");
-        StartCoroutine(StartAttack());
+        if (Input.GetButtonDown("Attack"))
+        {
+            anim.SetTrigger("Attack");
+            StartCoroutine(StartAttack());
+        }
     }
 
     IEnumerator StartAttack()
@@ -46,19 +46,20 @@ public class BaseAttack : MonoBehaviour
         StartCoroutine(disableHitBox());
     }
 
+
     IEnumerator disableHitBox()
     {
         yield return new WaitForSeconds(waitTime);
         baseAttack2d.enabled = false;
     }
 
-    //private void OnTriggerEnter2D()
-    //{
-    //    if (baseAttack2d.IsTouchingLayers(enemy_Layer))
-    //    {
-    //        Debug.Log("Collided");
-    //        Monster_Stats.health -= (Stats.Instance.attack - Monster_Stats.defense);
-    //    }
-    //}
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        { 
+            other.GetComponent<Monster>().TakeDamage(damage);
+        }
+    }
 
 }

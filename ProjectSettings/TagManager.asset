@@ -7,11 +7,7 @@ TagManager:
   - NPC
   - Item
   - Enemy
-  - Player Basic Attack
-  - Left Monster Boundary
-  - Right Monster Boundary
-  - Left Platform Boundary
-  - Right Platform Boundary
+  - speechBubble
   layers:
   - Default
   - TransparentFX
@@ -22,13 +18,13 @@ TagManager:
   - Ground
   - Slope
   - Npc
-  - Player Basic Attack
-  - Enemy
-  - Monster Right
-  - Monster Left
-  - Left Platform Boundary
-  - Right Platform Boundary
-  - Trap_Spike
+  - TriggerBox
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
