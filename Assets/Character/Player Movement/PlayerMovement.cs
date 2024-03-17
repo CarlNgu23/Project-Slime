@@ -105,12 +105,12 @@ public class PlayerMovement : MonoBehaviour
         
         if (isRightWalled && isFacingRight)
         {
-            currentWall = -1;//Set to remember the wall that the player jumping to.
+            //currentWall = -1;//Set to remember the wall that the player jumping to.
             WallJump(-1);
         }
         if (isLeftWalled && !isFacingRight)
         {
-            currentWall = 1;
+            //currentWall = 1;
             WallJump(1);
         }
     }
@@ -196,7 +196,7 @@ public class PlayerMovement : MonoBehaviour
             rb2D.gravityScale = fallingGravity;//Set gravity to desired gravity when falling.
             return fall;
         }
-        if (isSliding)//Sliding
+        if (isSliding && !isWallJumping)//Sliding
         {
             rb2D.gravityScale = slidingGravity;//Set gravity to desired gravity when sliding.
             return fall;
@@ -208,7 +208,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void CheckMove()
     {
-        if ((inputValue.x == 1 || inputValue.x == -1) && !isDashing)        //Moves the Slime based on player's inputValue.
+        if ((inputValue.x == 1 || inputValue.x == -1) && !isDashing && Time.time > newWallJumpTime)        //Moves the Slime based on player's inputValue.
         {
             if (boxCollider2D.IsTouchingLayers(wallMask) || isDashing)//If player is near a right wall or dashing, disable right movement to prevent conflicts.
             {
@@ -318,7 +318,7 @@ public class PlayerMovement : MonoBehaviour
     public void WallJump(int direction)
     {
         //Overloaded with constraints to prevent super jumping due to multiplying forces from different jump mechanics.
-        if (!isGrounded && Time.time > newWallJumpTime && currentWall != lastWall)
+        if (!isGrounded && Time.time > newWallJumpTime)
         {
             isWallJumping = true;
             lastWall = direction;//Set to remember the last wall the player jumped from with currentWall.
