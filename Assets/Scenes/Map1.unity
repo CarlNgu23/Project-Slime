@@ -633,6 +633,8 @@ MonoBehaviour:
   dialoguePanel: {fileID: 934873170}
   dialogueText: {fileID: 1335137216}
   dialogue: []
+  dialogueChar: 
+  charIndex: 0
   endButton: {fileID: 1929203055}
   contButton: {fileID: 669146909}
   wordSpeed: 0.1
@@ -5698,6 +5700,8 @@ MonoBehaviour:
   dialogue:
   - Go Kill Something
   - Well? What are you waiting for?
+  dialogueChar: 
+  charIndex: 0
   endButton: {fileID: 1929203055}
   contButton: {fileID: 669146909}
   wordSpeed: 0.05
@@ -5709,7 +5713,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128694987}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd82a3d476d9d374a821953878b6cd62, type: 3}
   m_Name: 
@@ -5718,6 +5722,8 @@ MonoBehaviour:
   dialogueText: {fileID: 1335137216}
   dialogue:
   - Don't. Make. Me. Repeat.
+  dialogueChar: 
+  charIndex: 0
   endButton: {fileID: 1929203055}
   contButton: {fileID: 669146909}
   wordSpeed: 0.1
