@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_death : Stats_Level
-{
+public class Player_death : Stats
     // Start is called before the first frame update
+    {
     void Start()
     {
         
@@ -21,7 +21,8 @@ public class Player_death : Stats_Level
     }
     void Die()
    {
-    anim.SetTrigger("isDead");
+    //anim.SetTrigger("isDead");
     Destroy(gameObject);
    }
-}
+   }
+

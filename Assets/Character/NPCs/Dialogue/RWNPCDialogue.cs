@@ -10,7 +10,9 @@ public class RWNPCDialogue : MonoBehaviour
     public Text dialogueText;
 
     public string[] dialogue;  // contains text dialogues
+    public char[] dialogueChar;
     private int index = 0;     // index on dialogues
+    public int charIndex=0; 
 
     public GameObject endButton;    //indicator button for user to end the dialogue
     public GameObject contButton;   //indicator button for the user to press E for next dialogue
@@ -18,7 +20,10 @@ public class RWNPCDialogue : MonoBehaviour
     public bool playerIsClose;
 
 
-    
+    void Awake()
+    {
+        contButton.SetActive(false);
+    }
     void Start()
     {
         dialogueText.text = "";
@@ -27,46 +32,55 @@ public class RWNPCDialogue : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   if(Input.GetKeyDown(KeyCode.Q) && playerIsClose)
+    {  
+           
+    
+        if(Input.GetKeyDown(KeyCode.Q) && playerIsClose)
         {
             if (dialoguePanel.activeInHierarchy)               
             {  
-                RemoveText();       
+                RemoveText();       //quits the dialogue 
             }
         }
+
         
-       
-        else if (Input.GetKeyDown(KeyCode.E) && playerIsClose)       // when player is in range and press 'E'
+        if (Input.GetKeyDown(KeyCode.E) && playerIsClose)       // when player is in range and press 'E'
         {   
             
-
+             dialogueChar = dialogue[index].ToCharArray(); 
+           
              if (!dialoguePanel.activeInHierarchy)               
             {   
                 
                 dialoguePanel.SetActive(true);                  //set dialoguePanel to true 
 
                 StartCoroutine(Typing());                       //begins typing the text
-                
+               
                                
             }
+
+
            
+            if (charIndex==dialogueChar.Length)    
+            {  
+                
+                contButton.SetActive(true);
+            } 
+
             if (dialogueText.text == dialogue[index])    
             {   
                
                 NextLine();
-
+                
             }
-           
-
+         
+             Debug.Log(index);
     
 
         }
         
 
-        if(dialogueText.text == dialogue[index])                // when it reaches to the end of the sentence
-        {
-            contButton.SetActive(true);                         // then 'press e' will appear
-        }
+       
 
     }
 
@@ -75,16 +89,18 @@ public class RWNPCDialogue : MonoBehaviour
         dialogueText.text = "";
         index = 0;
         dialoguePanel.SetActive(false);
+        charIndex=0;
     }
 
     IEnumerator Typing()
     {  
         
-        foreach(char letter in dialogue[index].ToCharArray() )
+        foreach(char letter in dialogueChar)
         {   
+            charIndex++;
             
-
             dialogueText.text += letter;
+
             yield return new WaitForSeconds(wordSpeed);
             
                 

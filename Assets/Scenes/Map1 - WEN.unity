@@ -333,11 +333,6 @@ Sprite:
   m_PhysicsShape: []
   m_Bones: []
   m_SpriteID: 
---- !u!4 &24193035 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2001130009998095572, guid: c99cafc4e8c381040907b363f3906a4c, type: 3}
-  m_PrefabInstance: {fileID: 8490177488892470476}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &65380266
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,7 +983,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &285551028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2336,6 +2331,11 @@ Transform:
   - {fileID: 1431984838}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &639536868 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3318594465835219199, guid: c99cafc4e8c381040907b363f3906a4c, type: 3}
+  m_PrefabInstance: {fileID: 8490177488892470476}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &653358508
 GameObject:
   m_ObjectHideFlags: 0
@@ -3337,15 +3337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25983d24d7a90948a9de49b35bf64df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
-  currentExp: 0
-  requiredExp: 0
-  health: 0
-  attack: 0
-  defense: 0
-  strength: 0
-  dexterity: 0
-  isLoaded: 0
 --- !u!4 &886110032
 Transform:
   m_ObjectHideFlags: 0
@@ -6062,8 +6053,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 24193035}
   - {fileID: 1134424330}
+  - {fileID: 639536868}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1644978995
