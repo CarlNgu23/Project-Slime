@@ -31,7 +31,7 @@ public class Attack : MonoBehaviour
         animations = GetComponentInParent<Animator>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         Check_Distance();
     }

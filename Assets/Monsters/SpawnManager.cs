@@ -8,6 +8,7 @@ public class SpawnManager : ScriptableObject
     public string prefabName;
     public string leftBoundary;
     public string rightBoundary;
+    public float minXAxis;
     public float maxXAxis;
     public int numberOfPrefabsToCreate;
     public Vector3[] monster_SpawnPoints;

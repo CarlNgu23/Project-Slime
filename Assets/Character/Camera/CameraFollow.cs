@@ -1,41 +1,28 @@
+//Created by Carl
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class CameraFollow : MonoBehaviour
 {
-   
-    [SerializeField] public Transform target;   //player
-    [SerializeField] public float smoothings;
-    //[SerializeField] private Camera mainCamera;
+    public Transform player;
+    public Vector3 position;
+    public Vector3 cameraOffset;
+    public float dampingTime;
+    public Vector2 currentVelocity;
+
+    [Header("Limits")]
+    public float minX;
+    public float maxX;
+    public float minY;
+    public float maxY;
 
 
-    [SerializeField] public Vector2 minPostion;
-    [SerializeField] public Vector2 maxPostion;
-
-
-    // use late update to do camera follow the player
-     void LateUpdate()
+    private void Update()
     {
-        if (target != null)
-        {  // dected player if died and player obj destrotyed
-            if (transform.position != target.position)
-            { 
-                Vector3 targetPos = target.position;
-                //to limit camera move area
-                targetPos.x = Mathf.Clamp(targetPos.x, minPostion.x, maxPostion.x);
-                targetPos.y = Mathf.Clamp(targetPos.y, minPostion.y, maxPostion.y);
-                //this function make two postion moving  be smoothing, only change smoothings value
-                transform.position = Vector3.Lerp(transform.position, targetPos, smoothings);               
-            }        
-        }
+        position = player.position + cameraOffset;
+        position.x = Mathf.Clamp(position.x, minX, maxX);
+        position.y = Mathf.Clamp(position.y, minY, maxY);
+        transform.position = Vector2.SmoothDamp(transform.position, position, ref currentVelocity, dampingTime);   
     }
-
-    //DONT EDIT IT. FOR SET LIMIT BY OTHER CLASS.
-    public void setCamposLimit(Vector2 minPos, Vector2 maxPos) 
-    {
-        minPostion = minPos;
-        maxPostion = maxPos;
-    }
-
 }

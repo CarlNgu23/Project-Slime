@@ -24,7 +24,8 @@ public class CPU_Movement : MonoBehaviour
     public float distanceBetweenBoundary;              //The distance between the monster and the boundary.
     public float newRightLimitPositionX;
     public float newLeftLimitPositionX;
-    public float xAxisControlForBoundaryObjects;       //The maximum and Minimum X value that the right or left boundary can be moved.
+    public float min_X_AxisControlForBoundaryObjects;       //The left X value that the right or left boundary can be moved.
+    public float max_X_AxisControlForBoundaryObjects;       //The right X value that the right or left boundary can be moved.
     public float yAxisControlForBoundaryObjects;       //The maximum and Minimum Y value that the right or left boundary can be moved.
 
     // Start is called before the first frame update
@@ -40,12 +41,10 @@ public class CPU_Movement : MonoBehaviour
         toTheRight = true;
         toTheLeft = false;
         isWaiting = false;
-        idleTimeMax = 7f;
-        idleTimeMin = 1f;
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         yAxisControlForBoundaryObjects = monster_RB2D.transform.position.y;
         if (detection.isCPUMove)
@@ -56,7 +55,6 @@ public class CPU_Movement : MonoBehaviour
         {
             if (!isWaiting)
             {
-                Debug.Log("isWAITGING");
                 isWaiting = true;
                 StartCoroutine(Restart());
             }
@@ -112,7 +110,8 @@ public class CPU_Movement : MonoBehaviour
 
     private void MoveRightLimitObject()
     {
-        newRightLimitPositionX = Random.Range(transform.position.x, xAxisControlForBoundaryObjects);
+
+        newRightLimitPositionX = Random.Range(transform.position.x, max_X_AxisControlForBoundaryObjects);
         rightMonsterBoundaryGameObject.transform.position = new Vector2(newRightLimitPositionX, yAxisControlForBoundaryObjects);
 
     }
@@ -141,7 +140,7 @@ public class CPU_Movement : MonoBehaviour
 
     private void MoveLeftLimitObject()
     {
-        newLeftLimitPositionX = Random.Range(transform.position.x, -xAxisControlForBoundaryObjects);
+        newLeftLimitPositionX = Random.Range(transform.position.x, min_X_AxisControlForBoundaryObjects);
         leftMonsterBoundaryGameObject.transform.position = new Vector2(newLeftLimitPositionX, yAxisControlForBoundaryObjects);
     }
 }

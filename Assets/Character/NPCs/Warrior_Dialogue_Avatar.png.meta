@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c0eeaa4908e520f45bf4c159b96bccdc
+guid: ae9c48723518c7b45990e26e606676c9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 25
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_0
+      name: Warrior_Dialogue_Avatar_0
       rect:
         serializedVersion: 2
         x: 15
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84c1859a381d8214bb2b056d70827717
-      internalID: -530959101
+      spriteID: e6736ac953a789f45b71c84c0c00ef09
+      internalID: -943966198
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_1
+      name: Warrior_Dialogue_Avatar_1
       rect:
         serializedVersion: 2
         x: 69
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0f9448c7f4557e43bd96bf5b74fc57e
-      internalID: -1206519779
+      spriteID: d127598163641844bbcbced12d3c8efe
+      internalID: -1033304694
       vertices: []
       indices: 
       edges: []
@@ -162,8 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      player_0: -530959101
-      player_1: -1206519779
+      Warrior_Dialogue_Avatar_0: -943966198
+      Warrior_Dialogue_Avatar_1: -1033304694
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

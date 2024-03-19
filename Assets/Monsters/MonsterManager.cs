@@ -15,6 +15,7 @@ public class MonsterManager : MonoBehaviour
     private BoxCollider2D hitBox;
     public bool isDying_Ref = false;
     public ExpManager expManager;
+    public CPU_Movement cpu_Movement;
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class MonsterManager : MonoBehaviour
         animations = GetComponent<Animator>();
         detection = GetComponent<Detection>();
         expManager = GameObject.Find("ExpManager").GetComponent<ExpManager>();
+        cpu_Movement = GetComponent<CPU_Movement>();
     }
 
     private void Update()
@@ -37,7 +39,6 @@ public class MonsterManager : MonoBehaviour
 
     private void AnimationTransition()
     {
-        
         if (rgbd2D.velocity.x > 0.1f || rgbd2D.velocity.x < -0.1f)
         {
             animations.SetBool("isIdle", false);
@@ -71,6 +72,8 @@ public class MonsterManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         expManager.GiveExp(exp);
+        Destroy(cpu_Movement.rightMonsterBoundaryGameObject);
+        Destroy(cpu_Movement.leftMonsterBoundaryGameObject);
         Destroy(gameObject);
     }
 

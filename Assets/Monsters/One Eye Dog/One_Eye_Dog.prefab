@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2624607103725919919}
   - component: {fileID: 9222808572232030252}
   - component: {fileID: 7793639090191815673}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Attack
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -238,6 +238,7 @@ MonoBehaviour:
   animations: {fileID: 0}
   isDying_Ref: 0
   expManager: {fileID: 0}
+  cpu_Movement: {fileID: 0}
 --- !u!114 &8532220989791475577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,6 +265,7 @@ MonoBehaviour:
   isDetected: 0
   isWaiting: 0
   monster: {fileID: 0}
+  boxCollider2d: {fileID: 0}
 --- !u!114 &114683007356257775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,11 +291,12 @@ MonoBehaviour:
   isIdling: 0
   RestartTime: 3
   idleTimeMin: 1
-  idleTimeMax: 5
+  idleTimeMax: 2
   distanceBetweenBoundary: 1
   newRightLimitPositionX: 0
   newLeftLimitPositionX: 0
-  xAxisControlForBoundaryObjects: 10
+  min_X_AxisControlForBoundaryObjects: 0
+  max_X_AxisControlForBoundaryObjects: 0
   yAxisControlForBoundaryObjects: 0
 --- !u!50 &6425132028350918410
 Rigidbody2D:
@@ -307,10 +310,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 999
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -320,7 +323,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &181916782692294875
 BoxCollider2D:
