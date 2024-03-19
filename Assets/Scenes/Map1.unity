@@ -2153,7 +2153,7 @@ MonoBehaviour:
   wallJumpForceX: 3
   wallJumpForceY: 6
   wallJumpWaitTime: 0.1
-  wallSlideSpeed: 15
+  wallSlideSpeed: 8
   wallSlideAccelerationRate: 0.1
   dashSpeed: 20
   dashTimeOut: 0.1
