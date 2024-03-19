@@ -21,7 +21,7 @@ public class CameraFollow : MonoBehaviour
     private void Update()
     {
         position = player.position + cameraOffset;
-        position.x = Mathf.Clamp(position.x, minX, maxY);
+        position.x = Mathf.Clamp(position.x, minX, maxX);
         position.y = Mathf.Clamp(position.y, minY, maxY);
         transform.position = Vector2.SmoothDamp(transform.position, position, ref currentVelocity, dampingTime);   
     }
