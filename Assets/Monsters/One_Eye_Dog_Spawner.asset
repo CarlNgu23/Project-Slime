@@ -19,7 +19,7 @@ MonoBehaviour:
   maxXAxis: 10
   numberOfPrefabsToCreate: 1
   monster_SpawnPoints:
-  - {x: 0, y: -4.278, z: 0}
+  - {x: 0, y: -4.278, z: 1}
   leftBoundary_SpawnPoints:
   - {x: -1.4, y: -4.278, z: 0}
   rightBoundary_SpawnPoints:
