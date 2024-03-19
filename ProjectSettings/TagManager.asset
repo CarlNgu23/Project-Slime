@@ -14,6 +14,7 @@ TagManager:
   - Right Platform Boundary
   - Wall
   - Ground
+  - speechBubble
   layers:
   - Default
   - TransparentFX
@@ -50,6 +51,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Environment
+    uniqueID: 4172119227
     locked: 0
   - name: Item
     uniqueID: 1149992115
