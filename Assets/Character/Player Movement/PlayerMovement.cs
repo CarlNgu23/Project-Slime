@@ -31,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHangGravity;
     public float jumpHangTime;
     public float newJumpHangTime;
-    public Vector2 wallJumpPos;
     [Header("Wall Jump")]
     public float wallJumpForceX;
     public float wallJumpForceY;
@@ -176,7 +175,6 @@ public class PlayerMovement : MonoBehaviour
         inputValue = moveAction.action.ReadValue<Vector2>();//Detect player's input. Values are between -1 and 1 being left and right respectively. 0 is no input.
         jumpValue = jumpAction.action.ReadValue<float>();//Detect player's space bar input.
         //Debug.Log(jumpValue)
-        CheckCamera();
         GroundCheck();
         WallCheck_EnemyCheck();
         CheckDash();
@@ -286,8 +284,6 @@ public class PlayerMovement : MonoBehaviour
                 isWallJumping = false;
                 isJumping = false;
                 isSliding = true;
-                wallJumpPos = transform.position;
-                //Debug.Log(wallJumpPos);
                 return;
             }
             isFalling = true;
@@ -341,7 +337,6 @@ public class PlayerMovement : MonoBehaviour
         //Overloaded with constraints to prevent super jumping due to multiplying forces from different jump mechanics.
         if (!isGrounded && Time.time > newWallJumpTime)
         {
-            //Time.timeScale = 0.3333f;
             Vector2 jumpForce = new Vector2(wallJumpForceX * direction, wallJumpForceY);
             if (rb2D.velocity.normalized.y < 0.1f)
                 jumpForce.y -= rb2D.velocity.y;
@@ -392,14 +387,6 @@ public class PlayerMovement : MonoBehaviour
     public void CheckJumpHang()
     {
         if (isJumpHanging && Time.time > newJumpHangTime)
-        {
             rb2D.gravityScale = fallingGravity;
-        }
-    }
-
-    public void CheckCamera()
-    {
-              
-            
     }
 }
