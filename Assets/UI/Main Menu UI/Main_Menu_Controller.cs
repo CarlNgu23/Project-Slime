@@ -12,6 +12,7 @@ public class Main_Menu_Controller : MonoBehaviour
     private Button new_game_button;
     private Button load_Button;
     private Button quit_Button;
+   
 
     private void Awake()
     {
