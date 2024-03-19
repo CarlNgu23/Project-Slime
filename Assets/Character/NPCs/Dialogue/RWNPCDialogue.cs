@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,10 +15,12 @@ public class RWNPCDialogue : MonoBehaviour
     private int index = 0;     // index on dialogues
     public char[] dialogueChar;   //contains the characters of the text dialogue
     public int charIndex=0; 
-
+    
     public GameObject endButton;    //indicator button for user to end the dialogue
     public GameObject contButton;   //indicator button for the user to press E for next dialogue
-    public float wordSpeed;         // 0.05 is fast  <----->  0.1 is slow
+    private float wordSpeed;         // 0.05 is fast  <----->  0.1 is slow
+    public float slow;
+    public float fast;
     public bool playerIsClose;
     private bool isTyping = false;   //checks if its still typing
 
@@ -48,10 +51,21 @@ public class RWNPCDialogue : MonoBehaviour
  
         if (Input.GetKeyDown(KeyCode.E) && playerIsClose && !isTyping )       // when player is in range and press 'E' and when the dialogue isn't typing
         {  
-
-            if(index<dialogue.Length)                               //makes sure it doesn't go out of bounds
+            
+           if(index<dialogue.Length)                               //makes sure it doesn't go out of bounds
             {
-                dialogueChar = dialogue[index].ToCharArray();       //an int of an array of characters of the dialogue
+                if (dialogue[index].Substring(0, 5) == "slow:")//Detect dialogues that needs to be slower.
+                {
+                    dialogueChar = dialogue[index].Substring(5, dialogue[index].Length - 5).ToCharArray();
+                    slow = 0.1f;
+                    wordSpeed=slow;
+                }
+                else
+                {
+                    dialogueChar = dialogue[index].ToCharArray();       //an int of an array of characters of the dialogue
+                    fast = 0.05f;
+                    wordSpeed=fast;
+                }
             }
             
            
@@ -99,6 +113,7 @@ public class RWNPCDialogue : MonoBehaviour
     IEnumerator Typing()
     {  
         contButton.SetActive(false);                        //hides the button
+        
         foreach(char letter in dialogueChar)
         {   
             
