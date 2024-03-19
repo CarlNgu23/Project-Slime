@@ -3362,7 +3362,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 886110032}
-  - component: {fileID: 886110031}
+  - component: {fileID: 886110033}
   m_Layer: 0
   m_Name: Stats
   m_TagString: Untagged
@@ -3370,18 +3370,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &886110031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 886110030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b25983d24d7a90948a9de49b35bf64df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &886110032
 Transform:
   m_ObjectHideFlags: 0
@@ -3397,6 +3385,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &886110033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886110030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac5913d1fc9ef4f4682520c8c9b0a2c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 0
+  currentExp: 0
+  requiredExp: 0
+  health: 0
+  attack: 0
+  defense: 0
+  strength: 0
+  dexterity: 0
+  isLoaded: 0
 --- !u!213 &911015478
 Sprite:
   m_ObjectHideFlags: 0
