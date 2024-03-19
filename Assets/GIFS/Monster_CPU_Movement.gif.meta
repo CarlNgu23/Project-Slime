@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/CutsceneStuff/Temp background1.png.meta
+guid: 32ee45e4ea5a05f4c93633e90f7d72b6
+========
 guid: 649991d4611446344b3c2989d7ac10c7
+>>>>>>>> main:Assets/GIFS/Monster_CPU_Movement.gif.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

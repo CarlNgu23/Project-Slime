@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Character/Player_Death.meta
+guid: c26156e3c09505c459196fac15eb6bb6
+========
 guid: 03493548897b58f40a8338a9009f0d29
+>>>>>>>> main:Assets/Monsters/One Eye Dog.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
