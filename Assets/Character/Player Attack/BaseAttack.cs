@@ -1,64 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BaseAttack : MonoBehaviour
 {
-    [SerializeField] public int damage;    //player damage
-    [SerializeField] public float waitTime; //waitTime hitbox disappear time
-    [SerializeField] public float startTime; //startTime hit box appear time
-    private Animator anim;
+    public float startTime;
+    public float endTime;
     private BoxCollider2D baseAttack2d;
-    [SerializeField]private GameObject player;
-    //[SerializeField] private GameObject enemy;
-    [SerializeField] private LayerMask enemy_Layer;
-    // Start is called before the first frame update
+    private PlayerMovement playerMovement;
 
+    private void OnEnable()
+    {
+        playerMovement.attackAction.action.performed += Attack;
+    }
 
-    void Start()
-    {     
-        anim = player.GetComponent<Animator>();
-        GetComponent<Animator>();
+    private void OnDisable()
+    {
+        playerMovement.attackAction.action.performed -= Attack;
+    }
+
+    private void Awake()
+    {
+        playerMovement = GetComponentInParent<PlayerMovement>();
         baseAttack2d = GetComponent<BoxCollider2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void Attack(InputAction.CallbackContext context)
     {
-        damage = Stats.Instance.attack;    //References the attack stats for base damage.
-        if (Input.GetButtonDown("Attack"))
-        {
-            Attack();
-        }
-        
-    }
-
-    void Attack()
-    {
-        anim.SetTrigger("Attack");
+        if (Time.time < playerMovement.waitTime)
+            return;
         StartCoroutine(StartAttack());
     }
 
     IEnumerator StartAttack()
-    {
+    {   //startTime is the time to wait for animation hit frame.
         yield return new WaitForSeconds(startTime);
         baseAttack2d.enabled = true;
-        StartCoroutine(disableHitBox());
+        StartCoroutine(StopAttack());
     }
 
-    IEnumerator disableHitBox()
-    {
-        yield return new WaitForSeconds(waitTime);
+    IEnumerator StopAttack()
+    {   //waitTime is the time to wait for animation to complete.
+        yield return new WaitForSeconds(endTime);
         baseAttack2d.enabled = false;
     }
-
-    //private void OnTriggerEnter2D()
-    //{
-    //    if (baseAttack2d.IsTouchingLayers(enemy_Layer))
-    //    {
-    //        Debug.Log("Collided");
-    //        Monster_Stats.health -= (Stats.Instance.attack - Monster_Stats.defense);
-    //    }
-    //}
-
 }

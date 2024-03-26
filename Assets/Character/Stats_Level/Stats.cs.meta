@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/StoryScene.cs.meta
+guid: ac5913d1fc9ef4f4682520c8c9b0a2c0
+========
 guid: b25983d24d7a90948a9de49b35bf64df
+>>>>>>>> main:Assets/Character/Stats_Level/Stats.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

@@ -1,3 +1,4 @@
+//Developed by Carl Ngu
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -51,7 +52,8 @@ public class Spawner : MonoBehaviour
             CPU_Movement cpu_movement = currentEntity.GetComponent<CPU_Movement>();
             cpu_movement.leftMonsterBoundaryGameObject = currentLeftBoundary;
             cpu_movement.rightMonsterBoundaryGameObject = currentRightBoundary;
-            cpu_movement.xAxisControlForBoundaryObjects = spawnManager.maxXAxis;
+            cpu_movement.max_X_AxisControlForBoundaryObjects = spawnManager.maxXAxis;
+            cpu_movement.min_X_AxisControlForBoundaryObjects = spawnManager.minXAxis;
             cpu_movement.yAxisControlForBoundaryObjects = spawnManager.leftBoundary_SpawnPoints[currentIndex].y;
 
             // Moves to the next spawn point index. If it goes out of range, it wraps back to the start.

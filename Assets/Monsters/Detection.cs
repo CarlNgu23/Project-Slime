@@ -20,6 +20,7 @@ public class Detection : MonoBehaviour
     public bool isDetected;
     public bool isWaiting;
     public MonsterManager monster;
+    public BoxCollider2D boxCollider2d;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class Detection : MonoBehaviour
         attack = GetComponentInChildren<Attack>();
         monster = GetComponent<MonsterManager>();
         player = GameObject.FindWithTag("Player");
+        boxCollider2d = GetComponent<BoxCollider2D>();
         isCPUMove = true;
         isDetected = false;
     }
@@ -53,10 +55,31 @@ public class Detection : MonoBehaviour
         {
             Flip();
         }
-        if (isDetected && Vector2.Distance(transform.position, player.transform.position) > rayDistance)
+        if ((isDetected && Vector2.Distance(transform.position, player.transform.position) > rayDistance) || (player.transform.position.y > (transform.position.y + boxCollider2d.bounds.size.y * 2)))
         {
             monster_RB.velocity = new Vector2(0f, 0f);
             isDetected = false;
+        }
+
+        Vector2 origin = new Vector2();
+        origin.x = transform.position.x;
+        if (player.transform.position.y > (transform.position.y + boxCollider2d.bounds.size.y * 2))
+        {
+            origin.y = transform.position.y;
+        }
+        else
+        {
+            origin.y = player.transform.position.y;
+        }
+        RaycastHit2D right_hit = Physics2D.Raycast(origin, Vector2.right, rayDistance, playerMask);
+        Debug.DrawRay(right_hit.point, right_hit.normal, Color.red);
+        RaycastHit2D left_hit = Physics2D.Raycast(origin, -Vector2.right, rayDistance, playerMask);
+        Debug.DrawRay(left_hit.point, left_hit.normal, Color.red);
+        if (right_hit || left_hit)
+        {
+            isCPUMove = false;
+            isDetected = true;
+            Detect(right_hit, left_hit);
         }
     }
 
@@ -66,21 +89,6 @@ public class Detection : MonoBehaviour
     //    isDetected = false;
     //    isWaiting = false;
     //}
-
-    private void FixedUpdate()
-    {
-
-        RaycastHit2D right_hit = Physics2D.Raycast(transform.position, Vector2.right, rayDistance, playerMask);
-        Debug.DrawRay(right_hit.point, right_hit.normal, Color.red);
-        RaycastHit2D left_hit = Physics2D.Raycast(transform.position, -Vector2.right, rayDistance, playerMask);
-        Debug.DrawRay(left_hit.point, left_hit.normal, Color.red);
-        if (right_hit || left_hit)
-        {
-            isCPUMove = false;
-            isDetected = true;
-            Detect(right_hit, left_hit);
-        }
-    }
 
     public void Detect(RaycastHit2D right, RaycastHit2D left)
     {
