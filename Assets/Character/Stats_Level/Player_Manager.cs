@@ -49,6 +49,7 @@ public class Player_Manager : MonoBehaviour
         Stats.Instance.defense += 1;
         Stats.Instance.strength += 1;
         Stats.Instance.dexterity += 1;
+        Stats.Instance.healthBar.SetMaxHealth(Stats.Instance.health);
         Stats.Instance.currentExp -= Stats.Instance.requiredExp;
         Stats.Instance.requiredExp += Stats.Instance.requiredExp + ((int)Math.Pow(Stats.Instance.level, 4) / 4);
     }
