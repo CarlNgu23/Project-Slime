@@ -7,6 +7,14 @@ TagManager:
   - NPC
   - Item
   - Enemy
+  - Player Basic Attack
+  - Left Monster Boundary
+  - Right Monster Boundary
+  - Left Platform Boundary
+  - Right Platform Boundary
+  - Wall
+  - Ground
+  - speechBubble
   layers:
   - Default
   - TransparentFX
@@ -17,13 +25,13 @@ TagManager:
   - Ground
   - Slope
   - Npc
-  - TriggerBox
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player Basic Attack
+  - Enemy
+  - Monster Right
+  - Monster Left
+  - Left Platform Boundary
+  - Right Platform Boundary
+  - Wall
   - 
   - 
   - 
@@ -44,15 +52,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Environment
+    uniqueID: 4172119227
+    locked: 0
   - name: Item
     uniqueID: 1149992115
     locked: 0
-  - name: Player
-    uniqueID: 2209012261
+  - name: Monsters
+    uniqueID: 1559070975
     locked: 0
   - name: NPC
     uniqueID: 2142412519
     locked: 0
-  - name: TriggerBox
-    uniqueID: 3420683563
+  - name: Player
+    uniqueID: 2209012261
+    locked: 0
+  - name: Traps
+    uniqueID: 1374572447
     locked: 0
