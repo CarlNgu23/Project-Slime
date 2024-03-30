@@ -85,6 +85,7 @@ public class Attack : MonoBehaviour
         if (attack.IsTouchingLayers(playerMask))
         {
             Stats.Instance.health -= 1;
+            Stats.Instance.healthBar.SetHealth(Stats.Instance.health);
             //Debug.Log("Dealt Damage.");
             attack.enabled = false;
         }
