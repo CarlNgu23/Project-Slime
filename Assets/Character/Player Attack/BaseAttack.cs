@@ -1,63 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BaseAttack : MonoBehaviour
 {
+    public float startTime;
+    public float endTime;
+    private BoxCollider2D baseAttack2d;
+    private PlayerMovement playerMovement;
 
-    [SerializeField] private int damage;    //player damage
-    [SerializeField] public float waitTime; //waitTime hitbox disappear time
-    [SerializeField] public float startTime; //startTime hit box appear time
-    private Animator anim;
-    private PolygonCollider2D baseAttack2d;
-    [SerializeField]private GameObject player;
-    // Start is called before the first frame update
-
-
-    void Start()
-    {     
-        anim = player.GetComponent<Animator>();
-        GetComponent<Animator>();
-        baseAttack2d = GetComponent<PolygonCollider2D>();
+    private void OnEnable()
+    {
+        playerMovement.attackAction.action.performed += Attack;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        Attack();
+        playerMovement.attackAction.action.performed -= Attack;
     }
 
-
-    void Attack()
+    private void Awake()
     {
-        if (Input.GetButtonDown("Attack"))
-        {
-            anim.SetTrigger("Attack");
-            StartCoroutine(StartAttack());
-        }
+        playerMovement = GetComponentInParent<PlayerMovement>();
+        baseAttack2d = GetComponent<BoxCollider2D>();
+    }
+
+    void Attack(InputAction.CallbackContext context)
+    {
+        if (Time.time < playerMovement.waitTime)
+            return;
+        StartCoroutine(StartAttack());
     }
 
     IEnumerator StartAttack()
-    {
+    {   //startTime is the time to wait for animation hit frame.
         yield return new WaitForSeconds(startTime);
         baseAttack2d.enabled = true;
-        StartCoroutine(disableHitBox());
+        StartCoroutine(StopAttack());
     }
 
-
-    IEnumerator disableHitBox()
-    {
-        yield return new WaitForSeconds(waitTime);
+    IEnumerator StopAttack()
+    {   //waitTime is the time to wait for animation to complete.
+        yield return new WaitForSeconds(endTime);
         baseAttack2d.enabled = false;
     }
-
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Enemy"))
-        { 
-            other.GetComponent<Monster>().TakeDamage(damage);
-        }
-    }
-
 }

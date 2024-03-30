@@ -1,3 +1,4 @@
+//Developed by Carl Ngu
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class Stats : MonoBehaviour
     public int defense;
     public int strength;
     public int dexterity;
+    public HealthBar healthBar;
 
     public bool isLoaded;
 
@@ -38,4 +40,16 @@ public class Stats : MonoBehaviour
         }
         DontDestroyOnLoad(Instance);
     }
+    private void Start()
+    {
+        if (healthBar != null)
+        {
+            healthBar.SetMaxHealth(health);
+        }
+        else
+        {
+            Debug.LogError("HealthBar is not assigned in Stats.");
+        }
+    }
+
 }

@@ -1,3 +1,4 @@
+//Developed by Carl Ngu
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,20 +6,15 @@ using System;
 
 public class Player_Manager : MonoBehaviour
 {
-    public Player_Manager Instance;
+    public delegate void PlayerAttackDelegator();
+    public event PlayerAttackDelegator OnPlayerAttack;
+
+    public void isAttacking()
+    {
+        OnPlayerAttack?.Invoke();
+    }
 
     public LayerMask player_Mask;
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-    }
-    void Start()
-    {
-    }
 
     //When a monster die, the ExpManager will become enabled and references ExpCheck.
     private void OnEnable()

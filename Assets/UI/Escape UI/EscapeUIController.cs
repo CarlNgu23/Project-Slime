@@ -1,3 +1,4 @@
+//Developed by Carl Ngu
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class EscapeUIController : MonoBehaviour
 
 
     private void Awake()
-    {
+    {   //game loads up all assets, so setting the SetActive to false to become inactive 
         escape_UI.SetActive(false);
         save_UI.SetActive(false);
         load_UI.SetActive(false);
