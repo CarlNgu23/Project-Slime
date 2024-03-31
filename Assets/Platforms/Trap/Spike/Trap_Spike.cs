@@ -17,7 +17,6 @@ public class Trap : MonoBehaviour
         {
             newTime = Time.time + hitBoxCDTime;
             Stats.Instance.health -= dmg;
-            Stats.Instance.healthBar.SetHealth(Stats.Instance.health);
         }
     }
 }

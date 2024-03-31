@@ -25,7 +25,6 @@ public class HideSpike : MonoBehaviour
         {
             anim.SetTrigger("Attack");
             Stats.Instance.health -= dmg;
-            Stats.Instance.healthBar.SetHealth(Stats.Instance.health);
             newTime = Time.time + hitBoxCDTime;
         }
     }
