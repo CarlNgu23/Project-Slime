@@ -11,10 +11,12 @@ public class Stats : MonoBehaviour
     public int currentExp;
     public int requiredExp;
     public int health;
+    public int maxHP;
     public int attack;
     public int defense;
     public int strength;
     public int dexterity;
+    public HealthBar healthBar;
 
     public bool isLoaded;
 
@@ -27,6 +29,7 @@ public class Stats : MonoBehaviour
             currentExp = 0;
             requiredExp = 100;
             health = 100;
+            maxHP = 100;
             attack = 5;
             defense = 0;
             strength = 1;
@@ -39,5 +42,4 @@ public class Stats : MonoBehaviour
         }
         DontDestroyOnLoad(Instance);
     }
-
 }

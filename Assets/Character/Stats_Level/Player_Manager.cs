@@ -44,7 +44,8 @@ public class Player_Manager : MonoBehaviour
     public void UpdateStats()
     {
         Stats.Instance.level += 1;
-        Stats.Instance.health += 50;
+        Stats.Instance.maxHP += 50;
+        Stats.Instance.health = Stats.Instance.maxHP;
         Stats.Instance.attack += 1;
         Stats.Instance.defense += 1;
         Stats.Instance.strength += 1;
