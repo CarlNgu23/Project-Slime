@@ -17,6 +17,7 @@ public class Stats : MonoBehaviour
     public int strength;
     public int dexterity;
     public HealthBar healthBar;
+    public XPBar xPBar;
 
     public bool isLoaded;
 
