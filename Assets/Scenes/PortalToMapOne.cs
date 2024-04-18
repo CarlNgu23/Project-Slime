@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Portal : MonoBehaviour
+public class PortalToMapOne : MonoBehaviour
 {
     public BoxCollider2D portalCollider;
     public GameObject player;
@@ -28,7 +28,7 @@ public class Portal : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(1);
         }
     }
 }
