@@ -24,14 +24,27 @@ public class RWNPCDialogue : MonoBehaviour
     public bool playerIsClose;
     private bool isTyping = false;   //checks if its still typing
 
+    
+    [Header("Quest")]
+    public GameObject questPrefab;
+    public QuestManager questManager;
+
+
     void Awake()
     {
         contButton.SetActive(false);
+        questManager = FindObjectOfType<QuestManager>();
+        if (questManager == null)
+        {
+            Debug.LogError("Failed to find the QuestManager.");
+        }
     }
     void Start()
     {
         dialogueText.text = "";
         dialoguePanel.SetActive(false);                         //by default --> dialoguePanel is not active
+        
+
     }
 
     // Update is called once per frame
@@ -74,6 +87,20 @@ public class RWNPCDialogue : MonoBehaviour
             {
                 RemoveText();
             }
+
+            //get the quest
+            Quest newQuest = Instantiate(questPrefab).GetComponent<Quest>();
+            Destroy(gameObject);
+
+            if (questManager.HasQuest(newQuest.QuestId))
+            {
+                Debug.Log("You already have this quest.");
+                return;
+            }
+
+            questManager.AddQuest(newQuest);
+                Debug.Log("Quest added: " + newQuest.QuestName);           
+
         }
     }
 
