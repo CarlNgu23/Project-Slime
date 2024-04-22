@@ -88,18 +88,38 @@ public class RWNPCDialogue : MonoBehaviour
                 RemoveText();
             }
 
-            //get the quest
-            Quest newQuest = Instantiate(questPrefab).GetComponent<Quest>();
-            Destroy(gameObject);
-
-            if (questManager.HasQuest(newQuest.QuestId))
+            //check all existing quest that has a name
+            Quest[] existingQuests = GameObject.FindObjectsOfType<Quest>();
+            bool shouldInstantiate = true;
+            foreach (Quest existingQuest in existingQuests)
             {
-                Debug.Log("You already have this quest.");
-                return;
+                if (existingQuest.QuestId == questPrefab.GetComponent<Quest>().QuestId)
+                {
+                    shouldInstantiate = false;
+                    Debug.Log("Existing Quest No instantiation.");
+                    break;
+                }
             }
 
-            questManager.AddQuest(newQuest);
-                Debug.Log("Quest added: " + newQuest.QuestName);           
+            Quest newQuest;
+
+            //get the quest
+            if (shouldInstantiate)
+            {             
+                 newQuest = Instantiate(questPrefab).GetComponent<Quest>();
+
+                if (questManager.HasQuest(newQuest.QuestId))
+                {
+                    Debug.Log("You already have this quest.");
+                    return;
+                }
+
+                questManager.AddQuest(newQuest);
+                Debug.Log("Quest added: " + newQuest.QuestName);
+
+            }
+            //Destroy(gameObject); // deleted this object after you get a quest
+
 
         }
     }
