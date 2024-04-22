@@ -4736,8 +4736,6 @@ MonoBehaviour:
   slowDialogueDelay: 0
   fastDialogueDelay: 0
   playerIsClose: 0
-  questPrefab: {fileID: 0}
-  questManager: {fileID: 0}
 --- !u!4 &1035443117
 Transform:
   m_ObjectHideFlags: 0
@@ -5220,6 +5218,7 @@ GameObject:
   - component: {fileID: 1212144760}
   - component: {fileID: 1212144759}
   - component: {fileID: 1212144758}
+  - component: {fileID: 1212144761}
   m_Layer: 0
   m_Name: Speech Icon
   m_TagString: speechBubble
@@ -5266,8 +5265,6 @@ MonoBehaviour:
   slowDialogueDelay: 0.1
   fastDialogueDelay: 0.05
   playerIsClose: 0
-  questPrefab: {fileID: 8248330282403703129, guid: 273ea482270c69347ae77ef67754929e, type: 3}
-  questManager: {fileID: 2016745554}
 --- !u!61 &1212144759
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5365,6 +5362,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1212144761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212144756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0775d07c93f15f84a87632ee6e6fe6a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questPrefab: {fileID: 8248330282403703129, guid: 273ea482270c69347ae77ef67754929e, type: 3}
+  questManager: {fileID: 2016745554}
 --- !u!114 &1315185481
 MonoBehaviour:
   m_ObjectHideFlags: 0

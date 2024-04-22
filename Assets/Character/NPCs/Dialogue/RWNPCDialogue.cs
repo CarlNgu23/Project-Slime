@@ -24,22 +24,14 @@ public class RWNPCDialogue : MonoBehaviour
     public bool playerIsClose;
     private bool isTyping = false;   //checks if its still typing
 
-    
-    [Header("Quest")]
-    public GameObject questPrefab;
-    public QuestManager questManager;
 
 
     void Awake()
     {
         contButton.SetActive(false);
-        questManager = FindObjectOfType<QuestManager>();
-        if (questManager == null)
-        {
-            Debug.LogError("Failed to find the QuestManager.");
-        }
     }
-    void Start()
+
+        void Start()
     {
         dialogueText.text = "";
         dialoguePanel.SetActive(false);                         //by default --> dialoguePanel is not active
@@ -70,7 +62,7 @@ public class RWNPCDialogue : MonoBehaviour
                 else
                 {
                     dialogueChar = dialogue[index].ToCharArray();       //an int of an array of characters of the dialogue
-                    wordSpeed= fastDialogueDelay;
+                    wordSpeed = fastDialogueDelay;
                 }
            }
 
@@ -88,40 +80,15 @@ public class RWNPCDialogue : MonoBehaviour
                 RemoveText();
             }
 
-            //check all existing quest that has a name
-            Quest[] existingQuests = GameObject.FindObjectsOfType<Quest>();
-            bool shouldInstantiate = true;
-            foreach (Quest existingQuest in existingQuests)
+            if (!dialoguePanel.active)
             {
-                if (existingQuest.QuestId == questPrefab.GetComponent<Quest>().QuestId)
-                {
-                    shouldInstantiate = false;
-                    Debug.Log("Existing Quest No instantiation.");
-                    break;
-                }
+                //AssignQuest();                                  // assign quest to player
+                GetComponent<QuestAssign>().AssignQuest();
             }
-
-            Quest newQuest;
-
-            //get the quest
-            if (shouldInstantiate)
-            {             
-                 newQuest = Instantiate(questPrefab).GetComponent<Quest>();
-
-                if (questManager.HasQuest(newQuest.QuestId))
-                {
-                    Debug.Log("You already have this quest.");
-                    return;
-                }
-
-                questManager.AddQuest(newQuest);
-                Debug.Log("Quest added: " + newQuest.QuestName);
-
-            }
-            //Destroy(gameObject); // deleted this object after you get a quest
-
 
         }
+
+
     }
 
     public void RemoveText()
@@ -174,4 +141,5 @@ public class RWNPCDialogue : MonoBehaviour
             RemoveText();
         }
     }
+
 }
