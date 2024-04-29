@@ -5219,6 +5219,7 @@ GameObject:
   - component: {fileID: 1212144759}
   - component: {fileID: 1212144758}
   - component: {fileID: 1212144761}
+  - component: {fileID: 1212144762}
   m_Layer: 0
   m_Name: Speech Icon
   m_TagString: speechBubble
@@ -5374,8 +5375,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0775d07c93f15f84a87632ee6e6fe6a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questPrefab: {fileID: 8248330282403703129, guid: 273ea482270c69347ae77ef67754929e, type: 3}
   questManager: {fileID: 2016745554}
+--- !u!114 &1212144762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212144756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76404d82fb705b94aabd2036d22aec54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QuestId: 0
+  QuestName: Kill First Monster
+  QuestDescription: Kill First Monster!
+  isComplete: 0
+  rewardExp: 30
+  repeatable: 1
+  requirements:
+  - type: 1
+    targetIdentifier: One_Eye_Dog
+    requiredAmount: 1
+    currentAmount: 0
+  expManager: {fileID: 0}
 --- !u!114 &1315185481
 MonoBehaviour:
   m_ObjectHideFlags: 0

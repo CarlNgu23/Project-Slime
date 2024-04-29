@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 [System.Serializable]
@@ -11,6 +12,7 @@ public class Quest : MonoBehaviour
     public string QuestDescription;
     public bool isComplete = false;
     public int rewardExp;
+    public bool repeatable = false;
     //public int reward other 
     public QuestRequirement[] requirements;
 
@@ -26,7 +28,14 @@ public class Quest : MonoBehaviour
         {
             expManager.GiveExp(rewardExp);
             Debug.Log("quest done");
-            Destroy(gameObject);
+            if (repeatable)
+            {
+                repeat();   //make it repeat
+            }
+            else
+            {
+               // Destroy(gameObject);    //destroy object include dialog
+            }
         }
     }
 
@@ -34,6 +43,20 @@ public class Quest : MonoBehaviour
     {
         expManager = GameObject.Find("ExpManager").GetComponent<ExpManager>();
        
+    }
+
+    private void repeat()
+    {
+        isComplete = false;
+        foreach (QuestRequirement requirement in requirements)
+        {
+            requirement.currentAmount = 0;
+        }
+        //Reward decreases after repeating 
+        if (rewardExp >= 0)
+        {
+            rewardExp -= 1;
+        }
     }
 }
 

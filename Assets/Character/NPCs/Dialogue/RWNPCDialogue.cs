@@ -24,11 +24,12 @@ public class RWNPCDialogue : MonoBehaviour
     public bool playerIsClose;
     private bool isTyping = false;   //checks if its still typing
 
-
+    public bool questRepeat = true;
 
     void Awake()
     {
         contButton.SetActive(false);
+       
     }
 
         void Start()
@@ -82,8 +83,11 @@ public class RWNPCDialogue : MonoBehaviour
 
             if (!dialoguePanel.active)
             {
-                //AssignQuest();                                  // assign quest to player
-                GetComponent<QuestAssign>().AssignQuest();
+                if (questRepeat)    //set some quest can be repeatable and so on
+                {
+                    GetComponent<QuestAssign>().AssignQuest();    // assign quest to player
+                    questRepeat = GetComponent<Quest>().repeatable;
+                }
             }
 
         }

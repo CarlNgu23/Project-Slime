@@ -58,6 +58,7 @@ public class QuestManager : MonoBehaviour
                     quest.CheckComplete();
                     if (quest.isComplete) 
                     {
+                        quests.Remove(quest);
                         break;
                     }
                 }
