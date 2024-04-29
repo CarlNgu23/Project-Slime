@@ -7,6 +7,7 @@ public class QuestManager : MonoBehaviour
 {
 
     public List<Quest> quests = new List<Quest>();
+    List<Quest> completedQuests = new List<Quest>();
     public int maxQuests = 5;// you can only get 5 quest in the same time
 
     public static QuestManager Instance;
@@ -58,13 +59,17 @@ public class QuestManager : MonoBehaviour
                     quest.CheckComplete();
                     if (quest.isComplete) 
                     {
-                        quests.Remove(quest);
-                        break;
+                        completedQuests.Add(quest);
+                        break;  
                     }
                 }
             }
         }
 
+        foreach (var completedQuest in completedQuests)
+        {
+            quests.Remove(completedQuest); // remove completed quest
+        }
     }
 
 
