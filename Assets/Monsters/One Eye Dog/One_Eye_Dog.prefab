@@ -239,6 +239,7 @@ MonoBehaviour:
   isDying_Ref: 0
   expManager: {fileID: 0}
   cpu_Movement: {fileID: 0}
+  MonsterID: One_Eye_Dog
 --- !u!114 &8532220989791475577
 MonoBehaviour:
   m_ObjectHideFlags: 0
