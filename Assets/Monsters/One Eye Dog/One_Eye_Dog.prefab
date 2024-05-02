@@ -240,6 +240,7 @@ MonoBehaviour:
   expManager: {fileID: 0}
   cpu_Movement: {fileID: 0}
   MonsterID: One_Eye_Dog
+  bloodEffect: {fileID: 9027775289753663493, guid: 349fe233e5550ec4787bbcdc171f96d3, type: 3}
 --- !u!114 &8532220989791475577
 MonoBehaviour:
   m_ObjectHideFlags: 0

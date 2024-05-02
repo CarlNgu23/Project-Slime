@@ -32,7 +32,7 @@ TagManager:
   - Left Platform Boundary
   - Right Platform Boundary
   - Wall
-  - 
+  - Effect
   - 
   - 
   - 
@@ -51,6 +51,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Effect
+    uniqueID: 3807932449
     locked: 0
   - name: Environment
     uniqueID: 4172119227

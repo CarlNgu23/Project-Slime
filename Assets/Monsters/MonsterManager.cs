@@ -18,6 +18,14 @@ public class MonsterManager : MonoBehaviour
     public CPU_Movement cpu_Movement;
     public string MonsterID;
 
+    //monster take dmg flash
+    private SpriteRenderer sr;
+    private Color originalColor;
+    public GameObject bloodEffect;
+
+
+  
+
     private void Awake()
     {
         rgbd2D = GetComponent<Rigidbody2D>();
@@ -26,6 +34,8 @@ public class MonsterManager : MonoBehaviour
         detection = GetComponent<Detection>();
         expManager = GameObject.Find("ExpManager").GetComponent<ExpManager>();
         cpu_Movement = GetComponent<CPU_Movement>();
+        sr = GetComponent<SpriteRenderer>();
+        originalColor = sr.color;
     }
 
     private void Update()
@@ -61,6 +71,8 @@ public class MonsterManager : MonoBehaviour
     private void TakeDamage()
     {
         hp -= ((Stats.Instance.attack + Stats.Instance.strength) - defense);
+        FlashColor();
+        Instantiate(bloodEffect, transform.position, Quaternion.identity);
     }
 
     private void DieAnimation()
@@ -81,4 +93,14 @@ public class MonsterManager : MonoBehaviour
 
     }
 
+
+    void FlashColor() 
+    {
+        sr.color = Color.red;
+        Invoke("ResetColor", 0.5f); // time sec later reset color
+    }
+    void ResetColor() 
+    {
+        sr.color = originalColor;
+    }
 }
