@@ -7,6 +7,11 @@ using UnityEngine.Rendering;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //For debugging purposes.
+    Vector3[] boxCastPoints;
+    Vector3[] leftWallBoxCastPoints;
+    Vector3[] rightWallBoxCastPoints;
+
     [Header("Camera")]
     public CameraFollow cameraFollow;
     [Header("Components")]
@@ -210,7 +215,7 @@ public class PlayerMovement : MonoBehaviour
             return dash;
         if (isAttacking)//Attacking
             return KeepState(attack, attackTime);
-        if (isFalling && isGrounded)//Landing
+        if ((isFalling || isSliding || isWallJumping) && isGrounded)//Landing
         {
             isFalling = false;
             return KeepState(land, landingTime);
@@ -297,23 +302,56 @@ public class PlayerMovement : MonoBehaviour
 
     public void GroundCheck()
     {
-        isGrounded= Physics2D.BoxCast(transform.position - new Vector3(0,0.18f), groundBoxSize, 0, Vector2.down, 0, groundMask);
+        groundBoxSize.x = boxCollider2D.bounds.extents.x * 2;
+        isGrounded = Physics2D.BoxCast(new Vector2 (boxCollider2D.bounds.center.x, boxCollider2D.bounds.center.y - boxCollider2D.bounds.extents.y), groundBoxSize, 0, Vector2.down, 0, groundMask);
+        boxCastPoints = new Vector3[4]    //For debugging purposes.
+        {
+            new Vector3 (boxCollider2D.bounds.center.x - boxCollider2D.bounds.extents.x, boxCollider2D.bounds.center.y - boxCollider2D.bounds.extents.y),//Top Left
+            new Vector3 (boxCollider2D.bounds.center.x + boxCollider2D.bounds.extents.x, boxCollider2D.bounds.center.y - boxCollider2D.bounds.extents.y),//Top Right
+            new Vector3 (boxCollider2D.bounds.center.x + boxCollider2D.bounds.extents.x, boxCollider2D.bounds.center.y - boxCollider2D.bounds.extents.y - groundBoxSize.y),//Bottom Right
+            new Vector3 (boxCollider2D.bounds.center.x - boxCollider2D.bounds.extents.x, boxCollider2D.bounds.center.y - boxCollider2D.bounds.extents.y - groundBoxSize.y)//Bottom Left
+        };
         if (isGrounded)
         {
             rb2D.gravityScale = 1.0f;
-            isSliding = false;
+            isSliding = false; 
+            isWallJumping= false;
             isJumpHanging = false;
         }
     }
 
+    private void OnDrawGizmosSelected()//For debugging purposes.
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLineStrip(boxCastPoints, true);
+        Gizmos.DrawLineStrip(rightWallBoxCastPoints, true);
+        Gizmos.DrawLineStrip(leftWallBoxCastPoints, true);
+    }
+
     public void WallCheck_EnemyCheck()//Check for walls to allow player to do things like wall jump.
     {
-        isRightWalled = Physics2D.BoxCast(transform.position + new Vector3(0.2f, 0f, 0f), wallBoxSize, 0f, Vector2.right, 0f, wallMask);
-        isLeftWalled = Physics2D.BoxCast(transform.position - new Vector3(0.2f, 0f, 0f), wallBoxSize, 0f, Vector2.left, 0f, wallMask);
-        isRightEnemy = Physics2D.BoxCast(transform.position + new Vector3(0.2f, 0f, 0f), enemyBoxSize, 0f, Vector2.right, 0f, enemyMask);
-        isLeftEnemy = Physics2D.BoxCast(transform.position - new Vector3(0.2f, 0f, 0f), enemyBoxSize, 0f, Vector2.left, 0f, enemyMask);
+        wallBoxSize.y = boxCollider2D.bounds.extents.y * 2;
+        enemyBoxSize.y = boxCollider2D.bounds.extents.y * 2;
+        isRightWalled = Physics2D.BoxCast(new Vector2(boxCollider2D.bounds.center.x + boxCollider2D.bounds.extents.x, boxCollider2D.bounds.center.y), wallBoxSize, 0f, Vector2.right, 0f, wallMask);
+        isLeftWalled = Physics2D.BoxCast(new Vector2 (boxCollider2D.bounds.center.x - boxCollider2D.bounds.extents.x, boxCollider2D.bounds.center.y), wallBoxSize, 0f, Vector2.left, 0f, wallMask);
+        isRightEnemy = Physics2D.BoxCast(new Vector2(boxCollider2D.bounds.center.x + boxCollider2D.bounds.extents.x, boxCollider2D.bounds.center.y), enemyBoxSize, 0f, Vector2.right, 0f, enemyMask);
+        isLeftEnemy = Physics2D.BoxCast(new Vector2(boxCollider2D.bounds.center.x - boxCollider2D.bounds.extents.x, boxCollider2D.bounds.center.y), enemyBoxSize, 0f, Vector2.left, 0f, enemyMask);
         if (!isRightWalled || !isLeftWalled)
             isSliding = false;
+        rightWallBoxCastPoints = new Vector3[4]//For debugging purposes.
+        {
+            new Vector3 (boxCollider2D.bounds.center.x + boxCollider2D.bounds.extents.x, boxCollider2D.bounds.center.y + boxCollider2D.bounds.extents.y), //Top Left
+            new Vector3 (boxCollider2D.bounds.center.x + boxCollider2D.bounds.extents.x + wallBoxSize.x, boxCollider2D.bounds.center.y + boxCollider2D.bounds.extents.y),//Top Right
+            new Vector3 (boxCollider2D.bounds.center.x + boxCollider2D.bounds.extents.x + wallBoxSize.x, boxCollider2D.bounds.center.y - boxCollider2D.bounds.extents.y),//Bottom Right
+            new Vector3 (boxCollider2D.bounds.center.x + boxCollider2D.bounds.extents.x, boxCollider2D.bounds.center.y - boxCollider2D.bounds.extents.y)//Bottom Left
+        };
+        leftWallBoxCastPoints = new Vector3[4]//For debugging purposes.
+        {
+            new Vector3 (boxCollider2D.bounds.center.x - boxCollider2D.bounds.extents.x - wallBoxSize.x, boxCollider2D.bounds.center.y + boxCollider2D.bounds.extents.y), //Top Left
+            new Vector3 (boxCollider2D.bounds.center.x - boxCollider2D.bounds.extents.x, boxCollider2D.bounds.center.y + boxCollider2D.bounds.extents.y),//Top Right
+            new Vector3 (boxCollider2D.bounds.center.x - boxCollider2D.bounds.extents.x, boxCollider2D.bounds.center.y - boxCollider2D.bounds.extents.y),//Bottom Right
+            new Vector3 (boxCollider2D.bounds.center.x - boxCollider2D.bounds.extents.x - wallBoxSize.x, boxCollider2D.bounds.center.y - boxCollider2D.bounds.extents.y)//Bottom Left
+        };
     }
 
     public void CheckDirection()//Check contradictions in player's input and player's direction in game.
