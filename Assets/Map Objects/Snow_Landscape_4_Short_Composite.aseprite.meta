@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 664a16f45e4e7654fb8f3219dfed9bb1
+guid: f8145140acdded74d84e536801513c9f
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -35,7 +35,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 49
+    spritePixelsToUnits: 69
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638507592582597988
+  platformSettingsDirtyTick: 638507603727060595
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Snowy_Mountains_1
+  - name: Snow_Landscape_4_Short_Composite
     originalName: 
-    pivot: {x: 0.49739584, y: 0}
+    pivot: {x: 0.98607594, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 960
-      height: 479
-    spriteID: 1ff0b7748aca9fd46b7bed0198812763
+      width: 790
+      height: 218
+    spriteID: c7b3867c731b24d4484aa9b4c91fc71c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -142,18 +142,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
   spriteSheetImportData:
-  - name: Snowy_Mountains_1_0
+  - name: Snow_Landscape_4_Short_Composite_0
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 960
-      height: 479
-    spriteID: 5bfb5f8b9bfe75345a5b948e47ead40e
+      width: 1012
+      height: 219
+    spriteID: 16823a5a3dab3854f8a30ff5ffc14bd3
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -164,20 +164,20 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   asepriteLayers:
   - layerIndex: 0
-    guid: -1626735251
-    name: Snowy_Mountains_1
+    guid: -650675775
+    name: Snow_Landscape_4_Short_Composite
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Snowy_Mountains_1
+    - name: Snow_Landscape_4_Short_Composite
       frameIndex: 0
       cellRect:
         x: 0
         y: 0
-        width: 960
-        height: 475
-      spriteId: 1ff0b7748aca9fd46b7bed0198812763
+        width: 790
+        height: 218
+      spriteId: c7b3867c731b24d4484aa9b4c91fc71c
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -220,4 +220,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 960, y: 479}
+  canvasSize: {x: 1558, y: 218}

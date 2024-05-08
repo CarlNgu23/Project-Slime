@@ -5,11 +5,15 @@ using UnityEngine;
 public class ParallaxBackground : MonoBehaviour
 {
     public GameObject camera;
-    public float parallaxFactor;
+    public float parallaxFactorX;
+    public float parallaxFactorY;
     public float startPos;
     public float endPos;
     public float distance;
-    public float move;
+    public float moveX;
+    public float moveY;
+    public float offsetX;
+    public float offsetY;
 
     // Start is called before the first frame update
     void Start()
@@ -21,11 +25,12 @@ public class ParallaxBackground : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        endPos = (camera.transform.position.x * (1 - parallaxFactor));
-        move = (camera.transform.position.x * parallaxFactor);
+        endPos = camera.transform.position.x * (1 - parallaxFactorX);
+        moveX = (camera.transform.position.x + offsetX) * parallaxFactorX;
+        moveY = (camera.transform.position.y + offsetY) * parallaxFactorY;
+        transform.position = new Vector2(moveX, moveY);
 
-        transform.position = new Vector2(startPos + move, transform.position.y);
-
+        //Infinite Scrolling
         if ((startPos + distance) < endPos)
         {
             startPos += distance;

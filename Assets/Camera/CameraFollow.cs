@@ -37,7 +37,7 @@ public class CameraFollow : MonoBehaviour
         //Platform#2
         if (player.position.y <= -4.35 && player.position.x >= 9)
         {
-            minY = -5.2f;
+            minY = -100f;
         }
     }
 }

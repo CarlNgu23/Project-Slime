@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 664a16f45e4e7654fb8f3219dfed9bb1
+guid: 5548358f510b4f14090758925044f1f7
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -35,7 +35,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 49
+    spritePixelsToUnits: 100
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638507592582597988
+  platformSettingsDirtyTick: 638507690756636125
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Snowy_Mountains_1
+  - name: Snowy_Mountains_1_FHD
     originalName: 
-    pivot: {x: 0.49739584, y: 0}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 960
-      height: 479
-    spriteID: 1ff0b7748aca9fd46b7bed0198812763
+      width: 1920
+      height: 950
+    spriteID: 64563781b8556e34c8983501be6637db
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -142,7 +142,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
   spriteSheetImportData:
-  - name: Snowy_Mountains_1_0
+  - name: Snowy_Mountains_1_FHD_0
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -151,9 +151,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 960
-      height: 479
-    spriteID: 5bfb5f8b9bfe75345a5b948e47ead40e
+      width: 1920
+      height: 950
+    spriteID: 0c932d36de5aebd4a80352abceb38852
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -164,20 +164,20 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   asepriteLayers:
   - layerIndex: 0
-    guid: -1626735251
-    name: Snowy_Mountains_1
+    guid: -1880493178
+    name: Snowy_Mountains_1_FHD
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Snowy_Mountains_1
+    - name: Snowy_Mountains_1_FHD
       frameIndex: 0
       cellRect:
         x: 0
         y: 0
-        width: 960
-        height: 475
-      spriteId: 1ff0b7748aca9fd46b7bed0198812763
+        width: 1920
+        height: 950
+      spriteId: 64563781b8556e34c8983501be6637db
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -220,4 +220,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 960, y: 479}
+  canvasSize: {x: 1920, y: 958}
