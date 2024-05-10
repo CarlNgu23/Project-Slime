@@ -55,6 +55,9 @@ TagManager:
   - name: Environment
     uniqueID: 4172119227
     locked: 0
+  - name: Traps
+    uniqueID: 1374572447
+    locked: 0
   - name: Item
     uniqueID: 1149992115
     locked: 0
@@ -66,7 +69,4 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2209012261
-    locked: 0
-  - name: Traps
-    uniqueID: 1374572447
     locked: 0
