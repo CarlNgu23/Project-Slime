@@ -14852,6 +14852,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53272e6c84340543be4304011cacf95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  portalCollider: {fileID: 0}
+  player: {fileID: 0}
 --- !u!61 &438983175
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15811,7 +15813,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b1a6f09c16115478906c75bb5178ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Respawn: 1
 --- !u!212 &518060194
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15888,7 +15889,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 518060191}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17b1a6f09c16115478906c75bb5178ca, type: 3}
+  m_Script: {fileID: 11500000, guid: 63e61bd5998342e4c8af41c0ea0b1d5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Respawn: 1
@@ -28538,7 +28539,7 @@ Transform:
   m_GameObject: {fileID: 618832037}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 36.31, y: -1.84, z: 1}
+  m_LocalPosition: {x: -6.6, y: -4.32, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
