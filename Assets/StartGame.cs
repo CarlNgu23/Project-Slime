@@ -6,7 +6,7 @@ using UnityEngine.Playables;
 public class StartGame : MonoBehaviour
 {
     private PlayableDirector director; //responsible for controlling the playback of the timeline
-    public GameObject controlPanel; //timeline
+   
     
 
     void Awake()
