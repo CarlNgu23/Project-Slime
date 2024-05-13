@@ -269,8 +269,8 @@ Transform:
   m_GameObject: {fileID: 340556550}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2244, y: 471, z: 0}
-  m_LocalScale: {x: 8119.981, y: 1551.4652, z: 1551.4652}
+  m_LocalPosition: {x: -2031, y: 471, z: 0}
+  m_LocalScale: {x: 11266.474, y: 1551.4652, z: 1551.4652}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -310,7 +310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: b7dc26fe7d242e74bb28506ac66b56dc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 617
+      value: 1981
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: b7dc26fe7d242e74bb28506ac66b56dc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -717,6 +717,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1666631857}
   - component: {fileID: 1666631856}
+  - component: {fileID: 1666631858}
   m_Layer: 0
   m_Name: Timeline
   m_TagString: Untagged
@@ -767,6 +768,19 @@ Transform:
   - {fileID: 2034865128}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1666631858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666631855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd67dd02b41a504cb051640ea905b7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlPanel: {fileID: 1666631855}
 --- !u!1 &1990911683
 GameObject:
   m_ObjectHideFlags: 0

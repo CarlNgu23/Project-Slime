@@ -2,14 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.Playables;
 public class StartGame : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public void startGame()
+    private PlayableDirector director; //responsible for controlling the playback of the timeline
+    public GameObject controlPanel; //timeline
+    
+
+    void Awake()
     {
-        SceneManager.LoadScene(2);
+        director = GetComponent<PlayableDirector>();
+        director.stopped += DirectorStopped;
     }
+
+   
+
+    private void DirectorStopped(PlayableDirector obj) //event handler, this function is called when timeline is stopped
+    {
+      
+        SceneManager.LoadScene(2);//runs the game once the timeline stops
+    }
+
+    public void StartTimeline()
+    {
+        director.Play(); //plays the timeline
+    }
+
+    public void StopTimeline()
+    {
+        director.Stop(); //stops the timeline
+    }
+
+    
 
 
 }
