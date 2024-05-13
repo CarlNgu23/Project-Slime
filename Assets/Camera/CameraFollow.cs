@@ -29,15 +29,14 @@ public class CameraFollow : MonoBehaviour
     void CheckArea()
     {
         //Platform#1
-        if (player.position.y < 1.8 && player.position.y > -4.35)
+        if (player.position.x < 10f)
         {
             minY = -1.8f;
             maxY = 1.8f;
         }
-        //Platform#2
-        if (player.position.y <= -4.35 && player.position.x >= 9)
+        else
         {
-            minY = -100f;
+            maxY = 100f;
         }
     }
 }
