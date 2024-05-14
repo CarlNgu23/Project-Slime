@@ -181,7 +181,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1559070975
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -881448940, guid: ea63f511ac43e6b4dbf71449d0f83df8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -230,7 +230,7 @@ MonoBehaviour:
   hp: 10
   atk: 5
   defense: 1
-  exp: 100
+  exp: 50
   player_BasicAttack_Mask:
     serializedVersion: 2
     m_Bits: 512

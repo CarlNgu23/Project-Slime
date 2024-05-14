@@ -7,12 +7,15 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
-    guid: 9e365b71b75bce24f8da2ccb11d6a33f
+    guid: 703af0ac2ba26a34297a757d02ff2e2f
+  - enabled: 1
+    path: Assets/Scenes/Cutscene.unity
+    guid: 9416553aa0d52f44d8d735e2574eb1e8
   - enabled: 1
     path: Assets/Scenes/Map1.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Map2.unity
-    guid: 04952aa7d58f1824bbd040e6d7d69230
+    guid: d1885002d34d5aa49b5b811e31e446f9
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: cea73a3bd715f9246999b87b8ba3ad5b, type: 2}
