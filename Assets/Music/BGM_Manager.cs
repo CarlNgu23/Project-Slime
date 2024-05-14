@@ -5,7 +5,7 @@ using UnityEngine;
 public class BGM_Manager : MonoBehaviour
 {
     public static BGM_Manager Instance;
-    public AudioSource audio;
+    public AudioSource bgm;
 
     // Start is called before the first frame update
     void Start()
@@ -13,7 +13,7 @@ public class BGM_Manager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            audio = GetComponent<AudioSource>();
+            bgm = GetComponent<AudioSource>();
         }
         else
         {
@@ -26,9 +26,9 @@ public class BGM_Manager : MonoBehaviour
     void Update()
     {
         //Prevents BGM from restarting on death. Keeps the audio playing at all time.
-        if (!audio.isPlaying)
+        if (!bgm.isPlaying)
         {
-            audio.Play();
+            bgm.Play();
         }
     }
 }
