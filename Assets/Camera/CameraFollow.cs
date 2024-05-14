@@ -31,8 +31,8 @@ public class CameraFollow : MonoBehaviour
         //Platform#1
         if (player.position.x < 10f)
         {
-            minY = -1.8f;
-            maxY = 1.8f;
+            minY = -2f;
+            maxY = 2f;
         }
         else
         {

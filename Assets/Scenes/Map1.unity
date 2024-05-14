@@ -16872,7 +16872,7 @@ MonoBehaviour:
   cameraOffset: {x: 0, y: 0, z: 0}
   dampingTime: 0.1
   currentVelocity: {x: 0, y: 0}
-  minX: -3.2
+  minX: -4.26
   maxX: 70
   minY: -100
   maxY: 200
@@ -107501,7 +107501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d543b3e415290ef46b37a897bd0c9e01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 519420028}
+  main_camera: {fileID: 519420028}
   parallaxFactorX: 0.93
   parallaxFactorY: 0.95
   startPos: 0
@@ -107574,7 +107574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d543b3e415290ef46b37a897bd0c9e01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 519420028}
+  main_camera: {fileID: 519420028}
   parallaxFactorX: 0.5
   parallaxFactorY: 0.1
   startPos: 0
@@ -107674,7 +107674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d543b3e415290ef46b37a897bd0c9e01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 519420028}
+  main_camera: {fileID: 519420028}
   parallaxFactorX: 0.7
   parallaxFactorY: 0.2
   startPos: 0
