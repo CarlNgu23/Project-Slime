@@ -23,7 +23,7 @@ public class StartGame : MonoBehaviour
         }
         else
         {
-            if (isPaused && Input.GetKeyDown(KeyCode.E))
+            if (isPaused && Input.GetMouseButtonDown(0))
             {
                 ResumeTimeline();
             }
