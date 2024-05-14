@@ -6,7 +6,7 @@ using UnityEngine.Playables;
 public class StartGame : MonoBehaviour
 {
     private PlayableDirector director; //responsible for controlling the playback of the timeline
-   
+    private bool isPaused = false;
     
 
     void Awake()
@@ -15,8 +15,24 @@ public class StartGame : MonoBehaviour
         director.stopped += DirectorStopped;
     }
 
-   
+    void Update()
+    {   
+         if (director == null)
+        {
+             Debug.LogError("PlayableDirector component not found");
+        }
+        else
+        {
+            if (isPaused && Input.GetKeyDown(KeyCode.E))
+            {
+                ResumeTimeline();
+            }
+        }
 
+       
+    }
+   
+    
     private void DirectorStopped(PlayableDirector obj) //event handler, this function is called when timeline is stopped
     {
       
@@ -26,13 +42,24 @@ public class StartGame : MonoBehaviour
     public void StartTimeline()
     {
         director.Play(); //plays the timeline
+        
     }
 
     public void StopTimeline()
     {
-        director.Stop(); //stops the timeline
+        director.Stop(); //terminates the timeline
     }
 
+    public void ResumeTimeline()
+    {
+        director.Resume();
+        isPaused=false;
+    }
+    public void PauseTimeline()
+    {
+        director.Pause();
+        isPaused=true;
+    }
     
 
 
