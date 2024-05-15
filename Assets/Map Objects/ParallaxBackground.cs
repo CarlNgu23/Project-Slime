@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ParallaxBackground : MonoBehaviour
 {
-    public GameObject main_camera;
+    public GameObject camera;
     public float parallaxFactorX;
     public float parallaxFactorY;
     public float startPos;
@@ -25,9 +25,9 @@ public class ParallaxBackground : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        endPos = main_camera.transform.position.x * (1 - parallaxFactorX);
-        moveX = (main_camera.transform.position.x + offsetX) * parallaxFactorX;
-        moveY = (main_camera.transform.position.y + offsetY) * parallaxFactorY;
+        endPos = camera.transform.position.x * (1 - parallaxFactorX);
+        moveX = (camera.transform.position.x + offsetX) * parallaxFactorX;
+        moveY = (camera.transform.position.y + offsetY) * parallaxFactorY;
         transform.position = new Vector2(moveX, moveY);
 
         //Infinite Scrolling
