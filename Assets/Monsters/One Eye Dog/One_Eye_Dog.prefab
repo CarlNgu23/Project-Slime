@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   windUpSound: {fileID: 8300000, guid: 36459167e19968947b4c70a3d0212ad1, type: 3}
-  hitSound: {fileID: 8300000, guid: 702bafd08b0f1dc4a9a37ad168b0230e, type: 3}
+  hitSound: {fileID: 8300000, guid: d67605cbcd01d274cb7ba3a74287b002, type: 3}
   hitVolume: 1
   windupVolume: 1
 --- !u!1 &3370540140162056187
@@ -502,7 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   windUpSound: {fileID: 8300000, guid: 36459167e19968947b4c70a3d0212ad1, type: 3}
-  hitSound: {fileID: 8300000, guid: 702bafd08b0f1dc4a9a37ad168b0230e, type: 3}
+  hitSound: {fileID: 8300000, guid: ea3462b8cc9c67743816b460dc2c9a90, type: 3}
   hitVolume: 1
   windupVolume: 1
 --- !u!82 &3010263782297100188
