@@ -32,8 +32,8 @@ TagManager:
   - Left Platform Boundary
   - Right Platform Boundary
   - Wall
-  - 
-  - 
+  - comic
+  - bg
   - 
   - 
   - 
@@ -55,6 +55,9 @@ TagManager:
   - name: Environment
     uniqueID: 4172119227
     locked: 0
+  - name: Traps
+    uniqueID: 1374572447
+    locked: 0
   - name: Item
     uniqueID: 1149992115
     locked: 0
@@ -67,6 +70,9 @@ TagManager:
   - name: Player
     uniqueID: 2209012261
     locked: 0
-  - name: Traps
-    uniqueID: 1374572447
+  - name: bg
+    uniqueID: 973340587
+    locked: 0
+  - name: comic
+    uniqueID: 2123765619
     locked: 0

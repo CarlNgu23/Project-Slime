@@ -3,11 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class Player_Manager : MonoBehaviour
 {
     public delegate void PlayerAttackDelegator();
     public event PlayerAttackDelegator OnPlayerAttack;
+
+    private void Update()
+    {
+        if (Stats.Instance.health <= 0)
+        {
+            SceneManager.LoadScene(2);
+            Stats.Instance.health = Stats.Instance.maxHP;
+        }
+    }
 
     public void isAttacking()
     {
@@ -44,7 +54,8 @@ public class Player_Manager : MonoBehaviour
     public void UpdateStats()
     {
         Stats.Instance.level += 1;
-        Stats.Instance.health += 50;
+        Stats.Instance.maxHP += 50;
+        Stats.Instance.health = Stats.Instance.maxHP;
         Stats.Instance.attack += 1;
         Stats.Instance.defense += 1;
         Stats.Instance.strength += 1;

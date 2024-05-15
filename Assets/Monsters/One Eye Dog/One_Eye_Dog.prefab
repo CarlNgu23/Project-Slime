@@ -180,8 +180,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1559070975
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -881448940, guid: ea63f511ac43e6b4dbf71449d0f83df8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -230,7 +230,7 @@ MonoBehaviour:
   hp: 10
   atk: 5
   defense: 1
-  exp: 100
+  exp: 50
   player_BasicAttack_Mask:
     serializedVersion: 2
     m_Bits: 512
@@ -239,6 +239,7 @@ MonoBehaviour:
   isDying_Ref: 0
   expManager: {fileID: 0}
   cpu_Movement: {fileID: 0}
+  MonsterID: One_Eye_Dog
 --- !u!114 &8532220989791475577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,16 +358,16 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.044707164, y: -0.0328978}
+  m_Offset: {x: 0.044707164, y: -0.025852993}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.33, y: 0.27}
+    oldSize: {x: 0.33, y: 0.28}
     newSize: {x: 4.3, y: 0.9}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.24058565, y: 0.20420444}
+  m_Size: {x: 0.24058565, y: 0.19011483}
   m_EdgeRadius: 0
