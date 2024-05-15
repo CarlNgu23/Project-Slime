@@ -346,7 +346,7 @@ MonoBehaviour:
   hp: 10
   atk: 5
   defense: 1
-  exp: 100
+  exp: 50
   player_BasicAttack_Mask:
     serializedVersion: 2
     m_Bits: 512

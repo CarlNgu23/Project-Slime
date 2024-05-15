@@ -25,6 +25,9 @@ public class DeathColl : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             SceneManager.LoadScene(Respawn);
+            SceneManager.LoadScene(2);
+            Stats.Instance.health = Stats.Instance.maxHP;
+
         }
     }
 }

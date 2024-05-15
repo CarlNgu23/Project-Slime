@@ -40,15 +40,16 @@ public class CameraFollow : MonoBehaviour
 
     void AdjustCameraBounds()
     {
-        // Adjust minY and maxY based on the player's position plus the camera offset
-        if (player.position.y + cameraOffset.y > maxY)
+        //Platform#1
+        if (player.position.x < 10f)
         {
-            maxY = player.position.y + cameraOffset.y;
+            minY = -1.8f;
+            maxY = 1.8f;
         }
-
-        if (player.position.y + cameraOffset.y < minY)
+        //Platform#2
+        if (player.position.y <= -4.35 && player.position.x >= 9)
         {
-            minY = player.position.y + cameraOffset.y;
+            minY = -100f;
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class Player_Manager : MonoBehaviour
 {
@@ -29,6 +30,19 @@ public class Player_Manager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         screenShake = Camera.main.GetComponent<ScreenShake>();
 
+    }
+
+    private void Update()
+    {
+        if (Stats.Instance.health <= 0)
+        {
+            SceneManager.LoadScene(2);
+            Stats.Instance.health = Stats.Instance.maxHP;
+        }
+        if (Input.GetKeyDown(KeyCode.X) && canParry)
+        {
+            StartCoroutine(StartParry());
+        }
     }
 
     public void isAttacking()
@@ -96,13 +110,6 @@ public class Player_Manager : MonoBehaviour
         Stats.Instance.requiredExp += Stats.Instance.requiredExp + ((int)Math.Pow(Stats.Instance.level, 4) / 4);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.X) && canParry)
-        {
-            StartCoroutine(StartParry());
-        }
-    }
     private IEnumerator StartParry()
     {
         //Activate Parry State

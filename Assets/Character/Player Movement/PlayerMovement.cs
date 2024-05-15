@@ -131,8 +131,8 @@ public class PlayerMovement : MonoBehaviour
     {
         void DoJump()
         {
-            if (rb2D.velocity.y < 0)
-                jumpForce -= rb2D.velocity.y;
+            //if (rb2D.velocity.y < 0)
+            //    jumpForce -= rb2D.velocity.y;
             rb2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isJumping = true;
             isGrounded = false;
