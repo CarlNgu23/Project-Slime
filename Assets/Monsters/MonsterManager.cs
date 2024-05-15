@@ -16,7 +16,6 @@ public class MonsterManager : MonoBehaviour
     public bool isDying_Ref = false;
     public ExpManager expManager;
     public CPU_Movement cpu_Movement;
-    public string MonsterID;
 
     private void Awake()
     {
@@ -76,9 +75,6 @@ public class MonsterManager : MonoBehaviour
         Destroy(cpu_Movement.rightMonsterBoundaryGameObject);
         Destroy(cpu_Movement.leftMonsterBoundaryGameObject);
         Destroy(gameObject);
-        FindObjectOfType<QuestManager>().UpdateQuestRequirement(MonsterID, 1);
-
-
     }
 
 }

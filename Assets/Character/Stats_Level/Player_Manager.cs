@@ -3,21 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEngine.SceneManagement;
 
 public class Player_Manager : MonoBehaviour
 {
     public delegate void PlayerAttackDelegator();
     public event PlayerAttackDelegator OnPlayerAttack;
-
-    private void Update()
-    {
-        if (Stats.Instance.health <= 0)
-        {
-            SceneManager.LoadScene(2);
-            Stats.Instance.health = Stats.Instance.maxHP;
-        }
-    }
 
     public void isAttacking()
     {

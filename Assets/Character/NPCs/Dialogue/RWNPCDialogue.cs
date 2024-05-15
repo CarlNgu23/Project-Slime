@@ -24,20 +24,14 @@ public class RWNPCDialogue : MonoBehaviour
     public bool playerIsClose;
     private bool isTyping = false;   //checks if its still typing
 
-    public bool questRepeat = true;
-
     void Awake()
     {
         contButton.SetActive(false);
-       
     }
-
-        void Start()
+    void Start()
     {
         dialogueText.text = "";
         dialoguePanel.SetActive(false);                         //by default --> dialoguePanel is not active
-        
-
     }
 
     // Update is called once per frame
@@ -63,7 +57,7 @@ public class RWNPCDialogue : MonoBehaviour
                 else
                 {
                     dialogueChar = dialogue[index].ToCharArray();       //an int of an array of characters of the dialogue
-                    wordSpeed = fastDialogueDelay;
+                    wordSpeed= fastDialogueDelay;
                 }
            }
 
@@ -80,19 +74,7 @@ public class RWNPCDialogue : MonoBehaviour
             {
                 RemoveText();
             }
-
-            if (!dialoguePanel.active)
-            {
-                if (questRepeat)    //set some quest can be repeatable and so on
-                {
-                    GetComponent<QuestAssign>().AssignQuest();    // assign quest to player
-                    questRepeat = GetComponent<Quest>().repeatable;
-                }
-            }
-
         }
-
-
     }
 
     public void RemoveText()
@@ -145,5 +127,4 @@ public class RWNPCDialogue : MonoBehaviour
             RemoveText();
         }
     }
-
 }

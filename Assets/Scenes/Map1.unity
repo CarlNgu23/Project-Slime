@@ -3484,6 +3484,7 @@ MonoBehaviour:
   currentExp: 0
   requiredExp: 0
   health: 0
+  maxHP: 0
   attack: 0
   defense: 0
   strength: 0
