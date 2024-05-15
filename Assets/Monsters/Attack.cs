@@ -80,13 +80,41 @@ public class Attack : MonoBehaviour
         isAttacking = false;
     }
 
-    public void OnTriggerStay2D()
+    public void OnTriggerStay2D(Collider2D other)
     {
-        if (attack.IsTouchingLayers(playerMask))
+
+        if (other.CompareTag("ParryBox"))
         {
-            Stats.Instance.health -= 1;
-            //Debug.Log("Dealt Damage.");
-            attack.enabled = false;
+            Player_Manager player_Manager = player.GetComponent<Player_Manager>();
+            if (player_Manager != null && player_Manager.isParrying)
+            {
+                Debug.Log("Attack parried!");
+                player_Manager.PlayParrySuccessEffect();
+                attack.enabled = false;
+                return;
+            }
+
+            else
+            {
+                if (attack.IsTouchingLayers(playerMask))
+                {
+                    Stats.Instance.health -= 1;
+                    Debug.Log("Dealt Damage.");
+                    attack.enabled = false;
+
+                    Player_Manager playerComponent = player.GetComponent<Player_Manager>();
+                    if (playerComponent != null)
+                    {
+                        Debug.Log("Calling FlashRed on the player.");
+                        playerComponent.FlashRed();
+                    }
+                    else
+                    {
+                        Debug.LogError("Player_Manager component not found on the player object.");
+                    }
+                }
+        }
+
         }
     }
 }

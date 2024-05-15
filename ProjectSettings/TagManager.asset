@@ -15,6 +15,7 @@ TagManager:
   - Wall
   - Ground
   - speechBubble
+  - ParryBox
   layers:
   - Default
   - TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   - Left Platform Boundary
   - Right Platform Boundary
   - Wall
-  - 
+  - ParryBox
   - 
   - 
   - 
@@ -69,4 +70,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2209012261
+    locked: 0
+  - name: Highest
+    uniqueID: 4125976489
     locked: 0
